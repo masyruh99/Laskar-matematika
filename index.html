@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laskar Matematika – Belajar Mandiri</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f3f6fb;--surface:#fff;--ink:#14213d;--muted:#5b6784;--line:#d6dded;--brand:#1f3fbf;--brand-ink:#fff;--sun:#ffc83d;--ok:#1d8a5b;--err:#c0392b;--grid:#dfe6f4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1730;--surface:#18223f;--ink:#eef2ff;--muted:#a3afd0;--line:#2c3860;--brand:#7d96ff;--brand-ink:#0f1730;--ok:#4cc790;--err:#ff8a7a;--grid:#1c2748}}
+:root[data-theme="dark"]{--bg:#0f1730;--surface:#18223f;--ink:#eef2ff;--muted:#a3afd0;--line:#2c3860;--brand:#7d96ff;--brand-ink:#0f1730;--ok:#4cc790;--err:#ff8a7a;--grid:#1c2748}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:500 16px/1.5 Figtree,system-ui,sans-serif;min-height:100vh}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,sans-serif;margin:0;line-height:1.1}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.login{min-height:100vh;display:grid;grid-template-columns:1.1fr 1fr}
+.hero{padding:48px 40px;background:linear-gradient(var(--grid) 1px,transparent 1px) 0 0/28px 28px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 28px,var(--bg);display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:2px solid var(--ink)}
+.logo{display:flex;align-items:center;gap:10px;font:800 20px "Bricolage Grotesque",sans-serif}
+.logo i{width:34px;height:34px;border-radius:9px;background:var(--brand);display:grid;place-items:center;color:var(--brand-ink);font-style:normal}
+.hero h1{font-size:clamp(38px,5.5vw,64px);font-weight:800;letter-spacing:-.02em;max-width:11ch}
+.hero p{max-width:34ch;color:var(--muted);margin:16px 0 0}
+.note{align-self:flex-start;background:var(--sun);color:#14213d;padding:14px 18px;border-radius:4px 14px 14px 14px;transform:rotate(-1.5deg);box-shadow:4px 4px 0 var(--ink);max-width:30ch;font-weight:600}
+.panel{display:grid;place-items:center;padding:32px 24px}.card{width:100%;max-width:400px}
+.card h2{font-size:30px;font-weight:800}.card>p{color:var(--muted);margin:8px 0 18px}
+.seg{display:grid;grid-template-columns:1fr 1fr;border:2px solid var(--ink);border-radius:10px;overflow:hidden}
+.seg button{border:0;background:none;padding:10px;font-weight:600;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+label{display:block;font-weight:600;margin:16px 0 6px}
+input[type=text],input[type=password],input[type=date],input[type=number],textarea{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface)}
+textarea{resize:vertical;min-height:70px}
+input:focus,textarea:focus{border-color:var(--brand);outline:none}
+input[aria-invalid="true"]{border-color:var(--err)}
+.field{position:relative}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);background:none;border:0;padding:8px 10px;cursor:pointer;color:var(--muted);font-weight:600;font-size:14px}
+.err{color:var(--err);font-size:14px;margin:6px 0 0}
+.btn{padding:12px 20px;border:2px solid var(--ink);border-radius:10px;background:var(--brand);color:var(--brand-ink);font-weight:600;cursor:pointer;box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(3px,3px);box-shadow:none}
+.btn.full{width:100%;margin-top:20px}.btn.sm{padding:8px 14px;font-size:14px;box-shadow:2px 2px 0 var(--ink)}
+.demo{margin-top:22px;padding:12px 14px;border:2px dashed var(--line);border-radius:10px;font-size:14px;color:var(--muted)}.demo b{color:var(--ink)}
+.app{max-width:980px;margin:0 auto;padding:20px 20px 60px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:26px}
+.chip{font-size:13px;font-weight:600;background:var(--sun);color:#14213d;padding:3px 10px;border-radius:99px;margin-left:8px}
+.out{background:none;border:2px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600}.out:hover{border-color:var(--ink)}
+.hi h1{font-size:clamp(28px,5vw,40px);font-weight:800}.hi p{margin:6px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:24px;align-items:start}
+.box{background:var(--surface);border:2px solid var(--ink);border-radius:14px;padding:20px}
+.box h3{font-size:20px;margin-bottom:12px}
+.bar{height:10px;background:var(--line);border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:var(--brand);border-radius:99px}
+.mat{display:flex;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:10px 2px;cursor:pointer}
+.mat b{width:22px;height:22px;border:2px solid var(--muted);border-radius:6px;display:grid;place-items:center;font-size:14px;flex:none}
+.mat[aria-pressed="true"] b{background:var(--ok);border-color:var(--ok);color:#fff}
+.mat[aria-pressed="true"] span{color:var(--muted);text-decoration:line-through}
+.task{border:2px solid var(--line);border-radius:12px;padding:14px;margin-bottom:12px}
+.task h4{margin:0;font-size:17px}.task small,.muted{color:var(--muted)}
+.badge{display:inline-block;font-size:13px;font-weight:600;padding:2px 10px;border-radius:99px;border:2px solid var(--line)}
+.badge.ok{border-color:var(--ok);color:var(--ok)}.badge.late{border-color:var(--err);color:var(--err)}
+.task .row{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:6px}
+.task textarea{margin:8px 0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.stat b{display:block;font:800 34px "Bricolage Grotesque",sans-serif}
+.tabs{display:flex;gap:8px;margin:24px 0 14px}
+.tabs button{border:2px solid var(--line);background:none;border-radius:10px;padding:8px 16px;font-weight:600;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tbl{width:100%;border-collapse:collapse}.tbl td,.tbl th{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl th{font-size:14px;color:var(--muted);font-weight:600}.tbl .bar{min-width:90px}
+.scroll{overflow-x:auto}
+.sub{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.sub p{margin:4px 0 0;font-size:14px;color:var(--muted);max-width:46ch}
+.score{display:flex;gap:8px;align-items:center}.score input{width:78px}
+.new{display:grid;grid-template-columns:1fr 170px auto;gap:10px;align-items:end}.new label{margin:0 0 4px;font-size:14px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:12px 18px;border-radius:10px;font-weight:600;z-index:5}
+.vid video{width:100%;max-height:360px;border-radius:10px;background:#000;margin-bottom:10px}
+select{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface)}
+input[type=file]{width:100%;padding:8px 0}
+.nav{display:flex;gap:8px;margin:0 0 22px;flex-wrap:wrap}
+.nav button{border:2px solid var(--line);background:none;border-radius:10px;padding:8px 18px;font-weight:600;cursor:pointer}
+.nav button[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.mlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-top:22px}
+.subj{text-align:left;background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:16px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.subj:hover{border-color:var(--ink)}.subj b{font-size:17px}.subj span:not(.badge){color:var(--muted);font-size:14px}
+.less{margin-top:18px}.less h3{margin:18px 0 8px}.less h3:first-child{margin-top:0}.less ul{margin:0;padding-left:20px}.less li{margin:6px 0}.less p{max-width:68ch;margin:0}
+.sol{background:var(--bg);border-left:4px solid var(--sun);padding:10px 12px;margin:10px 0 0!important;border-radius:0 8px 8px 0}
+.opts{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.opt{border:2px solid var(--line);background:none;border-radius:10px;padding:8px 14px;cursor:pointer;font-weight:600}
+.opt:hover:not(:disabled){border-color:var(--ink)}.opt.right{border-color:var(--ok);color:var(--ok)}.opt.wrong{border-color:var(--err);color:var(--err)}
+.okt{color:var(--ok);font-weight:600}.errt{color:var(--err);font-weight:600}
+.pager{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:22px;flex-wrap:wrap}
+@media(max-width:760px){.nav{position:fixed;left:0;right:0;bottom:0;margin:0;gap:0;background:var(--surface);border-top:2px solid var(--ink);padding-bottom:env(safe-area-inset-bottom,0px);z-index:4;flex-wrap:nowrap}.nav button{flex:1;border:0;border-radius:0;padding:14px 4px}.app{padding-bottom:96px}}
+@media(max-width:760px){.login{grid-template-columns:1fr}.hero{padding:28px 22px;gap:20px;border-right:0;border-bottom:2px solid var(--ink)}.hero h1{font-size:36px}.note{display:none}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.new{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+:root:root:root{color-scheme:light;--bg:#ffffff;--surface:#fff4ea;--ink:#2b1a0f;--muted:#8a6a55;--line:#f3d9c3;--brand:#e8590c;--brand-ink:#ffffff;--sun:#ffa94d;--ok:#1d8a5b;--err:#d4372a;--grid:#fde8d5;--tint:#ffe3c8;--tile:#fff1e4;--track:#f1d9c6;--dotb:#e6c8ae;--acc2:#ffb347}
+:root[data-t="kuning"]:root:root{--surface:#fff9e6;--ink:#2b2100;--muted:#7d6a3a;--line:#f0e1b0;--brand:#b97f00;--brand-ink:#2b1d00;--sun:#e3b23c;--grid:#fbf0cc;--tint:#fbe7a6;--tile:#fff3c9;--track:#efdfae;--dotb:#dcc88a;--acc2:#ffd75e}
+:root[data-t="biru"]:root:root{--surface:#f1f6ff;--ink:#10223f;--muted:#5f7391;--line:#d7e3f8;--brand:#1f5fd6;--sun:#6ea8ff;--grid:#e3edfd;--tint:#dce9ff;--tile:#eaf2ff;--track:#d7e3f8;--dotb:#b9cdee;--acc2:#ffc857}
+:root[data-t="hijau"]:root:root{--surface:#f0faf4;--ink:#0f2a1c;--muted:#5d7a68;--line:#d3ebdc;--brand:#178a4f;--sun:#63c98a;--ok:#0f7a8a;--grid:#e0f3e8;--tint:#d5f0e0;--tile:#e6f6ec;--track:#d3ebdc;--dotb:#b4d8c3;--acc2:#ffc857}
+:root[data-t="ungu"]:root:root{--surface:#f6f1ff;--ink:#20123f;--muted:#75669a;--line:#e3d9f8;--brand:#6d3ccf;--sun:#a98aea;--grid:#ebe3fb;--tint:#e6dcfb;--tile:#efe8fd;--track:#e3d9f8;--dotb:#cbbdee;--acc2:#ffc857}
+:root[data-t="gelap"]:root:root{color-scheme:dark;--bg:#1f1c1d;--surface:#2a2627;--ink:#f3efe9;--muted:#a69f9b;--line:#3d3839;--brand:#ff8a3d;--brand-ink:#1f1c1d;--sun:#ff8a3d;--ok:#2ec28a;--err:#ff8a7a;--grid:#282425;--tint:#4a3320;--tile:#332e2f;--track:#4a4647;--dotb:#5a5657;--acc2:#ffc857}
+.box{border:0}.btn{border:0;border-radius:99px;box-shadow:none;font-weight:700;letter-spacing:.02em}.btn.sm{box-shadow:none}.btn.big{width:100%;padding:16px;font-size:17px;margin:0}
+.out{border-color:var(--line)}.hero{border-right-color:var(--line)}.note{box-shadow:none}.task{border-color:var(--line)}
+.app{max-width:760px;padding-bottom:100px}
+.zh{display:grid;grid-template-columns:48px 1fr 48px;align-items:center;margin:-20px -20px 0;padding:12px 8px;border-bottom:1px solid var(--line)}
+.zt{text-align:center;font:800 24px "Bricolage Grotesque",sans-serif}
+.ib{background:none;border:0;font-size:26px;width:44px;height:44px;cursor:pointer;color:var(--muted)}
+.chips{display:flex;gap:10px;overflow-x:auto;padding:16px 20px;margin:0 -20px;border-bottom:1px solid var(--line)}
+.cp{border:2px solid var(--line);border-radius:99px;padding:8px 18px;white-space:nowrap;background:none;font-weight:600;cursor:pointer}
+.cp.on{background:#d9a81f;border-color:#d9a81f;color:#232021}
+.pg{padding:22px 0 14px}.pg h1{font-size:34px}.pg .bar{margin-top:10px}
+.prow{display:flex;gap:16px;align-items:center;width:calc(100% + 40px);margin:0 -20px;padding:18px 20px;background:none;border:0;border-bottom:1px solid var(--line);text-align:left;cursor:pointer;color:inherit}
+.prow.cur{background:#3a3220}.prow b{display:block;font-size:18px;font-weight:600}.prow .s{color:var(--muted);font-size:15px}
+.ring{--d:0deg;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;flex:none;background:conic-gradient(var(--ok) var(--d),#4a4647 0)}
+.ring i{width:calc(100% - 10px);height:calc(100% - 10px);border-radius:50%;background:#3b4fd6;border:3px solid var(--bg);display:grid;place-items:center;color:#fdc93a;font-style:normal}
+.lh{display:flex;gap:18px;align-items:center;padding:22px 0}.lh h1{font-size:30px}.lh p{margin:4px 0 0}
+.tl{position:relative;margin-top:18px}.tl:before{content:"";position:absolute;left:12px;top:30px;bottom:30px;width:2px;background:#4a4647}
+.step{display:flex;gap:16px;align-items:flex-start}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid #5a5657;background:var(--bg);flex:none;margin-top:36px;position:relative;display:grid;place-items:center;font-size:14px;color:#fff}
+.dot.on{background:var(--ok);border-color:var(--ok)}
+.sc{flex:1;min-width:0}
+.item{display:flex;gap:16px;align-items:center;width:100%;background:none;border:0;padding:8px 0;text-align:left;cursor:pointer;color:inherit}
+.tile{width:100px;height:74px;border-radius:12px;background:#2f2c2d;display:grid;place-items:center;flex:none}
+.tile i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:#3b4fd6;color:#fff}.tile i.y{background:#fdc93a;color:#232021}
+.it b{display:block;font-size:18px;font-weight:600;line-height:1.25}.it small{color:var(--muted);font-size:15px}
+.pnl{background:var(--surface);border-radius:12px;padding:14px;margin:4px 0 12px}.pnl video{width:100%;border-radius:10px;background:#000;max-height:300px}.pnl p{margin:0 0 8px}.pnl ul{margin:6px 0 0;padding-left:20px}
+.nav{position:fixed;left:0;right:0;bottom:0;margin:0;gap:0;background:var(--surface);border-top:1px solid var(--line);padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));z-index:4;flex-wrap:nowrap}
+.nav button{flex:1;border:0;border-radius:0;background:none;padding:4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:14px;color:var(--muted)}
+.nav .ic{font-size:20px;padding:3px 18px;border-radius:99px}
+.nav button[aria-current="page"]{background:none;color:var(--ink)}.nav button[aria-current="page"] .ic{background:#3a3220;color:#fdc93a}
+.stv{display:block;width:calc(100% + 40px);margin:0 -20px;max-height:280px;background:#000;border-bottom:3px solid #fdc93a}
+.stg{background:var(--surface);margin:0 -20px;padding:18px 20px;border-bottom:3px solid #fdc93a}.stg p{margin:0 0 8px}.stg ul{margin:6px 0 0;padding-left:20px}.stg h3{margin-bottom:8px}
+.ttl{padding:20px 0 14px}.ttl h1{font-size:28px}.ttl p{margin:6px 0 0}
+.step.cur{background:#6b5a2e;margin:0 -20px;padding:0 20px;border-left:4px solid #fdc93a}
+.pbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:10px 20px calc(10px + env(safe-area-inset-bottom,0px));z-index:4}
+.pbar .nx{background:none;border:0;text-align:right;cursor:pointer;color:var(--brand);font:700 22px "Bricolage Grotesque",sans-serif}
+.pbar .nx small{display:block;font:500 14px Figtree,sans-serif;color:var(--muted);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-left:auto}
+.explain{background:var(--bg);border-left:4px solid var(--sun);padding:10px 12px;border-radius:0 8px 8px 0;margin-top:8px}
+.pbar{display:grid;grid-template-columns:1fr auto 1fr;gap:8px}.pbar .nx{justify-self:end}
+.pv{background:none;border:0;text-align:left;cursor:pointer;color:var(--brand);font:700 22px "Bricolage Grotesque",sans-serif;justify-self:start}
+.pv small{display:block;font:500 14px Figtree,sans-serif;color:var(--muted);max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qhint{text-align:center;color:var(--muted);margin:24px 0 26px}
+.qtitle{margin:0 -20px;padding:18px 20px;border-top:1px solid var(--line)}.qtitle h1{font-size:30px}
+.qq{background:#fff;color:#14213d;margin:0 -20px;padding:22px 20px;font-size:19px;line-height:1.5}
+.qopt{display:flex;gap:16px;align-items:center;width:100%;background:var(--surface);border:2px solid var(--line);border-radius:28px;padding:16px 18px;color:inherit;cursor:pointer;margin-top:14px;text-align:left;font-size:19px}
+.qopt .lt{width:52px;height:52px;border-radius:50%;background:#3a3637;display:grid;place-items:center;color:var(--muted);font-size:20px;flex:none}
+.qopt:not(:disabled):hover{border-color:var(--brand)}
+.qopt.right{border-color:var(--ok)}.qopt.right .lt{background:var(--ok);color:#fff}
+.qopt.wrong{border-color:var(--err)}.qopt.wrong .lt{background:var(--err);color:#232021}
+.qopt:disabled{cursor:default;color:inherit}
+.qnote{text-align:center;color:var(--muted);margin:26px 0}
+.stick{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;margin:0 -20px;background:var(--bg)}
+.stick>.stv{width:100%;margin:0;max-height:22vh;border-bottom-width:2px}
+.stick>.stg{margin:0;max-height:20vh;overflow:auto;padding:10px 16px;font-size:15px;border-bottom-width:2px}.stick>.stg h3{font-size:16px;margin-bottom:4px}
+.qstick{position:sticky;top:env(safe-area-inset-top,0px);z-index:3;margin:0 -20px;background:var(--bg)}
+.qstick .qtitle{margin:0;padding:8px 16px}.qstick .qtitle h1{font-size:20px}
+.qstick .qq{margin:0;max-height:22vh;overflow:auto;padding:12px 16px;font-size:16px}
+.fxs{height:calc(min(100vw,480px)*3/4);margin-top:-20px}
+.fx{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:5;background:var(--bg)}
+.fxi{position:relative;width:min(100%,480px);aspect-ratio:4/3;margin:0 auto;background:#000;border-bottom:3px solid #fdc93a;overflow:hidden}
+.fxi>video{display:block;width:100%;height:100%;object-fit:contain;max-height:none;margin:0;border:0}
+.fxi>.stg{height:100%;margin:0;border:0;max-height:none;overflow:auto;padding:48px 16px 12px;font-size:15px}
+.fxi>.stg.c{display:flex;flex-direction:column;justify-content:center;align-items:center}
+.bk{position:absolute;left:8px;top:8px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.55);color:#fff;font-size:20px;cursor:pointer;z-index:2}
+.qstick .zh{margin:0}
+.ga{display:flex;gap:8px;margin:0 0 10px}.sm2{padding:4px 14px;font-size:14px;border-radius:99px;background:none;cursor:pointer;border:2px solid var(--line)}
+#gp{scroll-margin-top:calc(min(100vw,480px)*3/4 + 12px)}
+.gbtns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+.vtools{position:absolute;right:8px;top:8px;display:flex;gap:6px;z-index:2}
+.vtools button{border:0;border-radius:99px;padding:7px 12px;background:rgba(0,0,0,.62);color:#fff;font-size:13px;font-weight:600;cursor:pointer}
+.zt{color:var(--brand)}
+.box{border:1px solid var(--line)}
+.seg{border-color:var(--brand)}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.cp.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.prow.cur{background:var(--tint)}
+.ring{background:conic-gradient(var(--ok) var(--d),var(--track) 0)}
+.ring i{background:var(--brand);color:var(--brand-ink)}
+.tl:before{background:var(--track)}
+.dot{border-color:var(--dotb)}.dot.on{background:var(--ok);border-color:var(--ok)}
+.tile{background:var(--tile)}
+.tile i{background:var(--brand);color:var(--brand-ink)}.tile i.y{background:var(--acc2);color:#2b1a0f}
+.step.cur{background:var(--tint);border-left-color:var(--brand)}
+.nav button[aria-current="page"] .ic{background:var(--tint);color:var(--brand)}
+.stg,.stv,.fxi{border-bottom-color:var(--brand)}
+.qq{background:var(--surface);color:var(--ink);border-bottom:2px solid var(--brand)}
+.qopt .lt{background:var(--tint)}.qopt.wrong .lt{color:#fff}
+.explain{background:var(--surface)}
+.note{color:#2b1a0f}
+.toast{background:var(--ink);color:var(--bg)}
+.cp.on{color:var(--brand-ink)}.seg button[aria-pressed="true"]{color:var(--brand-ink)}
+.tp{display:flex;gap:10px;flex-wrap:wrap}
+.sw{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:2px solid var(--line);border-radius:14px;padding:10px 8px;cursor:pointer;color:var(--ink);font-size:13px;min-width:60px}
+.sw i{width:28px;height:28px;border-radius:50%;display:block;border:2px solid var(--line)}
+.sw[aria-pressed="true"]{border-color:var(--brand)}.sw[aria-pressed="true"] span{font-weight:700}
+.av{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;color:#fff;font:800 26px "Bricolage Grotesque",sans-serif;flex:none}
+.avs{display:flex;gap:10px;margin:6px 0 0;flex-wrap:wrap}
+.avs button{width:34px;height:34px;border-radius:50%;border:3px solid var(--bg);cursor:pointer;box-shadow:0 0 0 1px var(--line)}
+.avs button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.spill{justify-self:end;margin-right:10px;font-weight:700;color:var(--brand);background:var(--tint);padding:4px 12px;border-radius:99px}
+.kbar{height:8px;background:var(--track)}.kbar span{display:block;height:100%;background:var(--brand);transition:width .1s linear}.kbar span.low{background:var(--err)}
+.streak{background:var(--tint);color:var(--brand);padding:2px 10px;border-radius:99px;font-weight:700;font-size:14px}
+.kfb{margin-top:18px}.kfb>b{font-size:20px}.kfb.ok>b{color:var(--ok)}.kfb.no>b{color:var(--err)}.kfb p{margin:6px 0 8px}
+.pts{display:inline-block;margin-left:10px;font-weight:800;color:var(--brand);animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.25)}100%{transform:scale(1);opacity:1}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+.shake{animation:shake .35s}
+.lbr{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:10px}.lbr.me{background:var(--tint)}.lbr .nm{flex:1}.lbr b:first-child{width:20px;text-align:center}
+.av.sm{width:34px;height:34px;font-size:15px}
+.stars{font-size:44px;color:var(--brand);letter-spacing:6px}
+.chips2{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+@media(prefers-reduced-motion:reduce){.shake,.pts{animation:none}}
+.gf{width:100%;max-width:340px;height:auto;display:block;margin:0 auto}
+.gf .g{stroke:var(--line);stroke-width:1}.gf .ax{stroke:var(--ink);stroke-width:1.4}
+.gf text{fill:var(--muted);font-size:10px}.gf .al{fill:var(--ink);font-style:italic}
+.gf .l1{stroke:var(--brand);stroke-width:2.2}.gf .l2{stroke:var(--ok);stroke-width:2.2}
+.gf .lb1{fill:var(--brand);font-weight:700}.gf .lb2{fill:var(--ok);font-weight:700}
+.gf .sh{fill:var(--brand);opacity:.22}.gf .pt{fill:var(--ink)}.gf .pl{fill:var(--ink);font-weight:700}
+.gfig{margin:0 0 16px}.gfig figcaption{font-size:14px;margin-top:6px}
+.gf .l3{stroke:var(--muted);stroke-width:1.5}.gf .dsh{stroke-dasharray:5 4}.gf .lb0{fill:var(--ink)}
+.gf .fl1{fill:var(--brand);fill-opacity:.55;stroke:var(--brand);stroke-width:1}.gf .fl2{fill:var(--ok);fill-opacity:.55;stroke:var(--ok);stroke-width:1}
+.gf .dt1{fill:var(--brand)}.gf .dt2{fill:var(--ok)}.gf .dt3{fill:var(--dotb)}
+.gf .lb3{fill:var(--muted)}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:16px}
+.lbx img{max-width:100%;max-height:78vh;border-radius:12px;background:#fff}
+.lbx .ph{width:100%;max-width:640px;max-height:80vh;overflow-y:auto;display:flex;flex-direction:column;gap:12px}.lbx .ph img{max-height:none;width:100%}
+.gf .l4{stroke:var(--ink);stroke-width:2.6}.gf .lb4{fill:var(--ink);font-weight:700}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<div class="toast" id="toast" hidden></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ===== PENGATURAN: isi dua nilai ini dari Supabase (Project Settings > API) ===== */
+const SUPABASE_URL="ISI_URL_PROYEK_SUPABASE";
+const SUPABASE_ANON_KEY="ISI_ANON_PUBLIC_KEY";
+/* ================================================================================ */
+const sb=supabase.createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
+
+/* Lapisan penyimpanan: dokumen bersama + berkas video, berbasis Supabase */
+let _base=null,_ver=0,_subs=[],_timer=null;
+const _eq=(a,b)=>JSON.stringify(a)===JSON.stringify(b),_isO=v=>v&&typeof v==="object"&&!Array.isArray(v);
+function _merge(b,m,t){
+  if(_eq(b,m))return t;
+  if(_eq(m,t))return m;
+  if(_isO(m)&&_isO(t)&&(_isO(b)||b===undefined)){
+    const o={},B=b||{};
+    new Set([...Object.keys(m),...Object.keys(B),...Object.keys(t)]).forEach(k=>{const v=_merge(B[k],m[k],t[k]);if(v!==undefined)o[k]=v});
+    return o;
+  }
+  if(Array.isArray(m)&&Array.isArray(t)&&(Array.isArray(b)||b===undefined)){
+    const B=(b||[]).map(x=>JSON.stringify(x)),M=m.map(x=>JSON.stringify(x));
+    const removed=new Set(B.filter(x=>!M.includes(x))),added=M.filter(x=>!B.includes(x));
+    const out=t.map(x=>JSON.stringify(x)).filter(x=>!removed.has(x));
+    added.forEach(x=>{if(!out.includes(x))out.push(x)});
+    return out.map(x=>JSON.parse(x));
+  }
+  return m;
+}
+const _snap=(path,row)=>({id:path.split("/").pop(),exists:!!row,data:()=>row?row.data:undefined});
+async function _fetchState(){const {data,error}=await sb.from("docs").select("data,version").eq("path","app/state").maybeSingle();if(error)throw error;return data}
+function _emit(state){_subs.forEach(cb=>{try{cb({id:"state",exists:true,data:()=>({json:JSON.stringify(state)})})}catch(e){}})}
+async function _poll(){try{const row=await _fetchState();if(row&&row.version!==_ver){_ver=row.version;_base=JSON.parse(row.data.json);_emit(_base)}}catch(e){}}
+async function _writeState(d){
+  const mine=JSON.parse(d.json);
+  for(let i=0;i<6;i++){
+    const row=await _fetchState();
+    if(!row){const {error}=await sb.from("docs").insert({path:"app/state",data:{json:JSON.stringify(mine)},version:1});if(!error){_base=mine;_ver=1;_emit(mine);return}continue}
+    const merged=_merge(_base||{},mine,JSON.parse(row.data.json));
+    const {data,error}=await sb.from("docs").update({data:{json:JSON.stringify(merged)},version:row.version+1}).eq("path","app/state").eq("version",row.version).select("version");
+    if(!error&&data&&data.length){_base=merged;_ver=row.version+1;_emit(merged);return}
+  }
+  throw new Error("konflik");
+}
+const _db={doc(path){return{
+  async get(){const {data,error}=await sb.from("docs").select("data").eq("path",path).maybeSingle();if(error)throw error;return _snap(path,data)},
+  async set(d){if(path==="app/state")return _writeState(d);const {error}=await sb.from("docs").upsert({path,data:d});if(error)throw error},
+  async delete(){const {error}=await sb.from("docs").delete().eq("path",path);if(error)throw error},
+  onSnapshot(cb,err){
+    if(path!=="app/state")return()=>{};
+    _subs.push(cb);
+    (async()=>{try{const row=await _fetchState();if(row){_ver=row.version;_base=JSON.parse(row.data.json);cb({id:"state",exists:true,data:()=>row.data})}else cb({id:"state",exists:false,data:()=>undefined})}catch(e){err&&err(e)}})();
+    if(!_timer)_timer=setInterval(_poll,4000);
+    return()=>{_subs=_subs.filter(x=>x!==cb)};
+  }
+}}};
+const _assets={
+  async upload(f,o){
+    const ext=((f.name.split(".").pop()||"mp4").toLowerCase().replace(/[^a-z0-9]/g,""))||"mp4",id=crypto.randomUUID()+"."+ext;
+    const {error}=await sb.storage.from("videos").upload(id,f,{contentType:(o&&o.type)||f.type||"video/mp4",upsert:false});
+    if(error){const e=new Error(error.message);e.code=/size|exceed|too large|payload/i.test(error.message)?"too_large":/permission|policy|row-level|not allowed|unauthorized/i.test(error.message)?"not_granted":"error";throw e}
+    return {id,url:sb.storage.from("videos").getPublicUrl(id).data.publicUrl};
+  },
+  async delete(id){await sb.storage.from("videos").remove([id])}
+};
+window.claude={use:async n=>n==="db"?_db:(n==="assets"&&typeof role!=="undefined"&&role==="guru")?_assets:null};
+</script>
+<script>
+const MAT=[
+{t:"Bilangan bulat",i:"Bilangan bulat terdiri dari bilangan negatif (…, −3, −2, −1), nol, dan bilangan positif (1, 2, 3, …). Pada garis bilangan, semakin ke kanan nilainya semakin besar.",
+ p:["Menjumlah bilangan positif: geser ke kanan. Menjumlah bilangan negatif: geser ke kiri.","Mengurangi sama dengan menambah lawannya: a − b = a + (−b).","Positif × positif = positif, negatif × negatif = positif, positif × negatif = negatif.","Pembagian memakai aturan tanda yang sama dengan perkalian."],
+ c:[{q:"Hitung 7 + (−12).",a:"7 + (−12) = 7 − 12 = −5."},{q:"Hitung (−6) × (−4) ÷ 3.",a:"(−6) × (−4) = 24, lalu 24 ÷ 3 = 8."}],
+ k:[{q:"Hasil dari −9 − (−4) adalah …",o:["−13","−5","5"],k:1},{q:"Hasil dari (−5) × 6 adalah …",o:["30","−30","−11"],k:1}]},
+{t:"Pecahan",i:"Pecahan menyatakan bagian dari keseluruhan, ditulis a/b dengan b ≠ 0. Pecahan senilai punya nilai sama, misalnya 1/2 = 2/4 = 3/6.",
+ p:["Menjumlah atau mengurang: samakan penyebut dulu, lalu operasikan pembilangnya.","Mengalikan: pembilang × pembilang, penyebut × penyebut.","Membagi: kalikan dengan kebalikan pecahan pembagi.","Sederhanakan hasil dengan membagi pembilang dan penyebut dengan FPB-nya."],
+ c:[{q:"Hitung 1/3 + 1/4.",a:"KPK 3 dan 4 adalah 12. Maka 4/12 + 3/12 = 7/12."},{q:"Hitung 2/3 ÷ 4/5.",a:"2/3 × 5/4 = 10/12 = 5/6."}],
+ k:[{q:"3/4 − 1/2 = …",o:["1/4","2/2","1/2"],k:0},{q:"Bentuk paling sederhana dari 12/18 adalah …",o:["6/9","2/3","4/6"],k:1}]},
+{t:"Desimal",i:"Bilangan desimal memakai koma untuk menunjukkan bagian yang lebih kecil dari satu. Angka di belakang koma bernilai persepuluhan, perseratusan, dan seterusnya.",
+ p:["Pecahan ke desimal: bagi pembilang dengan penyebut (3/4 = 0,75).","Desimal ke pecahan: 0,6 = 6/10 = 3/5.","Menjumlah dan mengurang: sejajarkan koma.","Mengalikan: kalikan seperti bilangan bulat, lalu hitung banyak angka di belakang koma."],
+ c:[{q:"Hitung 2,5 + 1,75.",a:"Sejajarkan koma: 2,50 + 1,75 = 4,25."},{q:"Hitung 0,4 × 0,3.",a:"4 × 3 = 12. Ada 2 angka di belakang koma, jadi hasilnya 0,12."}],
+ k:[{q:"0,125 jika ditulis sebagai pecahan adalah …",o:["1/8","1/4","1/5"],k:0},{q:"5,2 − 1,85 = …",o:["3,35","4,35","3,45"],k:0}]},
+{t:"Aljabar dasar",i:"Aljabar memakai huruf (variabel) untuk mewakili bilangan yang belum diketahui. Persamaan linear satu variabel diselesaikan dengan menjaga kedua ruas tetap seimbang.",
+ p:["Suku sejenis bisa dijumlahkan: 3x + 5x = 8x.","Apa pun yang dilakukan pada satu ruas harus dilakukan juga pada ruas lainnya.","Pindah ruas mengubah operasi: + menjadi −, × menjadi ÷.","Periksa jawaban dengan memasukkan nilainya ke persamaan awal."],
+ c:[{q:"Selesaikan 3x + 5 = 20.",a:"3x = 20 − 5 = 15, maka x = 15 ÷ 3 = 5."},{q:"Sederhanakan 4a + 7 − a + 2.",a:"Suku a: 4a − a = 3a. Konstanta: 7 + 2 = 9. Hasilnya 3a + 9."}],
+ k:[{q:"Nilai x dari 2x − 6 = 10 adalah …",o:["2","8","16"],k:1},{q:"Bentuk sederhana dari 5y + 2y − 3 adalah …",o:["7y − 3","10y − 3","7y + 3"],k:0}]},
+{t:"Perbandingan",i:"Perbandingan membandingkan dua besaran, ditulis a : b. Pada perbandingan senilai, jika satu besaran naik maka besaran lain ikut naik. Pada perbandingan berbalik nilai, jika satu naik maka yang lain turun.",
+ p:["Sederhanakan perbandingan dengan membagi kedua bilangan dengan FPB-nya.","Senilai: a₁/b₁ = a₂/b₂ (kalikan silang).","Berbalik nilai: a₁ × b₁ = a₂ × b₂.","Skala = jarak pada peta : jarak sebenarnya."],
+ c:[{q:"5 buku harganya Rp40.000. Berapa harga 8 buku?",a:"Harga 1 buku = 40.000 ÷ 5 = 8.000. Harga 8 buku = 8 × 8.000 = Rp64.000."},{q:"6 pekerja menyelesaikan pekerjaan dalam 12 hari. Jika ada 9 pekerja, berapa hari?",a:"Berbalik nilai: 6 × 12 = 9 × h, maka h = 72 ÷ 9 = 8 hari."}],
+ k:[{q:"Bentuk sederhana dari 24 : 36 adalah …",o:["2 : 3","3 : 4","4 : 5"],k:0},{q:"Skala peta 1 : 500.000. Jarak di peta 4 cm, jarak sebenarnya adalah …",o:["2 km","20 km","200 km"],k:1}]},
+{t:"Geometri",i:"Geometri mempelajari bangun datar dan bangun ruang: bentuk, ukuran, keliling, luas, dan volume.",
+ p:["Persegi panjang: luas = p × l, keliling = 2(p + l).","Segitiga: luas = ½ × alas × tinggi.","Lingkaran: luas = πr², keliling = 2πr, dengan π ≈ 22/7 atau 3,14.","Balok: volume = p × l × t.","Segitiga siku-siku (Pythagoras): a² + b² = c²."],
+ c:[{q:"Segitiga beralas 10 cm dan tinggi 6 cm. Berapa luasnya?",a:"Luas = ½ × 10 × 6 = 30 cm²."},{q:"Segitiga siku-siku dengan sisi tegak 6 cm dan 8 cm. Berapa sisi miringnya?",a:"c² = 6² + 8² = 36 + 64 = 100, maka c = 10 cm."}],
+ k:[{q:"Luas lingkaran berjari-jari 7 cm (π = 22/7) adalah …",o:["44 cm²","154 cm²","308 cm²"],k:1},{q:"Volume balok berukuran 5 × 4 × 3 cm adalah …",o:["12 cm³","47 cm³","60 cm³"],k:2}]},
+{t:"Statistik",i:"Statistik membantu kita mengumpulkan, menyajikan, dan menafsirkan data. Tiga ukuran pemusatan data yang paling sering dipakai adalah rata-rata, median, dan modus.",
+ p:["Rata-rata = jumlah seluruh data ÷ banyak data.","Median = nilai tengah setelah data diurutkan.","Modus = nilai yang paling sering muncul.","Jangkauan = data terbesar − data terkecil."],
+ c:[{q:"Data: 6, 7, 8, 8, 9, 12. Tentukan rata-rata dan modus.",a:"Jumlah = 50, banyak data = 6, rata-rata ≈ 8,33. Modus = 8 karena muncul paling sering."},{q:"Data terurut: 3, 5, 7, 9, 11. Berapa median dan jangkauannya?",a:"Median = nilai tengah = 7. Jangkauan = 11 − 3 = 8."}],
+ k:[{q:"Median dari 4, 9, 2, 7, 5 adalah …",o:["5","7","4"],k:0},{q:"Rata-rata dari 70, 80, dan 90 adalah …",o:["70","80","90"],k:1}]},
+{t:"Peluang",i:"Peluang menyatakan seberapa mungkin suatu kejadian terjadi, dengan nilai antara 0 (mustahil) dan 1 (pasti).",
+ p:["P(A) = banyak kejadian A ÷ banyak semua kemungkinan (ruang sampel).","Peluang kejadian tidak terjadi: 1 − P(A).","Frekuensi harapan = peluang × banyak percobaan."],
+ c:[{q:"Sebuah dadu dilempar sekali. Berapa peluang muncul angka genap?",a:"Genap: 2, 4, 6 (3 kemungkinan) dari 6. P = 3/6 = 1/2."},{q:"Peluang hujan besok 0,3. Berapa peluang tidak hujan?",a:"1 − 0,3 = 0,7."}],
+ k:[{q:"Kantong berisi 3 bola merah dan 2 bola biru. Peluang terambil bola biru adalah …",o:["2/5","3/5","2/3"],k:0},{q:"Dadu dilempar 60 kali. Frekuensi harapan muncul angka 6 adalah …",o:["6","10","20"],k:1}]}
+];
+const EXP=[
+["Mengurangi bilangan negatif sama dengan menambah lawannya: −9 − (−4) = −9 + 4 = −5.","Negatif dikali positif hasilnya negatif, jadi (−5) × 6 = −30."],
+["Samakan penyebut: 3/4 − 2/4 = 1/4.","12 dan 18 sama-sama dibagi 6 (FPB), jadi 12/18 = 2/3."],
+["0,125 = 125/1000. Bagi pembilang dan penyebut dengan 125, hasilnya 1/8.","Sejajarkan koma: 5,20 − 1,85 = 3,35."],
+["2x − 6 = 10, maka 2x = 16 dan x = 8.","5y + 2y = 7y, sedangkan −3 tetap. Hasilnya 7y − 3."],
+["FPB 24 dan 36 adalah 12, sehingga 24 : 36 = 2 : 3.","4 cm × 500.000 = 2.000.000 cm = 20 km."],
+["Luas = π × r × r = 22/7 × 7 × 7 = 154 cm².","Volume balok = 5 × 4 × 3 = 60 cm³."],
+["Urutkan data: 2, 4, 5, 7, 9. Nilai tengahnya adalah 5.","(70 + 80 + 90) ÷ 3 = 240 ÷ 3 = 80."],
+["Ada 5 bola dan 2 di antaranya biru, jadi peluangnya 2/5.","Peluang angka 6 adalah 1/6, jadi frekuensi harapan = 1/6 × 60 = 10."]];
+MAT.forEach((m,i)=>{m.g=i<5?"7":"8"});
+MAT[5].fig=[{cap:"Pada segitiga siku-siku, luas persegi pada sisi miring sama dengan jumlah luas persegi pada kedua sisi tegak: 9 + 16 = 25.",o:{alt:"Teorema Pythagoras dengan tiga persegi",bare:1,x:[-5,10],y:[-4.4,7.4],
+ segs:[{p:[0,0],q:[4,0],k:1},{p:[0,0],q:[0,3],k:1},{p:[4,0],q:[0,3],k:1},
+  {p:[0,0],q:[0,-4],k:2},{p:[0,-4],q:[4,-4],k:2},{p:[4,-4],q:[4,0],k:2},
+  {p:[0,3],q:[-3,3],k:2},{p:[-3,3],q:[-3,0],k:2},{p:[-3,0],q:[0,0],k:2},
+  {p:[0,3],q:[3,7],k:2},{p:[3,7],q:[7,4],k:2},{p:[7,4],q:[4,0],k:2},
+  {p:[0.5,0],q:[0.5,0.5],k:3},{p:[0.5,0.5],q:[0,0.5],k:3}],
+ txt:[{x:-2.9,y:1.3,t:"3² = 9",k:2},{x:0.7,y:-2,t:"4² = 16",k:2},{x:2.3,y:3.6,t:"5² = 25",k:1},{x:0.5,y:1.6,t:"3",k:0},{x:1.8,y:-0.6,t:"4",k:0},{x:2.2,y:1.8,t:"5",k:0}]}}];
+MAT[6].fig=[
+ {cap:"Diagram batang data 6, 7, 8, 8, 9, 12. Tinggi batang menunjukkan frekuensi. Modus = 8 karena paling sering muncul, dan rata-rata ≈ 8,33.",o:{alt:"Diagram batang frekuensi data",x:[5,13],y:[-0.5,3.4],rects:[[6,1],[7,1],[8,2,2],[9,1],[12,1]].map(([v,h,k])=>({x:v-0.35,y:0,w:0.7,h,k:k||1})),segs:[{p:[8.33,0],q:[8.33,3.2],k:3,dash:1}],txt:[{x:5.2,y:2.4,t:"modus = 8",k:2},{x:8.5,y:3.1,t:"rata-rata ≈ 8,33",k:0}]}},
+ {cap:"Data terurut 3, 5, 7, 9, 11: median adalah nilai tengah (7) dan jangkauan adalah selisih data terbesar dan terkecil (8).",o:{alt:"Garis bilangan dengan median dan jangkauan",bare:1,x:[1,13],y:[-3,3],segs:[{p:[2,0],q:[12,0],k:3},{p:[3,-1.5],q:[11,-1.5],k:2},{p:[3,-1.2],q:[3,-1.8],k:2},{p:[11,-1.2],q:[11,-1.8],k:2}],dots:[3,5,7,9,11].map(v=>({x:v,y:0,k:v===7?2:1,r:v===7?8:6})),txt:[3,5,7,9,11].map(v=>({x:v-0.25,y:0.8,t:String(v),k:0})).concat([{x:5.6,y:2,t:"median = 7",k:2},{x:3.3,y:-2.5,t:"jangkauan = 11 − 3 = 8",k:2}])}}];
+MAT[7].fig=[
+ {cap:"Ruang sampel dua dadu berisi 36 pasangan. Pasangan berjumlah 7 (titik besar) ada 6, sehingga P(jumlah 7) = 6/36 = 1/6.",o:{alt:"Tiga puluh enam pasangan hasil dua dadu",x:[0,6.9],y:[0,6.9],dots:(()=>{const r=[];for(let a=1;a<=6;a++)for(let b=1;b<=6;b++)r.push(a+b===7?{x:a,y:b,k:1,r:6}:{x:a,y:b,k:3,r:3.5});return r})(),segs:[{p:[1,6],q:[6,1],k:2,dash:1}],txt:[{x:4.3,y:4.4,t:"jumlah = 7",k:1}]}},
+ {cap:"Peluang selalu bernilai 0 sampai 1. Nilai 0 berarti mustahil, 1 berarti pasti, dan 0,5 berarti kemungkinannya sama besar.",o:{alt:"Garis bilangan peluang dari 0 sampai 1",bare:1,x:[-0.15,1.15],y:[-1.2,1.2],segs:[{p:[0,0],q:[1,0],k:3}],dots:[0,0.25,0.5,0.75,1].map(v=>({x:v,y:0,k:v===0.5?2:1,r:v===0.5?8:6})),txt:[{x:-0.03,y:0.5,t:"0",k:0},{x:0.47,y:0.5,t:"0,5",k:0},{x:0.97,y:0.5,t:"1",k:0},{x:-0.12,y:-0.6,t:"mustahil",k:1},{x:0.37,y:-0.6,t:"seimbang",k:2},{x:0.84,y:-0.6,t:"pasti",k:1}]}}];
+const gBars=a=>{const R=[],S=[],T=[];a.forEach(([y,n,f,k,l])=>{const w=8/n;S.push({p:[1,y],q:[9,y],k:3},{p:[1,y+1],q:[9,y+1],k:3});for(let i=0;i<=n;i++)S.push({p:[1+i*w,y],q:[1+i*w,y+1],k:3});for(let i=0;i<f;i++)R.push({x:1+i*w,y,w,h:1,k});T.push({x:9.4,y:y+0.3,t:l,k:0})});return {rects:R,segs:S,txt:T}};
+MAT[0].fig=[{cap:"Pada garis bilangan, 7 + (−12) digeser 7 satuan ke kanan lalu 12 satuan ke kiri, sehingga berakhir di −5.",o:{alt:"Garis bilangan untuk 7 + (−12)",bare:1,x:[-8,8],y:[-1.6,3],
+ segs:[{p:[-7.5,0],q:[7.5,0],k:3}].concat(Array.from({length:15},(_,i)=>({p:[i-7,-0.15],q:[i-7,0.15],k:3})),[{p:[0,0],q:[0,0.8],k:3,dash:1},{p:[0,0.8],q:[7,0.8],k:1},{p:[7,0.8],q:[7,1.6],k:3,dash:1},{p:[7,1.6],q:[-5,1.6],k:2},{p:[-5,1.6],q:[-5,0],k:3,dash:1}]),
+ dots:[{x:0,y:0,k:1,r:5},{x:-5,y:0,k:2,r:6}],
+ txt:Array.from({length:15},(_,i)=>{const v=i-7;return {x:v-(v<0?0.5:0.2),y:-0.85,t:(v<0?"−":"")+Math.abs(v),k:0}}).concat([{x:2.6,y:1.05,t:"+7",k:1},{x:0.6,y:1.9,t:"−12",k:2},{x:-6.4,y:0.5,t:"hasil −5",k:2}])}}];
+MAT[1].fig=[
+ {cap:"Menyamakan penyebut memudahkan pengurangan: 3/4 − 2/4 = 1/4. Setiap bar dibagi menjadi 4 bagian sama besar.",o:Object.assign({alt:"Bar pecahan 3/4 dikurangi 2/4",bare:1,x:[0,12],y:[0,7]},gBars([[5,4,3,1,"3/4"],[3,4,2,2,"− 2/4"],[1,4,1,1,"= 1/4"]]))},
+ {cap:"Pecahan senilai punya nilai sama: 1/2 = 2/4 = 4/8. Bagian yang diarsir sama luas meski jumlah bagiannya berbeda.",o:Object.assign({alt:"Bar pecahan senilai",bare:1,x:[0,12],y:[0,7]},gBars([[5,2,1,1,"1/2"],[3,4,2,1,"= 2/4"],[1,8,4,1,"= 4/8"]]))}];
+MAT[2].fig=[
+ {cap:"Pada garis bilangan 0 sampai 1, tiap ruas kecil bernilai 0,1. Maka 0,25 = 1/4, 0,5 = 1/2, dan 0,75 = 3/4.",o:{alt:"Garis bilangan desimal 0 sampai 1",bare:1,x:[-0.1,1.1],y:[-1.4,2.6],
+  segs:[{p:[0,0],q:[1,0],k:3}].concat(Array.from({length:11},(_,i)=>({p:[i/10,-0.12],q:[i/10,0.12],k:3})),[{p:[0.25,0],q:[0.25,0.6],k:1,dash:1},{p:[0.5,0],q:[0.5,1.5],k:2,dash:1},{p:[0.75,0],q:[0.75,0.6],k:1,dash:1}]),
+  dots:[{x:0.25,y:0,k:1,r:5},{x:0.5,y:0,k:2,r:5},{x:0.75,y:0,k:1,r:5}],
+  txt:Array.from({length:11},(_,i)=>({x:i/10-0.025,y:-0.75,t:i===0?"0":i===10?"1":"0,"+i,k:0})).concat([{x:0.1,y:0.75,t:"0,25 = 1/4",k:1},{x:0.4,y:1.65,t:"0,5 = 1/2",k:2},{x:0.64,y:0.75,t:"0,75 = 3/4",k:1}])}},
+ {cap:"Satu kotak besar dibagi menjadi 100 petak sama besar. 35 petak yang diarsir menyatakan 35/100 = 0,35.",o:{alt:"Kotak 100 petak dengan 35 petak diarsir",bare:1,x:[-3.5,13.5],y:[-1.3,11.6],
+  rects:(()=>{const r=[];for(let c=0;c<10;c++)for(let q=0;q<10;q++)if(c*10+q<35)r.push({x:1+c,y:q,w:1,h:1,k:1});return r})(),
+  segs:(()=>{const a=[];for(let i=0;i<=10;i++)a.push({p:[1+i,0],q:[1+i,10],k:3},{p:[1,i],q:[11,i],k:3});return a})(),
+  txt:[{x:1,y:10.7,t:"35/100 = 0,35",k:1}]}}];
+MAT[3].fig=[{cap:"Menyelesaikan 3x + 5 = 20 sama dengan mencari titik potong y = 3x + 5 dan y = 20. Keduanya bertemu di x = 5.",o:{alt:"Garis y = 3x + 5 berpotongan dengan y = 20",x:[-1,8],y:[-2,26],yt:[5,10,15,20,25].map(v=>({v,l:v})),lines:[{a:3,b:-1,c:-5,k:1,l:"y = 3x + 5",at:[-0.9,12]},{a:0,b:1,c:20,k:2,l:"y = 20",at:[6,21.3]}],segs:[{p:[5,0],q:[5,20],k:3,dash:1}],pts:[{x:5,y:20,t:"x = 5"}]}}];
+MAT[4].fig=[
+ {cap:"Perbandingan senilai berupa garis lurus yang melalui titik asal: harga (dalam ribu rupiah) naik sebanding dengan jumlah buku, y = 8x.",o:{alt:"Grafik perbandingan senilai",x:[0,9],y:[0,70],yt:[20,40,60].map(v=>({v,l:v})),lines:[{a:8,b:-1,c:0,k:1,l:"y = 8x",at:[0.3,60]}],dots:[{x:1,y:8,k:1,r:4},{x:2,y:16,k:1,r:4}],pts:[{x:5,y:40,t:"(5, 40)"},{x:8,y:64,t:"(8, 64)"}]}},
+ {cap:"Perbandingan berbalik nilai berupa kurva menurun: makin banyak pekerja, makin sedikit hari. Hasil kali keduanya tetap, yaitu 72.",o:{alt:"Grafik perbandingan berbalik nilai",x:[0,14],y:[0,20],yt:[5,10,15,20].map(v=>({v,l:v})),curves:[{f:x=>72/x,k:1,l:"y = 72/x",at:[7,16.5]}],pts:[{x:6,y:12,t:"(6, 12)"},{x:9,y:8,t:"(9, 8)"},{x:12,y:6,t:"(12, 6)"}]}}];
+MAT.push(
+{t:"Sistem persamaan linear dua variabel",g:"8",
+ fig:[{cap:"Sistem x + y = 7 dan x − y = 1: kedua garis berpotongan di (4, 3), sehingga x = 4 dan y = 3.",o:{alt:"Dua garis berpotongan di (4, 3)",x:[-1,9],y:[-2,9],lines:[{a:1,b:1,c:7,k:1,l:"x + y = 7",at:[0.2,7.7]},{a:1,b:-1,c:1,k:2,l:"x − y = 1",at:[6.4,4.4]}],pts:[{x:4,y:3,t:"(4, 3)"}]}}],i:"Sistem persamaan linear dua variabel (SPLDV) terdiri dari dua persamaan linear dengan dua variabel, misalnya x dan y. Penyelesaiannya adalah pasangan (x, y) yang memenuhi kedua persamaan sekaligus.",
+ p:["Substitusi: nyatakan satu variabel dalam variabel lain, lalu masukkan ke persamaan kedua.","Eliminasi: samakan koefisien salah satu variabel, lalu jumlahkan atau kurangkan kedua persamaan.","Setelah satu variabel ketemu, substitusikan untuk mencari variabel lainnya.","Periksa jawaban dengan memasukkan (x, y) ke kedua persamaan."],
+ c:[{q:"Selesaikan x + y = 7 dan x − y = 1.",a:"Jumlahkan kedua persamaan: 2x = 8, maka x = 4. Lalu y = 7 − 4 = 3."},{q:"Selesaikan y = 2x dan x + y = 12.",a:"Substitusi y = 2x: x + 2x = 12, 3x = 12, x = 4. Maka y = 8."}],
+ k:[{q:"Jika x + y = 10 dan x − y = 2, nilai x adalah …",o:["4","6","8"],k:1,e:"Jumlahkan: 2x = 12, sehingga x = 6."},{q:"Dari 2x + y = 11 dan y = 3, nilai x adalah …",o:["3","4","5"],k:1,e:"Substitusi y = 3: 2x + 3 = 11, 2x = 8, x = 4."}]},
+{t:"Pola bilangan dan barisan",g:"8",
+ fig:[{cap:"Barisan aritmetika 3, 7, 11, 15, … bertambah dengan beda tetap (4), sehingga titiknya segaris: Un = 4n − 1.",o:{alt:"Titik barisan aritmetika",x:[0,7],y:[0,26],yt:[5,10,15,20,25].map(v=>({v,l:v})),lines:[{a:4,b:-1,c:1,k:2}],dots:[1,2,3,4,5,6].map(n=>({x:n,y:4*n-1,k:1,r:5})),txt:[{x:0.3,y:24,t:"Un = 4n − 1",k:1},{x:4.3,y:6,t:"beda = 4",k:2}]}},
+  {cap:"Barisan geometri 2, 6, 18, 54, … tumbuh dengan perkalian tetap (rasio 3), sehingga batangnya naik sangat cepat.",o:{alt:"Diagram batang barisan geometri",x:[0,5],y:[0,60],yt:[20,40,60].map(v=>({v,l:v})),rects:[1,2,3,4].map(n=>({x:n-0.3,y:0,w:0.6,h:2*Math.pow(3,n-1),k:2})),txt:[1,2,3,4].map(n=>({x:n-0.2,y:2*Math.pow(3,n-1)+2.5,t:String(2*Math.pow(3,n-1)),k:0}))}}],i:"Pola bilangan adalah susunan bilangan yang mengikuti aturan tertentu. Barisan aritmetika memiliki selisih tetap (beda), sedangkan barisan geometri memiliki perbandingan tetap (rasio).",
+ p:["Barisan aritmetika: Un = a + (n − 1)b, dengan a suku pertama dan b beda.","Barisan geometri: Un = a × r^(n−1), dengan r rasio.","Beda dihitung dari U2 − U1, rasio dari U2 ÷ U1.","Cari aturan pola dengan membandingkan suku-suku yang berurutan."],
+ c:[{q:"Tentukan suku ke-10 dari barisan 3, 7, 11, 15, …",a:"a = 3 dan b = 4. U10 = 3 + 9 × 4 = 39."},{q:"Tentukan suku ke-5 dari barisan 2, 6, 18, …",a:"a = 2 dan r = 3. U5 = 2 × 3⁴ = 162."}],
+ k:[{q:"Suku ke-8 dari barisan 5, 8, 11, … adalah …",o:["26","29","32"],k:0,e:"a = 5 dan b = 3. U8 = 5 + 7 × 3 = 26."},{q:"Rasio dari barisan 4, 12, 36, … adalah …",o:["3","8","9"],k:0,e:"Rasio = 12 ÷ 4 = 3."}]},
+{t:"Bilangan berpangkat dan akar",g:"9",
+ fig:[{cap:"Grafik y = 2ˣ naik makin cepat. Perhatikan 2⁰ = 1, dan pangkat negatif memberi nilai di antara 0 dan 1.",o:{alt:"Grafik eksponen y = 2 pangkat x",x:[-3,5],y:[-1,17],yt:[4,8,12,16].map(v=>({v,l:v})),curves:[{f:x=>Math.pow(2,x),k:1,l:"y = 2ˣ",at:[-2.8,14]}],dots:[1,2,3,4].map(x=>({x,y:Math.pow(2,x),k:1,r:4})),pts:[{x:0,y:1,t:"(0, 1)"}]}},
+  {cap:"Grafik y = √x melewati (1, 1), (4, 2), dan (9, 3). Akar kuadrat dari bilangan kuadrat sempurna adalah bilangan bulat.",o:{alt:"Grafik akar kuadrat",x:[-1,10],y:[-1,4],curves:[{f:Math.sqrt,k:1,l:"y = √x",at:[5.5,0.6]}],pts:[{x:1,y:1,t:"(1, 1)"},{x:4,y:2,t:"(4, 2)"},{x:9,y:3,t:"(9, 3)"}]}}],i:"Bilangan berpangkat menyatakan perkalian berulang, misalnya aⁿ = a × a × … sebanyak n faktor. Akar adalah kebalikan pangkat: √a adalah bilangan yang jika dikuadratkan menghasilkan a.",
+ p:["aᵐ × aⁿ = aᵐ⁺ⁿ dan aᵐ ÷ aⁿ = aᵐ⁻ⁿ.","(aᵐ)ⁿ = aᵐˣⁿ dan a⁰ = 1.","a⁻ⁿ = 1/aⁿ.","√(a × b) = √a × √b, dan √(a²) = a untuk a ≥ 0."],
+ c:[{q:"Sederhanakan 2³ × 2⁴ ÷ 2².",a:"2³⁺⁴⁻² = 2⁵ = 32."},{q:"Sederhanakan √50.",a:"√50 = √(25 × 2) = 5√2."}],
+ k:[{q:"Nilai dari 3⁻² adalah …",o:["1/9","−9","−6"],k:0,e:"3⁻² = 1/3² = 1/9."},{q:"Bentuk sederhana √72 adalah …",o:["4√3","6√2","8√2"],k:1,e:"√72 = √(36 × 2) = 6√2."}]},
+{t:"Persamaan kuadrat",g:"9",
+ fig:[{cap:"Akar persamaan x² − 5x + 6 = 0 adalah titik potong parabola dengan sumbu x, yaitu x = 2 dan x = 3.",o:{alt:"Parabola memotong sumbu x di 2 dan 3",x:[-1,6],y:[-2,8],curves:[{f:x=>x*x-5*x+6,k:1,l:"y = x² − 5x + 6",at:[-0.9,-1.6]}],pts:[{x:2,y:0,t:"(2, 0)"},{x:3,y:0,t:"(3, 0)"},{x:0,y:6,t:"(0, 6)"}]}},
+  {cap:"Diskriminan menentukan banyak akar: D > 0 memotong sumbu x di dua titik, D = 0 menyentuh di satu titik, D < 0 tidak menyentuh sumbu x.",o:{alt:"Tiga parabola dengan diskriminan berbeda",x:[-3,3],y:[-2,6],curves:[{f:x=>x*x-1,k:1},{f:x=>x*x,k:2},{f:x=>x*x+1,k:3}],txt:[{x:1.2,y:-0.4,t:"D > 0",k:1},{x:1.2,y:-1,t:"D = 0",k:2},{x:1.2,y:-1.6,t:"D < 0",k:3}]}}],i:"Persamaan kuadrat berbentuk ax² + bx + c = 0 dengan a ≠ 0. Akar-akarnya adalah nilai x yang membuat persamaan benar.",
+ p:["Faktorisasi: ubah ke bentuk (x − p)(x − q) = 0, maka x = p atau x = q.","Rumus kuadrat: x = (−b ± √(b² − 4ac)) / 2a.","Diskriminan D = b² − 4ac: D > 0 dua akar berbeda, D = 0 akar kembar, D < 0 tidak ada akar real.","Jumlah akar = −b/a dan hasil kali akar = c/a."],
+ c:[{q:"Selesaikan x² − 5x + 6 = 0.",a:"Faktorkan: (x − 2)(x − 3) = 0, maka x = 2 atau x = 3."},{q:"Tentukan diskriminan dari x² + 4x + 5 = 0.",a:"D = 4² − 4(1)(5) = 16 − 20 = −4. Karena D < 0, tidak ada akar real."}],
+ k:[{q:"Akar-akar dari x² − 9 = 0 adalah …",o:["x = 3 saja","x = 3 atau x = −3","x = 9"],k:1,e:"x² = 9, maka x = 3 atau x = −3."},{q:"Jumlah akar dari x² − 7x + 10 = 0 adalah …",o:["−7","7","10"],k:1,e:"Jumlah akar = −b/a = 7. Akarnya 2 dan 5, jumlahnya 7."}]},
+{t:"Kesebangunan dan kekongruenan",g:"9",
+ fig:[{cap:"Dua segitiga siku-siku yang dibentuk sinar matahari sebangun: 2/3 = t/12, sehingga tinggi pohon t = 8 m.",o:{alt:"Segitiga tiang dan pohon sebangun",bare:1,x:[-5,16],y:[-3.5,12.4],segs:[{p:[1.5,0],q:[13.5,0],k:3},{p:[1.5,0],q:[1.5,8],k:1},{p:[1.5,8],q:[13.5,0],k:1},{p:[1.5,2],q:[4.5,0],k:2},{p:[1.5,0],q:[1.5,2],k:2}],txt:[{x:-4.6,y:4,t:"pohon = t",k:1},{x:-4.6,y:0.9,t:"tiang 2 m",k:2},{x:1.5,y:-1.2,t:"bayangan tiang 3 m",k:2},{x:5,y:-2.6,t:"bayangan pohon 12 m",k:1}]}}],i:"Dua bangun sebangun jika bentuknya sama dan sisi-sisi yang bersesuaian berbanding sama. Dua bangun kongruen jika bentuk dan ukurannya sama persis.",
+ p:["Sisi bersesuaian pada bangun sebangun memiliki perbandingan sama (faktor skala).","Sudut-sudut yang bersesuaian pada bangun sebangun sama besar.","Pada segitiga sebangun: a/a′ = b/b′ = c/c′.","Bangun kongruen adalah bangun sebangun dengan faktor skala 1."],
+ c:[{q:"Segitiga ABC sebangun dengan PQR. AB = 6, PQ = 9, BC = 8. Berapa QR?",a:"Skala = 9/6 = 1,5. QR = 8 × 1,5 = 12."},{q:"Tiang setinggi 2 m berbayangan 3 m. Bayangan pohon 12 m. Berapa tinggi pohon?",a:"Perbandingan tinggi dan bayangan sama: 2/3 = t/12, maka t = 8 m."}],
+ k:[{q:"Dua persegi panjang sebangun. Yang pertama 4 × 6, sisi panjang yang kedua 15. Sisi pendek yang kedua adalah …",o:["8","10","12"],k:1,e:"Skala = 15/6 = 2,5. Sisi pendek = 4 × 2,5 = 10."},{q:"Syarat dua segitiga sebangun adalah …",o:["Sudut yang bersesuaian sama besar","Hanya satu sisi sama","Luasnya sama"],k:0,e:"Segitiga sebangun jika sudut-sudut bersesuaian sama besar atau sisi-sisinya berbanding sama."}]},
+{t:"Bangun ruang sisi lengkung",g:"9",
+ fig:[{cap:"Tabung: V = πr²t dan luas permukaan = 2πr(r + t). Alas dan tutupnya berupa lingkaran berjari-jari r, sedangkan tingginya t.",o:{alt:"Tabung",bare:1,x:[-6,6],y:[-4.55,4.55],ell:[{cx:0,cy:2.5,rx:2,ry:0.7,k:1},{cx:0,cy:-2.5,rx:2,ry:0.7,k:1}],segs:[{p:[-2,2.5],q:[-2,-2.5],k:1},{p:[2,2.5],q:[2,-2.5],k:1},{p:[0,2.5],q:[2,2.5],k:2,dash:1}],txt:[{x:-5.8,y:4,t:"Tabung",k:1},{x:0.7,y:3.1,t:"r",k:2},{x:2.4,y:0,t:"t",k:2},{x:-5.8,y:-4.1,t:"V = πr²t",k:0},{x:-0.4,y:-4.1,t:"L = 2πr(r + t)",k:0}]}},
+  {cap:"Kerucut: V = ⅓πr²t. Garis pelukis s menghubungkan puncak dengan tepi alas, dengan s = √(r² + t²).",o:{alt:"Kerucut",bare:1,x:[-6,6],y:[-4.55,4.55],ell:[{cx:0,cy:-2.5,rx:2,ry:0.7,k:1}],segs:[{p:[-2,-2.5],q:[0,3],k:1},{p:[2,-2.5],q:[0,3],k:1},{p:[0,3],q:[0,-2.5],k:2,dash:1},{p:[0,-2.5],q:[2,-2.5],k:2,dash:1}],txt:[{x:-5.8,y:4,t:"Kerucut",k:1},{x:0.2,y:0.2,t:"t",k:2},{x:0.8,y:-1.9,t:"r",k:2},{x:1.3,y:1,t:"s",k:1},{x:-5.8,y:-4.1,t:"V = ⅓πr²t",k:0},{x:-0.4,y:-4.1,t:"s = √(r² + t²)",k:0}]}},
+  {cap:"Bola: V = 4/3 πr³ dan luas permukaan = 4πr². Semua titik pada permukaannya berjarak r dari pusat.",o:{alt:"Bola",bare:1,x:[-6,6],y:[-4.55,4.55],circles:[{cx:0,cy:0,r:3,k:1}],ell:[{cx:0,cy:0,rx:3,ry:0.9,k:2,dash:1}],segs:[{p:[0,0],q:[3,0],k:2}],pts:[{x:0,y:0,t:"pusat"}],txt:[{x:-5.8,y:4,t:"Bola",k:1},{x:1.3,y:0.45,t:"r",k:2},{x:-5.8,y:-4.1,t:"V = 4/3 πr³",k:0},{x:-0.4,y:-4.1,t:"L = 4πr²",k:0}]}}],i:"Bangun ruang sisi lengkung meliputi tabung, kerucut, dan bola. Ketiganya memiliki permukaan lengkung sehingga rumusnya melibatkan π.",
+ p:["Tabung: V = πr²t, luas permukaan = 2πr(r + t).","Kerucut: V = ⅓πr²t, dengan garis pelukis s = √(r² + t²).","Bola: V = 4/3 πr³, luas permukaan = 4πr².","Pakai π = 22/7 jika jari-jari kelipatan 7, atau 3,14 untuk lainnya."],
+ c:[{q:"Volume tabung berjari-jari 7 cm dan tinggi 10 cm (π = 22/7)?",a:"V = 22/7 × 7 × 7 × 10 = 1.540 cm³."},{q:"Luas permukaan bola berjari-jari 7 cm (π = 22/7)?",a:"L = 4 × 22/7 × 7 × 7 = 616 cm²."}],
+ k:[{q:"Volume kerucut dengan r = 3 cm dan t = 4 cm (π = 3,14) adalah …",o:["37,68 cm³","113,04 cm³","12,56 cm³"],k:0,e:"V = ⅓ × 3,14 × 9 × 4 = 37,68 cm³."},{q:"Garis pelukis kerucut dengan r = 6 cm dan t = 8 cm adalah …",o:["10 cm","12 cm","14 cm"],k:0,e:"s = √(6² + 8²) = √100 = 10 cm."}]},
+{t:"Eksponen dan logaritma",g:"10",
+ fig:[{cap:"Grafik y = 2ˣ dan y = log₂ x saling mencerminkan terhadap garis y = x, karena logaritma adalah kebalikan eksponen. Titik (2, 4) berpasangan dengan (4, 2).",o:{alt:"Grafik eksponen dan logaritma saling simetris",x:[-1,8],y:[-1,6.1],segs:[{p:[-1,-1],q:[6.1,6.1],k:3,dash:1}],curves:[{f:x=>Math.pow(2,x),k:1,l:"y = 2ˣ",at:[0.2,5.4]},{f:x=>Math.log2(x),k:2,l:"y = log₂ x",at:[5,0.6]}],dots:[{x:0,y:1,k:1,r:4},{x:1,y:2,k:1,r:4},{x:2,y:4,k:1,r:4},{x:1,y:0,k:2,r:4},{x:2,y:1,k:2,r:4},{x:4,y:2,k:2,r:4}],txt:[{x:5.4,y:5.6,t:"y = x",k:3}]}}],i:"Logaritma adalah kebalikan eksponen: jika aˣ = b maka log_a b = x. Bentuk ini dipakai untuk menyelesaikan persamaan yang pangkatnya belum diketahui.",
+ p:["log_a(b × c) = log_a b + log_a c.","log_a(b ÷ c) = log_a b − log_a c.","log_a(bⁿ) = n × log_a b.","log_a a = 1 dan log_a 1 = 0."],
+ c:[{q:"Hitung log_2 8 + log_2 4.",a:"log_2 8 = 3 dan log_2 4 = 2. Jumlahnya 5."},{q:"Selesaikan 2ˣ = 32.",a:"32 = 2⁵, maka x = 5."}],
+ k:[{q:"Nilai log_3 81 adalah …",o:["3","4","27"],k:1,e:"81 = 3⁴, jadi log_3 81 = 4."},{q:"Nilai log_10 1000 adalah …",o:["2","3","10"],k:1,e:"1000 = 10³, jadi hasilnya 3."}]},
+{t:"Fungsi kuadrat",g:"10",
+ fig:[{cap:"Grafik f(x) = x² − 6x + 5 berupa parabola terbuka ke atas. Puncaknya (3, −4), sumbu simetrinya x = 3, memotong sumbu x di (1, 0) dan (5, 0), serta sumbu y di (0, 5).",o:{alt:"Parabola f(x) = x² − 6x + 5",x:[-1,7],y:[-5,6],curves:[{f:x=>x*x-6*x+5,k:1,l:"f(x) = x² − 6x + 5",at:[-0.9,5.5]}],segs:[{p:[3,-5],q:[3,6],k:2,dash:1}],pts:[{x:3,y:-4,t:"puncak (3, −4)"},{x:1,y:0,t:"(1, 0)"},{x:5,y:0,t:"(5, 0)"},{x:0,y:5,t:"(0, 5)"}]}},
+  {cap:"Tanda a menentukan arah parabola. Jika a > 0 terbuka ke atas dan punya nilai minimum. Jika a < 0 terbuka ke bawah dan punya nilai maksimum.",o:{alt:"Parabola terbuka ke atas dan ke bawah",x:[-3,3],y:[-4,4],curves:[{f:x=>x*x-2,k:1,l:"y = x² − 2 (a > 0)",at:[0.3,-3.3]},{f:x=>-x*x+2,k:2,l:"y = −x² + 2 (a < 0)",at:[0.3,3.3]}],pts:[{x:0,y:-2,t:"min"},{x:0,y:2,t:"maks"}]}}],i:"Fungsi kuadrat berbentuk f(x) = ax² + bx + c dan grafiknya berupa parabola. Jika a > 0 parabola terbuka ke atas, jika a < 0 terbuka ke bawah.",
+ p:["Sumbu simetri: x = −b/(2a).","Titik puncak: (−b/(2a), f(−b/(2a))).","Titik potong sumbu y: (0, c). Titik potong sumbu x: akar dari ax² + bx + c = 0.","Nilai maksimum atau minimum fungsi berada di titik puncak."],
+ c:[{q:"Tentukan titik puncak f(x) = x² − 6x + 5.",a:"x = −(−6)/(2·1) = 3. f(3) = 9 − 18 + 5 = −4. Puncaknya (3, −4)."},{q:"Tentukan titik potong sumbu x dari f(x) = x² − 4.",a:"x² − 4 = 0, maka x = 2 atau x = −2. Titiknya (2, 0) dan (−2, 0)."}],
+ k:[{q:"Sumbu simetri f(x) = x² + 4x + 1 adalah …",o:["x = −2","x = 2","x = 4"],k:0,e:"x = −b/2a = −4/2 = −2."},{q:"Nilai minimum f(x) = x² − 2x + 3 adalah …",o:["1","2","3"],k:1,e:"Puncak di x = 1, f(1) = 1 − 2 + 3 = 2."}]},
+{t:"Trigonometri dasar",g:"10",
+ fig:[{cap:"Pada segitiga siku-siku 3-4-5: sin θ = 3/5, cos θ = 4/5, dan tan θ = 3/4.",o:{alt:"Segitiga siku-siku dengan sisi 3, 4, dan 5",bare:1,x:[-1,6],y:[-1,4.3],segs:[{p:[0,0],q:[4,0],k:2},{p:[4,0],q:[4,3],k:2},{p:[0,0],q:[4,3],k:1},{p:[3.6,0],q:[3.6,0.4],k:3},{p:[3.6,0.4],q:[4,0.4],k:3}],txt:[{x:1.2,y:-0.5,t:"samping = 4",k:2},{x:4.2,y:1.5,t:"depan = 3",k:2},{x:0.4,y:1.8,t:"miring = 5",k:1},{x:0.7,y:0.25,t:"θ",k:0}]}},
+  {cap:"Pada lingkaran satuan, titik P di sudut 30° berkoordinat (cos 30°, sin 30°), yaitu sekitar (0,87; 0,5).",o:{alt:"Lingkaran satuan dengan sudut 30 derajat",x:[-1.7,1.7],y:[-1.29,1.29],circles:[{cx:0,cy:0,r:1,k:3}],segs:[{p:[0,0],q:[0.866,0.5],k:1},{p:[0.866,0],q:[0.866,0.5],k:2,dash:1}],txt:[{x:0.1,y:-0.35,t:"cos 30° ≈ 0,87",k:2},{x:0.9,y:0.25,t:"sin 30° = 0,5",k:2},{x:0.3,y:0.08,t:"30°",k:0}],pts:[{x:0.866,y:0.5,t:"P"}]}}],i:"Trigonometri mempelajari hubungan sudut dan sisi segitiga siku-siku melalui perbandingan sinus, cosinus, dan tangen.",
+ p:["sin θ = depan/miring, cos θ = samping/miring, tan θ = depan/samping.","Ingat: SinDeMi, CosSaMi, TanDeSa.","Sudut istimewa: sin 30° = ½, sin 45° = ½√2, sin 60° = ½√3, sin 90° = 1.","Identitas dasar: sin²θ + cos²θ = 1."],
+ c:[{q:"Segitiga siku-siku dengan sisi depan 3 dan sisi miring 5. Hitung sin θ dan cos θ.",a:"Sisi samping = √(25 − 9) = 4. sin θ = 3/5 dan cos θ = 4/5."},{q:"Hitung sin 30° + cos 60°.",a:"sin 30° = ½ dan cos 60° = ½. Jumlahnya 1."}],
+ k:[{q:"Nilai tan 45° adalah …",o:["0","1","√3"],k:1,e:"Pada 45°, sisi depan dan samping sama panjang, sehingga tan 45° = 1."},{q:"Jika sin θ = 4/5 (θ lancip), nilai cos θ adalah …",o:["3/5","4/3","5/3"],k:0,e:"cos θ = √(1 − 16/25) = √(9/25) = 3/5."}]},
+{t:"Peluang dan pencacahan",g:"10",
+ fig:[{cap:"Diagram pohon: 3 pilihan baju dan 2 pilihan celana menghasilkan 3 × 2 = 6 pasangan (aturan perkalian).",o:{alt:"Diagram pohon 3 baju dan 2 celana",bare:1,x:[0,10],y:[0,8],segs:[{p:[0.8,4],q:[3.5,6.5],k:3},{p:[0.8,4],q:[3.5,4],k:3},{p:[0.8,4],q:[3.5,1.5],k:3}].concat([6.5,4,1.5].flatMap(y=>[{p:[3.5,y],q:[6.7,y+0.8],k:3},{p:[3.5,y],q:[6.7,y-0.8],k:3}])),dots:[{x:0.8,y:4,k:2,r:6},{x:3.5,y:6.5,k:1,r:5},{x:3.5,y:4,k:1,r:5},{x:3.5,y:1.5,k:1,r:5}],txt:[{x:2.1,y:6.7,t:"B1",k:1},{x:2.1,y:4.25,t:"B2",k:1},{x:2.1,y:1.75,t:"B3",k:1}].concat([[6.5,1],[4,2],[1.5,3]].flatMap(([y,b])=>[{x:7,y:y+0.6,t:"B"+b+"C1",k:0},{x:7,y:y-1,t:"B"+b+"C2",k:0}]))}}],i:"Kaidah pencacahan membantu menghitung banyak cara suatu kejadian terjadi, melalui aturan perkalian, permutasi, dan kombinasi.",
+ p:["Aturan perkalian: jika ada m cara dan n cara, totalnya m × n.","Permutasi (urutan penting): P(n, r) = n!/(n − r)!.","Kombinasi (urutan tidak penting): C(n, r) = n!/(r!(n − r)!).","Peluang = banyak cara yang diinginkan ÷ banyak semua cara."],
+ c:[{q:"Berapa cara menyusun 3 orang dari 5 orang pada 3 kursi berurutan?",a:"Permutasi: P(5, 3) = 5 × 4 × 3 = 60 cara."},{q:"Berapa cara memilih 2 pengurus dari 6 orang?",a:"Kombinasi: C(6, 2) = (6 × 5)/(2 × 1) = 15 cara."}],
+ k:[{q:"Nilai C(5, 2) adalah …",o:["10","20","25"],k:0,e:"C(5, 2) = (5 × 4)/2 = 10."},{q:"Banyak susunan huruf dari kata ABC adalah …",o:["3","6","9"],k:1,e:"3! = 3 × 2 × 1 = 6."}]},
+{t:"Barisan dan deret",g:"11",
+ fig:[{cap:"Barisan aritmetika 2, 5, 8, 11, … bertambah dengan beda tetap (3), sehingga titik-titik (n, Un) terletak pada satu garis lurus: Un = 3n − 1.",o:{alt:"Titik barisan aritmetika pada garis lurus",x:[0,7],y:[0,19],yt:[{v:5,l:5},{v:10,l:10},{v:15,l:15}],lines:[{a:3,b:-1,c:1,k:2}],dots:[1,2,3,4,5,6].map(n=>({x:n,y:3*n-1,k:1,r:5})),txt:[{x:0.3,y:17.5,t:"Un = 3n − 1",k:1},{x:4.3,y:5,t:"beda = 3",k:2}]}},
+  {cap:"Barisan geometri 1, 2, 4, 8, 16 tumbuh dengan perkalian tetap (rasio 2), sehingga naik makin curam dibanding barisan aritmetika.",o:{alt:"Diagram batang barisan geometri",x:[0,6],y:[0,19],yt:[{v:5,l:5},{v:10,l:10},{v:15,l:15}],rects:[1,2,3,4,5].map(n=>({x:n-0.3,y:0,w:0.6,h:Math.pow(2,n-1),k:2})),txt:[1,2,3,4,5].map(n=>({x:n-0.15,y:Math.pow(2,n-1)+0.9,t:String(Math.pow(2,n-1)),k:0}))}}],i:"Deret adalah jumlah suku-suku suatu barisan. Deret aritmetika dan geometri memiliki rumus jumlah n suku pertama.",
+ p:["Deret aritmetika: Sn = n/2 (2a + (n − 1)b).","Deret geometri: Sn = a(rⁿ − 1)/(r − 1) untuk r > 1.","Deret geometri tak hingga: S = a/(1 − r), dengan |r| < 1.","Suku ke-n dapat dicari dari Un = Sn − Sn−1."],
+ c:[{q:"Jumlah 10 suku pertama dari 2, 5, 8, …",a:"a = 2 dan b = 3. S10 = 10/2 (4 + 9 × 3) = 5 × 31 = 155."},{q:"Jumlah tak hingga dari 8 + 4 + 2 + …",a:"a = 8 dan r = ½. S = 8/(1 − ½) = 16."}],
+ k:[{q:"Jumlah 5 suku pertama dari 1, 2, 4, 8, … adalah …",o:["15","31","32"],k:1,e:"S5 = 1(2⁵ − 1)/(2 − 1) = 31."},{q:"Jumlah deret 1 + 2 + 3 + … + 10 adalah …",o:["45","55","100"],k:1,e:"S10 = 10/2 (1 + 10) = 55."}]},
+{t:"Matriks",g:"11",
+ fig:[{cap:"Determinan matriks [3 2; 1 4] = 10 sama dengan luas jajar genjang yang dibentuk vektor kolomnya (3, 1) dan (2, 4).",o:{alt:"Jajar genjang dari dua vektor kolom",x:[-1,6],y:[-1,6],poly:[[0,0],[3,1],[5,5],[2,4]],segs:[{p:[0,0],q:[3,1],k:1},{p:[0,0],q:[2,4],k:2},{p:[3,1],q:[5,5],k:2},{p:[2,4],q:[5,5],k:1}],txt:[{x:1.7,y:2.3,t:"luas = 10",k:0}],pts:[{x:3,y:1,t:"(3, 1)"},{x:2,y:4,t:"(2, 4)"}]}}],i:"Matriks adalah susunan bilangan dalam baris dan kolom. Ordo matriks ditulis m × n, artinya m baris dan n kolom.",
+ p:["Penjumlahan dan pengurangan: operasikan elemen yang seletak (ordo harus sama).","Perkalian skalar: kalikan setiap elemen dengan skalar.","Perkalian A (m×n) dengan B (n×p) menghasilkan matriks m×p: baris A dikali kolom B.","Determinan matriks 2×2 [a b; c d] = ad − bc."],
+ c:[{q:"Hitung determinan matriks [3 2; 1 4].",a:"det = 3 × 4 − 2 × 1 = 12 − 2 = 10."},{q:"Hitung [1 2] × [3; 4] (baris kali kolom).",a:"1 × 3 + 2 × 4 = 11. Hasilnya matriks 1×1, yaitu [11]."}],
+ k:[{q:"Matriks dengan 2 baris dan 3 kolom berordo …",o:["3 × 2","2 × 3","6 × 1"],k:1,e:"Ordo ditulis baris × kolom, yaitu 2 × 3."},{q:"Determinan matriks [2 1; 5 3] adalah …",o:["1","11","−1"],k:0,e:"2 × 3 − 1 × 5 = 6 − 5 = 1."}]},
+{t:"Persamaan lingkaran",g:"11",
+ fig:[{cap:"Lingkaran x² + y² = 25 berpusat di (0, 0) dengan jari-jari 5. Titik (3, 4) terletak pada lingkaran karena 3² + 4² = 25.",o:{alt:"Lingkaran berpusat di titik asal berjari-jari 5",x:[-7,7],y:[-5.3,5.3],circles:[{cx:0,cy:0,r:5,k:1}],pts:[{x:3,y:4,t:"(3, 4)"}]}},
+  {cap:"Lingkaran (x − 2)² + (y + 1)² = 9 berpusat di (2, −1) dengan jari-jari 3.",o:{alt:"Lingkaran berpusat di (2, -1) berjari-jari 3",x:[-7,7],y:[-5.3,5.3],circles:[{cx:2,cy:-1,r:3,k:1}],segs:[{p:[2,-1],q:[5,-1],k:2}],txt:[{x:3,y:-0.5,t:"r = 3",k:2}],pts:[{x:2,y:-1,t:"(2, −1)"}]}}],i:"Lingkaran adalah himpunan titik yang berjarak sama (jari-jari) dari satu titik pusat. Persamaannya dapat ditulis dalam bentuk baku maupun bentuk umum.",
+ p:["Pusat (0, 0), jari-jari r: x² + y² = r².","Pusat (a, b): (x − a)² + (y − b)² = r².","Bentuk umum: x² + y² + Ax + By + C = 0 dengan pusat (−A/2, −B/2).","Jari-jari bentuk umum: r = √(A²/4 + B²/4 − C)."],
+ c:[{q:"Tentukan persamaan lingkaran berpusat (2, −1) dengan jari-jari 3.",a:"(x − 2)² + (y + 1)² = 9."},{q:"Tentukan pusat dan jari-jari x² + y² − 6x + 8y = 0.",a:"Pusat (3, −4). r = √(9 + 16 − 0) = 5."}],
+ k:[{q:"Jari-jari lingkaran x² + y² = 49 adalah …",o:["7","49","14"],k:0,e:"r² = 49, jadi r = 7."},{q:"Pusat lingkaran (x − 1)² + (y − 5)² = 4 adalah …",o:["(−1, −5)","(1, 5)","(5, 1)"],k:1,e:"Dari bentuk baku, pusatnya (a, b) = (1, 5)."}]},
+{t:"Trigonometri lanjut",g:"11",
+ fig:[{cap:"Tanda nilai trigonometri berbeda di tiap kuadran. Sudut 150° ada di kuadran II, sehingga sin 150° = sin 30° = ½ bernilai positif.",o:{alt:"Lingkaran satuan dengan empat kuadran",x:[-1.7,1.7],y:[-1.29,1.29],circles:[{cx:0,cy:0,r:1,k:3}],segs:[{p:[0,0],q:[-0.866,0.5],k:1}],txt:[{x:0.2,y:1.12,t:"I (semua +)",k:0},{x:-1.65,y:1.12,t:"II (sin +)",k:0},{x:-1.65,y:-1.12,t:"III (tan +)",k:0},{x:0.2,y:-1.12,t:"IV (cos +)",k:0}],pts:[{x:-0.866,y:0.5,t:"150°"}]}},
+  {cap:"Grafik y = sin x (jingga) dan y = cos x (hijau) berulang setiap 2π. Nilainya selalu berada di antara −1 dan 1.",o:{alt:"Grafik sinus dan cosinus",x:[-0.4,6.8],y:[-1.4,1.4],xt:[{v:Math.PI/2,l:"π/2"},{v:Math.PI,l:"π"},{v:3*Math.PI/2,l:"3π/2"},{v:2*Math.PI,l:"2π"}],yt:[{v:-1,l:"−1"},{v:1,l:"1"}],curves:[{f:x=>Math.sin(x),k:1,l:"sin x",at:[1.2,1.25]},{f:x=>Math.cos(x),k:2,l:"cos x",at:[0.1,1.25]}]}}],i:"Trigonometri lanjut membahas sudut di berbagai kuadran, identitas, serta rumus jumlah dan selisih sudut.",
+ p:["Kuadran I: semua positif. II: hanya sin. III: hanya tan. IV: hanya cos.","sin(A + B) = sin A cos B + cos A sin B.","cos(A + B) = cos A cos B − sin A sin B.","sin 2A = 2 sin A cos A."],
+ c:[{q:"Hitung sin 150°.",a:"150° di kuadran II: sin 150° = sin(180° − 150°) = sin 30° = ½."},{q:"Hitung sin 75° dengan 75° = 45° + 30°.",a:"sin 45° cos 30° + cos 45° sin 30° = ½√2·½√3 + ½√2·½ = (√6 + √2)/4."}],
+ k:[{q:"Nilai cos 120° adalah …",o:["−½","½","−½√3"],k:0,e:"cos 120° = −cos 60° = −½."},{q:"Jika sin A = 3/5 dan A lancip, sin 2A adalah …",o:["12/25","24/25","6/5"],k:1,e:"cos A = 4/5, maka sin 2A = 2 × 3/5 × 4/5 = 24/25."}]},
+{t:"Limit fungsi",g:"12",
+ fig:[{cap:"Fungsi (x² − 4)/(x − 2) tidak terdefinisi di x = 2 (ada lubang pada grafik), tetapi mendekati 4 saat x mendekati 2, sehingga limitnya 4.",o:{alt:"Grafik dengan lubang di x = 2",x:[-1,5],y:[-1,7],lines:[{a:1,b:-1,c:-2,k:1}],ell:[{cx:2,cy:4,rx:0.12,ry:0.2,k:1}],segs:[{p:[2,0],q:[2,3.8],k:3,dash:1},{p:[0,4],q:[1.88,4],k:3,dash:1}],txt:[{x:2.1,y:0.4,t:"x → 2",k:2},{x:-0.9,y:4.4,t:"L = 4",k:2},{x:-0.9,y:6.3,t:"y = (x² − 4)/(x − 2)",k:1}]}},
+  {cap:"Untuk x yang makin besar, (3x + 1)/(x + 5) makin mendekati garis y = 3, sehingga limitnya di tak hingga adalah 3.",o:{alt:"Grafik yang mendekati garis y = 3",x:[0,40],y:[0,4],xt:[10,20,30,40].map(v=>({v,l:v})),curves:[{f:x=>(3*x+1)/(x+5),k:1,l:"y = (3x + 1)/(x + 5)",at:[8,1.2]}],segs:[{p:[0,3],q:[40,3],k:2,dash:1}],txt:[{x:30,y:3.3,t:"y = 3",k:2}]}}],i:"Limit menggambarkan nilai yang didekati fungsi f(x) ketika x mendekati suatu bilangan. Ditulis lim(x→a) f(x) = L.",
+ p:["Substitusi langsung: jika f(a) terdefinisi, maka limitnya f(a).","Bentuk 0/0: faktorkan dan sederhanakan sebelum disubstitusi.","Limit tak hingga: bagi dengan pangkat tertinggi pada penyebut.","Limit jumlah, selisih, dan hasil kali fungsi sama dengan jumlah, selisih, dan hasil kali limitnya."],
+ c:[{q:"Hitung lim(x→2) (x² − 4)/(x − 2).",a:"Faktorkan: (x − 2)(x + 2)/(x − 2) = x + 2. Substitusi x = 2 menghasilkan 4."},{q:"Hitung lim(x→∞) (3x + 1)/(x + 5).",a:"Bagi dengan x: (3 + 1/x)/(1 + 5/x) mendekati 3/1 = 3."}],
+ k:[{q:"lim(x→3) (2x + 1) adalah …",o:["6","7","9"],k:1,e:"Substitusi langsung: 2(3) + 1 = 7."},{q:"lim(x→1) (x² − 1)/(x − 1) adalah …",o:["0","1","2"],k:2,e:"(x − 1)(x + 1)/(x − 1) = x + 1, untuk x = 1 hasilnya 2."}]},
+{t:"Turunan fungsi",g:"12",
+ fig:[{cap:"Garis singgung y = x² di titik (3, 9) memiliki gradien f′(3) = 6, sehingga persamaannya y = 6x − 9.",o:{alt:"Parabola y = x² dengan garis singgung di titik (3, 9)",x:[-1,5],y:[-3,14],curves:[{f:x=>x*x,k:1,l:"y = x²",at:[-0.9,12.5]}],lines:[{a:6,b:-1,c:9,k:2,l:"gradien = 6",at:[3.3,4]}],pts:[{x:3,y:9,t:"(3, 9)"}]}},
+  {cap:"Fungsi f(x) = x² − 6x + 4 turun ketika f′(x) < 0, naik ketika f′(x) > 0, dan stasioner di x = 3 saat garis singgungnya mendatar.",o:{alt:"Parabola dengan titik stasioner di x = 3",x:[-1,7],y:[-6.5,10],curves:[{f:x=>x*x-6*x+4,k:1}],segs:[{p:[1.5,-5],q:[4.5,-5],k:2,dash:1}],txt:[{x:-0.9,y:-6,t:"turun (f′ < 0)",k:0},{x:4,y:-6,t:"naik (f′ > 0)",k:0}],pts:[{x:3,y:-5,t:"(3, −5)"}]}}],i:"Turunan menyatakan laju perubahan fungsi, atau kemiringan garis singgung grafik di suatu titik. Ditulis f′(x).",
+ p:["f(x) = xⁿ maka f′(x) = n·xⁿ⁻¹.","(u + v)′ = u′ + v′ dan (k·u)′ = k·u′.","Aturan hasil kali: (uv)′ = u′v + uv′.","Fungsi naik jika f′(x) > 0, turun jika f′(x) < 0, stasioner jika f′(x) = 0."],
+ c:[{q:"Tentukan turunan f(x) = 3x⁴ − 2x² + 5.",a:"f′(x) = 12x³ − 4x."},{q:"Tentukan nilai stasioner f(x) = x² − 6x + 4.",a:"f′(x) = 2x − 6 = 0, maka x = 3. f(3) = 9 − 18 + 4 = −5."}],
+ k:[{q:"Turunan dari f(x) = 5x³ adalah …",o:["15x²","5x²","15x³"],k:0,e:"f′(x) = 3 × 5x² = 15x²."},{q:"Gradien garis singgung y = x² di x = 3 adalah …",o:["3","6","9"],k:1,e:"y′ = 2x, di x = 3 hasilnya 6."}]},
+{t:"Integral",g:"12",
+ fig:[{cap:"Luas daerah arsiran di bawah y = 3x² dari x = 0 sampai x = 2 sama dengan integral tentu: ∫ 3x² dx = [x³] dari 0 ke 2 = 8.",o:{alt:"Daerah di bawah kurva y = 3x² dari 0 sampai 2",x:[-0.5,3.5],y:[-2,14],poly:(()=>{const p=[[0,0]];for(let i=0;i<=40;i++){const x=2*i/40;p.push([x,3*x*x])}p.push([2,0]);return p})(),curves:[{f:x=>3*x*x,k:1,l:"y = 3x²",at:[0.2,13.2]}],segs:[{p:[2,0],q:[2,12],k:2,dash:1}],pts:[{x:2,y:0,t:"x = 2"}]}},
+  {cap:"Luas di bawah kurva dapat didekati dengan menjumlahkan luas persegi panjang. Makin banyak dan makin sempit persegi panjangnya, makin mendekati nilai integral.",o:{alt:"Persegi panjang yang mendekati luas di bawah y = x²",x:[-0.5,3],y:[-1,5],curves:[{f:x=>x*x,k:1,l:"y = x²",at:[0.1,4.5]}],segs:(()=>{const r=[];for(let i=0;i<4;i++){const x=i*0.5,h=Math.pow(x+0.5,2);r.push({p:[x,0],q:[x,h],k:2},{p:[x,h],q:[x+0.5,h],k:2},{p:[x+0.5,h],q:[x+0.5,0],k:2})}return r})()}}],i:"Integral adalah kebalikan dari turunan (antiturunan) dan juga dipakai untuk menghitung luas daerah di bawah kurva.",
+ p:["∫ xⁿ dx = xⁿ⁺¹/(n + 1) + C, untuk n ≠ −1.","∫ k dx = kx + C.","Integral tentu: ∫ dari a ke b f(x) dx = F(b) − F(a).","Luas di bawah kurva f(x) dari a ke b = ∫ f(x) dx (jika f(x) ≥ 0)."],
+ c:[{q:"Hitung ∫ (6x² + 2) dx.",a:"= 2x³ + 2x + C."},{q:"Hitung integral 3x² dx dari 0 sampai 2.",a:"[x³] dari 0 ke 2 = 8 − 0 = 8."}],
+ k:[{q:"∫ 4x³ dx = …",o:["x⁴ + C","12x² + C","4x⁴ + C"],k:0,e:"4 × x⁴/4 = x⁴, ditambah C."},{q:"Nilai integral 2x dx dari 1 sampai 3 adalah …",o:["6","8","9"],k:1,e:"[x²] dari 1 ke 3 = 9 − 1 = 8."}]},
+{t:"Peluang kejadian majemuk",g:"12",
+ fig:[{cap:"Diagram Venn dua kejadian saling bebas: P(A) = 0,4 dan P(B) = 0,5, sehingga irisannya P(A ∩ B) = 0,4 × 0,5 = 0,2.",o:{alt:"Diagram Venn dua lingkaran beririsan",bare:1,x:[-5,5],y:[-3.8,3.8],circles:[{cx:-1,cy:0,r:2.3,k:1},{cx:1,cy:0,r:2.3,k:2}],poly:(()=>{const r=2.3,t0=Math.acos(1/r),a=[],b=[];for(let i=0;i<=20;i++){const t=-t0+2*t0*i/20;a.push([-1+r*Math.cos(t),r*Math.sin(t)])}for(let i=0;i<=20;i++){const t=t0-2*t0*i/20;b.push([1-r*Math.cos(t),r*Math.sin(t)])}return a.concat(b)})(),txt:[{x:-2.6,y:0.2,t:"A",k:1},{x:2.3,y:0.2,t:"B",k:2},{x:-0.6,y:0.1,t:"A ∩ B",k:0},{x:-4.8,y:-3.4,t:"P(A ∩ B) = 0,4 × 0,5 = 0,2",k:0}]}}],i:"Kejadian majemuk adalah gabungan dua kejadian atau lebih. Peluangnya dihitung dengan aturan penjumlahan, perkalian, dan peluang bersyarat.",
+ p:["P(A ∪ B) = P(A) + P(B) − P(A ∩ B).","Kejadian saling lepas: P(A ∪ B) = P(A) + P(B).","Kejadian saling bebas: P(A ∩ B) = P(A) × P(B).","Peluang bersyarat: P(A|B) = P(A ∩ B)/P(B)."],
+ c:[{q:"Dua dadu dilempar. Berapa peluang jumlah mata dadu 7?",a:"Pasangan berjumlah 7 ada 6 dari 36 kemungkinan. P = 6/36 = 1/6."},{q:"P(A) = 0,4 dan P(B) = 0,5, saling bebas. Berapa P(A ∩ B)?",a:"P(A ∩ B) = 0,4 × 0,5 = 0,2."}],
+ k:[{q:"Koin dilempar dua kali. Peluang muncul dua gambar adalah …",o:["1/4","1/2","3/4"],k:0,e:"½ × ½ = ¼."},{q:"Jika P(A) = 0,3 dan P(B) = 0,4 saling lepas, P(A ∪ B) adalah …",o:["0,12","0,7","0,1"],k:1,e:"Saling lepas: 0,3 + 0,4 = 0,7."}]}
+);
+MAT.push({t:"Sistem persamaan dan pertidaksamaan linear dua variabel",g:"10",
+ fig:[
+  {cap:"Dua garis berpotongan di satu titik. Titik potong (3, 2) adalah penyelesaian sistem 2x + 3y = 12 dan x − y = 1.",o:{alt:"Dua garis berpotongan di titik (3, 2)",x:[-1,7],y:[-1,6],lines:[{a:2,b:3,c:12,k:1,l:"2x + 3y = 12",at:[0.1,4.4]},{a:1,b:-1,c:1,k:2,l:"x − y = 1",at:[4.6,4.3]}],pts:[{x:3,y:2,t:"(3, 2)"}]}},
+  {cap:"Daerah arsiran adalah penyelesaian x + y ≤ 4. Titik uji (0, 0) ada di daerah ini, jadi daerahnya di bawah garis dan garisnya ikut termasuk.",o:{alt:"Daerah arsiran x + y ≤ 4",x:[-1,6],y:[-1,6],shade:{a:1,b:1,c:4},lines:[{a:1,b:1,c:4,k:1,l:"x + y = 4",at:[3.3,1.4]}],pts:[{x:0,y:0,t:"(0, 0) uji"}]}},
+  {cap:"Irisan x + y ≤ 4, x ≥ 0, dan y ≥ 0 membentuk segitiga dengan titik sudut (0, 0), (4, 0), dan (0, 4).",o:{alt:"Daerah irisan berbentuk segitiga",x:[-1,6],y:[-1,6],poly:[[0,0],[4,0],[0,4]],lines:[{a:1,b:1,c:4,k:1,l:"x + y = 4",at:[3.3,1.4]}],pts:[{x:0,y:0,t:"(0, 0)"},{x:4,y:0,t:"(4, 0)"},{x:0,y:4,t:"(0, 4)"}]}}
+ ],i:"Sistem persamaan linear dua variabel (SPLDV) adalah dua persamaan linear dengan dua variabel yang dicari penyelesaian bersamanya. Pertidaksamaan linear dua variabel memakai tanda <, >, ≤, atau ≥, dan penyelesaiannya berupa daerah pada bidang koordinat.",
+ p:["SPLDV dapat diselesaikan dengan substitusi, eliminasi, atau gabungan keduanya. Penyelesaiannya adalah titik potong kedua garis.","Ada tiga kemungkinan: satu penyelesaian (garis berpotongan), tidak ada penyelesaian (garis sejajar), atau tak hingga penyelesaian (garis berimpit).","Pertidaksamaan ax + by ≤ c digambar dari garis ax + by = c, lalu uji satu titik (misalnya (0, 0)) untuk menentukan daerah yang benar.","Garis putus-putus untuk tanda < atau >, garis penuh untuk ≤ atau ≥. Sistem pertidaksamaan diselesaikan dengan irisan daerah semua pertidaksamaannya."],
+ c:[{q:"Selesaikan 2x + 3y = 12 dan x − y = 1.",a:"Dari x − y = 1, x = y + 1. Substitusi: 2(y + 1) + 3y = 12, 5y = 10, y = 2. Maka x = 3."},
+    {q:"Harga 2 buku dan 3 pensil Rp13.000, sedangkan 1 buku dan 2 pensil Rp7.000. Berapa harga 1 buku?",a:"Misal buku = b dan pensil = p. Dari b + 2p = 7.000, b = 7.000 − 2p. Substitusi: 2(7.000 − 2p) + 3p = 13.000, 14.000 − p = 13.000, p = 1.000. Maka b = 5.000."},
+    {q:"Tentukan daerah penyelesaian x + y ≤ 4 dengan titik uji (0, 0).",a:"Garis x + y = 4 melalui (4, 0) dan (0, 4). Titik (0, 0): 0 + 0 ≤ 4 benar, sehingga daerahnya di sisi yang memuat (0, 0), yaitu di bawah garis, termasuk garisnya."}],
+ k:[{q:"Penyelesaian dari x + y = 8 dan x − y = 2 adalah …",o:["(5, 3)","(6, 2)","(4, 4)"],k:0,e:"Jumlahkan kedua persamaan: 2x = 10, x = 5. Maka y = 8 − 5 = 3."},
+    {q:"Titik (1, 2) memenuhi pertidaksamaan …",o:["x + y ≥ 5","2x + y ≤ 5","x − y > 1"],k:1,e:"Uji (1, 2): 2(1) + 2 = 4 ≤ 5 benar. Pilihan lain salah: 3 ≥ 5 salah dan −1 > 1 salah."},
+    {q:"Sistem 2x + 4y = 6 dan x + 2y = 5 memiliki …",o:["satu penyelesaian","tidak ada penyelesaian","tak hingga penyelesaian"],k:1,e:"Persamaan pertama dibagi 2 menjadi x + 2y = 3, sejajar dengan x + 2y = 5, sehingga tidak ada titik potong."}]}
+);
+MAT.forEach(m=>{m.s=m.s||"mat"});
+MAT.push(
+{t:"Besaran dan pengukuran",s:"fis",g:"10",
+ fig:[{cap:"Tujuh besaran pokok dalam Sistem Internasional (SI) beserta satuannya.",o:{alt:"Tabel tujuh besaran pokok SI",bare:1,x:[0,12],y:[0,8.6],segs:[{p:[0.3,7.9],q:[11.7,7.9],k:3}].concat([6.9,5.9,4.9,3.9,2.9,1.9,0.9].map(y=>({p:[0.3,y-0.35],q:[11.7,y-0.35],k:3}))),txt:[{x:0.4,y:8.1,t:"Besaran pokok",k:1},{x:6.2,y:8.1,t:"Satuan SI",k:1}].concat([["Panjang","meter (m)"],["Massa","kilogram (kg)"],["Waktu","sekon (s)"],["Suhu","kelvin (K)"],["Kuat arus","ampere (A)"],["Jumlah zat","mol (mol)"],["Intensitas cahaya","kandela (cd)"]].flatMap(([a,b],i)=>[{x:0.4,y:6.9-i,t:a,k:0},{x:6.2,y:6.9-i,t:b,k:2}]))}}],i:"Besaran adalah sesuatu yang dapat diukur dan dinyatakan dengan angka dan satuan. Besaran pokok berdiri sendiri, sedangkan besaran turunan diturunkan dari besaran pokok.",
+ p:["Tujuh besaran pokok SI: panjang (m), massa (kg), waktu (s), suhu (K), kuat arus (A), jumlah zat (mol), dan intensitas cahaya (cd).","Contoh besaran turunan: kecepatan (m/s), luas (m²), gaya (N = kg·m/s²), dan massa jenis (kg/m³).","Notasi ilmiah: a × 10ⁿ dengan 1 ≤ a < 10, misalnya 0,00035 = 3,5 × 10⁻⁴.","Angka penting: semua angka bukan nol dan nol di antara angka bukan nol termasuk angka penting. Pada perkalian atau pembagian, hasil memakai jumlah angka penting paling sedikit."],
+ c:[{q:"Nyatakan 45.000.000 m dalam notasi ilmiah.",a:"45.000.000 = 4,5 × 10⁷ m."},{q:"Sebuah balok panjang 4,0 cm dan lebar 2,5 cm. Berapa luasnya dengan angka penting yang tepat?",a:"4,0 × 2,5 = 10 cm². Kedua ukuran punya 2 angka penting, sehingga hasil ditulis 2 angka penting: 10 cm²."}],
+ k:[{q:"Satuan SI untuk massa adalah …",o:["gram","kilogram","newton"],k:1,e:"Satuan SI untuk massa adalah kilogram (kg)."},{q:"Besaran berikut yang termasuk besaran turunan adalah …",o:["panjang","waktu","kecepatan"],k:2,e:"Kecepatan diturunkan dari panjang dan waktu (m/s)."}]},
+{t:"Vektor",s:"fis",g:"10",
+ fig:[{cap:"Dua vektor saling tegak lurus (6 N dan 8 N) menghasilkan resultan R = √(6² + 8²) = 10 N.",o:{alt:"Resultan dua vektor tegak lurus",bare:1,x:[-1,12],y:[-1,9],segs:[{p:[0,0],q:[6,0],k:1},{p:[6,0],q:[6,8],k:2},{p:[0,0],q:[6,8],k:4},{p:[5.5,0],q:[5.5,0.5],k:3},{p:[5.5,0.5],q:[6,0.5],k:3}],txt:[{x:2.2,y:-0.7,t:"A = 6 N",k:1},{x:6.4,y:4,t:"B = 8 N",k:2},{x:0.4,y:4.9,t:"R = 10 N",k:4}]}}],
+ i:"Vektor adalah besaran yang memiliki nilai dan arah, misalnya perpindahan, kecepatan, dan gaya. Besaran skalar hanya memiliki nilai, misalnya massa dan suhu.",
+ p:["Vektor digambar sebagai anak panah: panjang menunjukkan besar dan arah anak panah menunjukkan arah.","Resultan dua vektor segaris searah: R = A + B. Jika berlawanan arah: R = |A − B|.","Dua vektor saling tegak lurus: R = √(A² + B²).","Komponen vektor F dengan sudut θ terhadap sumbu x: Fx = F cos θ dan Fy = F sin θ."],
+ c:[{q:"Dua gaya 6 N dan 8 N saling tegak lurus. Berapa resultannya?",a:"R = √(6² + 8²) = √100 = 10 N."},{q:"Gaya 20 N membentuk sudut 30° terhadap sumbu x. Berapa komponen horizontalnya?",a:"Fx = 20 cos 30° = 20 × ½√3 = 10√3 ≈ 17,3 N."}],
+ k:[{q:"Besaran berikut yang merupakan vektor adalah …",o:["massa","perpindahan","suhu"],k:1,e:"Perpindahan memiliki besar dan arah, sedangkan massa dan suhu hanya memiliki besar."},{q:"Dua gaya 3 N dan 4 N saling tegak lurus. Resultannya adalah …",o:["5 N","7 N","12 N"],k:0,e:"R = √(3² + 4²) = √25 = 5 N."}]},
+{t:"Gerak lurus",s:"fis",g:"10",
+ fig:[{cap:"Grafik v–t GLBB dengan v = 2t. Luas daerah arsiran (segitiga) sama dengan perpindahan: ½ × 5 × 10 = 25 m.",o:{alt:"Grafik kecepatan terhadap waktu",x:[-0.5,6.5],y:[-1,12],yt:[{v:5,l:5},{v:10,l:10}],poly:[[0,0],[5,0],[5,10]],lines:[{a:2,b:-1,c:0,k:1,l:"v = 2t",at:[0.2,8]}],segs:[{p:[5,0],q:[5,10],k:3,dash:1}],pts:[{x:5,y:10,t:"(5, 10)"}]}},
+  {cap:"Grafik s–t: GLB berupa garis lurus (s = 4t), sedangkan GLBB berupa parabola (s = t²) karena kecepatannya terus bertambah.",o:{alt:"Grafik posisi terhadap waktu",x:[0,6],y:[0,26],yt:[{v:10,l:10},{v:20,l:20}],curves:[{f:t=>4*t,k:1,l:"GLB: s = 4t",at:[0.2,22]},{f:t=>t*t,k:2,l:"GLBB: s = t²",at:[3.2,6]}]}}],
+ i:"Gerak lurus adalah gerak pada lintasan lurus. Pada gerak lurus beraturan (GLB) kecepatan tetap, sedangkan pada gerak lurus berubah beraturan (GLBB) percepatan tetap.",
+ p:["GLB: s = v × t, dengan kecepatan v konstan.","GLBB: v = v₀ + at dan s = v₀t + ½at².","Tanpa waktu: v² = v₀² + 2as.","Pada grafik v–t, luas daerah di bawah grafik sama dengan perpindahan dan kemiringan grafik sama dengan percepatan."],
+ c:[{q:"Mobil bergerak 20 m/s selama 15 s dengan kecepatan tetap. Berapa jaraknya?",a:"s = v × t = 20 × 15 = 300 m."},{q:"Motor mulai dari diam dengan percepatan 2 m/s². Berapa kecepatan dan jarak setelah 5 s?",a:"v = 0 + 2 × 5 = 10 m/s. s = ½ × 2 × 5² = 25 m."}],
+ k:[{q:"Benda dari diam dipercepat 3 m/s² selama 4 s. Kecepatannya adalah …",o:["7 m/s","12 m/s","24 m/s"],k:1,e:"v = at = 3 × 4 = 12 m/s."},{q:"Grafik v–t berupa garis lurus mendatar menunjukkan gerak …",o:["GLB","GLBB dipercepat","diam"],k:0,e:"Kecepatan yang konstan berarti GLB (percepatan nol)."}]},
+{t:"Hukum Newton",s:"fis",g:"10",
+ fig:[{cap:"Diagram gaya pada balok yang ditarik: gaya normal N ke atas, berat w ke bawah, gaya tarik F ke kanan, dan gaya gesek f ke kiri. Pada arah vertikal N = w.",o:{alt:"Diagram gaya pada balok",bare:1,x:[-6,6],y:[-3.5,5.5],segs:[{p:[-5.5,0],q:[5.5,0],k:3},{p:[-1,0],q:[-1,2],k:3},{p:[1,0],q:[1,2],k:3},{p:[-1,2],q:[1,2],k:3},{p:[0,2],q:[0,4.5],k:2},{p:[0,1],q:[0,-2],k:1},{p:[1,1],q:[4.5,1],k:1},{p:[-1,1],q:[-4,1],k:2}],txt:[{x:0.3,y:4.2,t:"N",k:2},{x:0.3,y:-1.6,t:"w = mg",k:1},{x:3.3,y:1.4,t:"F",k:1},{x:-3.9,y:1.4,t:"f",k:2}]}}],
+ i:"Hukum Newton menjelaskan hubungan gaya dan gerak. Hukum I tentang kelembaman, Hukum II tentang percepatan akibat gaya, dan Hukum III tentang pasangan gaya aksi dan reaksi.",
+ p:["Hukum I: benda diam atau bergerak lurus beraturan tetap demikian bila resultan gaya nol (ΣF = 0).","Hukum II: ΣF = m × a. Percepatan sebanding dengan gaya dan berbanding terbalik dengan massa.","Hukum III: gaya aksi sama besar dan berlawanan arah dengan gaya reaksi, dan bekerja pada dua benda berbeda.","Berat w = m × g dengan g ≈ 10 m/s². Gaya gesek maksimum f = μ × N."],
+ c:[{q:"Benda 5 kg didorong gaya 20 N di lantai licin. Berapa percepatannya?",a:"a = F/m = 20/5 = 4 m/s²."},{q:"Berapa berat benda bermassa 8 kg (g = 10 m/s²)?",a:"w = m × g = 8 × 10 = 80 N."}],
+ k:[{q:"Resultan gaya pada benda 2 kg adalah 10 N. Percepatannya adalah …",o:["5 m/s²","8 m/s²","20 m/s²"],k:0,e:"a = ΣF/m = 10/2 = 5 m/s²."},{q:"Pasangan gaya aksi dan reaksi selalu …",o:["bekerja pada benda yang sama","sama besar dan berlawanan arah","tidak sama besar"],k:1,e:"Aksi dan reaksi sama besar, berlawanan arah, dan bekerja pada dua benda berbeda."}]},
+{t:"Usaha dan energi",s:"fis",g:"10",
+ fig:[{cap:"Saat bola 2 kg jatuh dari ketinggian 5 m, energi potensial (Ep) berkurang dan energi kinetik (Ek) bertambah, sedangkan jumlahnya (Em = 100 J) tetap. Sumbu x adalah ketinggian h (m).",o:{alt:"Grafik energi potensial dan kinetik terhadap ketinggian",x:[-0.5,6],y:[-10,115],yt:[{v:50,l:50},{v:100,l:100}],lines:[{a:20,b:-1,c:0,k:1,l:"Ep = 20h",at:[0.3,70]},{a:20,b:1,c:100,k:2,l:"Ek = 100 − 20h",at:[3.2,110]}],segs:[{p:[0,100],q:[5,100],k:3,dash:1}],txt:[{x:0.2,y:104,t:"Em = 100 J",k:0}]}}],
+ i:"Usaha adalah gaya yang menyebabkan perpindahan. Energi adalah kemampuan melakukan usaha. Energi tidak hilang, hanya berubah bentuk.",
+ p:["Usaha: W = F × s × cos θ (satuan joule). Jika gaya searah perpindahan, W = F × s.","Energi kinetik: Ek = ½ m v². Energi potensial gravitasi: Ep = m g h.","Hukum kekekalan energi mekanik: Em = Ep + Ek tetap bila hanya gaya gravitasi yang bekerja.","Daya: P = W/t (satuan watt)."],
+ c:[{q:"Gaya 50 N mendorong benda sejauh 4 m searah gaya. Berapa usahanya?",a:"W = F × s = 50 × 4 = 200 J."},{q:"Bola 2 kg dijatuhkan dari ketinggian 5 m (g = 10 m/s²). Berapa kecepatannya saat menyentuh tanah?",a:"Ep awal = m g h = 2 × 10 × 5 = 100 J, sama dengan Ek akhir = ½ × 2 × v². Maka v² = 100 dan v = 10 m/s."}],
+ k:[{q:"Energi potensial benda 3 kg pada ketinggian 4 m (g = 10 m/s²) adalah …",o:["12 J","60 J","120 J"],k:2,e:"Ep = m g h = 3 × 10 × 4 = 120 J."},{q:"Daya mesin yang melakukan usaha 600 J dalam 20 s adalah …",o:["30 W","120 W","12.000 W"],k:0,e:"P = W/t = 600/20 = 30 W."}]},
+{t:"Suhu dan kalor",s:"fis",g:"10",
+ fig:[{cap:"Grafik pemanasan es: suhu naik, lalu tetap saat es melebur (0 °C) dan saat air mendidih (100 °C), karena kalor dipakai untuk mengubah wujud.",o:{alt:"Grafik pemanasan es menjadi uap",x:[-1,19],y:[-30,130],xt:[],yt:[{v:-20,l:"−20"},{v:100,l:100}],segs:[{p:[0,-20],q:[2,0],k:1},{p:[2,0],q:[5,0],k:2},{p:[5,0],q:[11,100],k:1},{p:[11,100],q:[16,100],k:2},{p:[16,100],q:[18,120],k:1}],txt:[{x:0.4,y:-27,t:"es",k:0},{x:2.2,y:12,t:"melebur",k:2},{x:8.2,y:30,t:"air",k:0},{x:10.2,y:110,t:"mendidih",k:2},{x:16.6,y:92,t:"uap",k:0},{x:0.4,y:124,t:"suhu (°C)",k:0},{x:13,y:-12,t:"kalor Q →",k:0}]}}],
+ i:"Suhu menyatakan derajat panas suatu benda, sedangkan kalor adalah energi yang berpindah karena perbedaan suhu. Kalor mengalir dari benda bersuhu tinggi ke benda bersuhu rendah.",
+ p:["Konversi suhu: K = °C + 273 dan °F = 9/5 °C + 32.","Kalor untuk mengubah suhu: Q = m × c × ΔT. Untuk air c = 4.200 J/kg°C.","Kalor untuk berubah wujud: Q = m × L (suhu tetap saat melebur atau menguap).","Asas Black: kalor yang dilepas benda panas sama dengan kalor yang diterima benda dingin."],
+ c:[{q:"Berapa kalor untuk memanaskan 2 kg air dari 20 °C ke 70 °C (c = 4.200 J/kg°C)?",a:"Q = m c ΔT = 2 × 4.200 × 50 = 420.000 J."},{q:"Ubah 27 °C ke Kelvin.",a:"K = 27 + 273 = 300 K."}],
+ k:[{q:"Kalor untuk menaikkan suhu 1 kg air sebesar 10 °C (c = 4.200 J/kg°C) adalah …",o:["4.200 J","42.000 J","420.000 J"],k:1,e:"Q = 1 × 4.200 × 10 = 42.000 J."},{q:"Suhu 100 °C setara dengan … K",o:["173","273","373"],k:2,e:"K = 100 + 273 = 373 K."}]},
+{t:"Pengukuran dan besaran",s:"ipa",g:"7",
+ fig:[{cap:"Membaca mistar: benda diletakkan mulai dari angka 0, dan ujungnya menunjuk 7,3 cm.",o:{alt:"Mistar mengukur benda sepanjang 7,3 cm",bare:1,x:[-1,11],y:[-2,3.2],rects:[{x:0,y:1.1,w:7.3,h:0.8,k:1}],segs:[{p:[0,0],q:[10,0],k:3}].concat(Array.from({length:101},(_,j)=>({p:[j/10,0],q:[j/10,j%10===0?-0.5:j%5===0?-0.35:-0.2],k:3}))),txt:Array.from({length:11},(_,v)=>({x:v-(v>9?0.35:0.12),y:-1.1,t:String(v),k:0})).concat([{x:1.2,y:2.5,t:"panjang = 7,3 cm",k:1}])}}],i:"Mengukur berarti membandingkan suatu besaran dengan satuan standar. Pengukuran yang baik memakai alat yang tepat dan satuan baku (SI).",
+ p:["Panjang diukur dengan penggaris atau jangka sorong, massa dengan neraca, waktu dengan stopwatch, dan suhu dengan termometer.","Satuan baku: meter (m), kilogram (kg), detik (s), dan kelvin (K).","Konversi: 1 km = 1.000 m, 1 m = 100 cm, 1 kg = 1.000 g, dan 1 jam = 3.600 detik.","Volume benda tak beraturan diukur dengan gelas ukur: volume = V akhir − V awal."],
+ c:[{q:"Ubah 2,5 km menjadi meter.",a:"2,5 × 1.000 = 2.500 m."},{q:"Batu dimasukkan ke gelas ukur. Volume air naik dari 50 mL menjadi 68 mL. Berapa volume batu?",a:"V = 68 − 50 = 18 mL (sama dengan 18 cm³)."}],
+ k:[{q:"Alat untuk mengukur massa adalah …",o:["termometer","neraca","stopwatch"],k:1,e:"Massa diukur dengan neraca."},{q:"3 kg sama dengan … g",o:["30","300","3.000"],k:2,e:"1 kg = 1.000 g, jadi 3 kg = 3.000 g."}]},
+{t:"Klasifikasi makhluk hidup",s:"ipa",g:"7",
+ fig:[{cap:"Makhluk hidup dikelompokkan menjadi lima kingdom: Monera, Protista, Fungi, Plantae, dan Animalia.",o:{alt:"Lima kingdom makhluk hidup",bare:1,x:[0,11],y:[0,8],segs:[7,5.5,4,2.5,1].map(y=>({p:[1.8,4],q:[5,y],k:3})),dots:[{x:1.8,y:4,k:2,r:7}].concat([7,5.5,4,2.5,1].map(y=>({x:5,y,k:1,r:6}))),txt:[{x:0.2,y:4.8,t:"Makhluk hidup",k:2}].concat(["Monera","Protista","Fungi","Plantae","Animalia"].map((t,i)=>({x:5.5,y:[7,5.5,4,2.5,1][i]-0.15,t,k:0})))}}],i:"Klasifikasi adalah pengelompokan makhluk hidup berdasarkan ciri-ciri yang sama. Pengelompokan memudahkan kita mempelajari keanekaragaman makhluk hidup.",
+ p:["Tingkatan klasifikasi dari yang terluas: Kingdom, Filum, Kelas, Ordo, Famili, Genus, Spesies.","Tata nama ilmiah memakai dua kata (binomial): genus dan spesies, misalnya Oryza sativa (padi).","Hewan dibagi menjadi vertebrata (bertulang belakang) dan invertebrata (tak bertulang belakang).","Tumbuhan dibagi menjadi lumut, paku, berbiji terbuka, dan berbiji tertutup (monokotil dan dikotil)."],
+ c:[{q:"Pada nama ilmiah Zea mays (jagung), mana genus dan mana spesies?",a:"Zea adalah genus dan mays adalah spesies. Kata pertama diawali huruf kapital."},{q:"Ikan, katak, ayam, dan cacing tanah: mana yang vertebrata?",a:"Ikan, katak, dan ayam memiliki tulang belakang (vertebrata). Cacing tanah tidak (invertebrata)."}],
+ k:[{q:"Urutan klasifikasi dari yang paling luas adalah …",o:["Spesies, Genus, Famili","Kingdom, Filum, Kelas","Genus, Kelas, Kingdom"],k:1,e:"Dari yang terluas: Kingdom, Filum, Kelas, Ordo, Famili, Genus, Spesies."},{q:"Tumbuhan berakar serabut dan berdaun sejajar termasuk …",o:["dikotil","monokotil","lumut"],k:1,e:"Akar serabut dan tulang daun sejajar adalah ciri monokotil."}]},
+{t:"Zat dan perubahannya",s:"ipa",g:"7",
+ fig:[{cap:"Enam perubahan wujud zat. Perubahan ke arah kanan memerlukan kalor, perubahan ke arah kiri melepas kalor.",o:{alt:"Diagram perubahan wujud zat",bare:1,x:[0,14],y:[0,6],segs:[{p:[2.4,3.3],q:[6.4,3.3],k:1},{p:[6.4,2.7],q:[2.4,2.7],k:2},{p:[7.6,3.3],q:[11.6,3.3],k:1},{p:[11.6,2.7],q:[7.6,2.7],k:2},{p:[2,1.4],q:[12,1.4],k:3}],dots:[{x:2,y:3,k:1,r:9},{x:7,y:3,k:2,r:9},{x:12,y:3,k:1,r:9}],txt:[{x:1,y:4.2,t:"PADAT",k:0},{x:6.3,y:4.2,t:"CAIR",k:0},{x:11.5,y:4.2,t:"GAS",k:0},{x:3.1,y:3.6,t:"melebur",k:1},{x:3,y:2.1,t:"membeku",k:2},{x:8.3,y:3.6,t:"menguap",k:1},{x:8.1,y:2.1,t:"mengembun",k:2},{x:3.2,y:0.7,t:"menyublim →   ← mengkristal",k:3}]}}],
+ i:"Zat adalah segala sesuatu yang menempati ruang dan memiliki massa. Zat dapat berwujud padat, cair, atau gas, dan dapat mengalami perubahan fisika maupun kimia.",
+ p:["Padat: bentuk dan volume tetap. Cair: bentuk berubah, volume tetap. Gas: bentuk dan volume berubah.","Perubahan wujud: melebur, membeku, menguap, mengembun, menyublim, dan mengkristal.","Perubahan fisika tidak menghasilkan zat baru (es mencair). Perubahan kimia menghasilkan zat baru (kayu terbakar, besi berkarat).","Campuran dapat dipisahkan dengan penyaringan, penguapan, distilasi, dekantasi, atau kromatografi."],
+ c:[{q:"Apa nama perubahan wujud dari cair menjadi gas?",a:"Menguap."},{q:"Garam dilarutkan dalam air lalu air diuapkan hingga kering. Metode pemisahan apa yang dipakai?",a:"Penguapan: air menguap dan garam tertinggal."}],
+ k:[{q:"Perubahan berikut yang merupakan perubahan kimia adalah …",o:["es mencair","besi berkarat","air menguap"],k:1,e:"Besi berkarat menghasilkan zat baru (karat), jadi perubahan kimia."},{q:"Pasir yang bercampur air dipisahkan dengan cara …",o:["penyaringan","distilasi","penyubliman"],k:0,e:"Pasir tidak larut dan tertahan oleh kertas saring."}]},
+{t:"Suhu dan kalor",s:"ipa",g:"7",
+ fig:[{cap:"Hubungan skala Celsius dan Fahrenheit berupa garis lurus: 0°C = 32°F, 50°C = 122°F, dan 100°C = 212°F.",o:{alt:"Grafik konversi Celsius ke Fahrenheit",x:[-10,110],y:[0,230],xt:[0,50,100].map(v=>({v,l:v})),yt:[50,100,150,200].map(v=>({v,l:v})),lines:[{a:1.8,b:-1,c:-32,k:1}],dots:[{x:0,y:32,k:1,r:4},{x:50,y:122,k:1,r:4},{x:100,y:212,k:1,r:4}],txt:[{x:3,y:42,t:"(0, 32)",k:0},{x:54,y:112,t:"(50, 122)",k:0},{x:56,y:208,t:"(100, 212)",k:0}]}}],i:"Suhu adalah ukuran derajat panas suatu benda, sedangkan kalor adalah energi panas yang berpindah dari benda bersuhu tinggi ke benda bersuhu rendah.",
+ p:["Termometer mengukur suhu. Skala Celsius: air membeku 0 °C dan mendidih 100 °C. Skala Kelvin: K = °C + 273.","Kalor berpindah dengan tiga cara: konduksi (zat padat), konveksi (zat cair dan gas), dan radiasi (tanpa zat perantara).","Kalor dapat mengubah suhu benda dan mengubah wujud benda.","Benda yang menerima kalor suhunya naik, sedangkan benda yang melepas kalor suhunya turun."],
+ c:[{q:"Sendok logam yang dimasukkan ke teh panas ikut menjadi panas. Perpindahan kalor apa ini?",a:"Konduksi, karena kalor merambat melalui zat padat (logam)."},{q:"Ubah 30 °C ke Kelvin.",a:"K = 30 + 273 = 303 K."}],
+ k:[{q:"Panas Matahari sampai ke Bumi melalui …",o:["konduksi","konveksi","radiasi"],k:2,e:"Antara Matahari dan Bumi hampir hampa udara, sehingga kalor merambat lewat radiasi."},{q:"Air mendidih pada skala Celsius bersuhu …",o:["0 °C","50 °C","100 °C"],k:2,e:"Titik didih air pada tekanan normal adalah 100 °C."}]},
+{t:"Ekosistem",s:"ipa",g:"7",
+ fig:[{cap:"Piramida energi: hanya sekitar 10% energi diteruskan ke tingkat berikutnya (angka contoh dalam kJ).",o:{alt:"Piramida energi pada rantai makanan",bare:1,x:[-6,10],y:[0,7],rects:[{x:-4,y:0.3,w:8,h:1.4,k:2},{x:-3,y:1.9,w:6,h:1.4,k:1},{x:-2,y:3.5,w:4,h:1.4,k:2},{x:-1,y:5.1,w:2,h:1.4,k:1}],txt:[{x:4.4,y:0.8,t:"Produsen: 1000",k:0},{x:4.4,y:2.4,t:"Konsumen I: 100",k:0},{x:4.4,y:4,t:"Konsumen II: 10",k:0},{x:4.4,y:5.6,t:"Konsumen III: 1",k:0}]}}],
+ i:"Ekosistem adalah hubungan saling memengaruhi antara makhluk hidup (komponen biotik) dan lingkungannya (komponen abiotik).",
+ p:["Komponen biotik: produsen, konsumen, dan pengurai. Komponen abiotik: cahaya, air, tanah, suhu, dan udara.","Rantai makanan: produsen → konsumen I → konsumen II → pengurai. Beberapa rantai bergabung menjadi jaring-jaring makanan.","Interaksi: mutualisme (saling untung), komensalisme (satu untung, satu tidak terpengaruh), dan parasitisme (satu untung, satu rugi).","Pada rantai makanan, hanya sekitar 10% energi diteruskan ke tingkat berikutnya."],
+ c:[{q:"Susun rantai makanan dari: ular, padi, tikus, elang.",a:"Padi → tikus → ular → elang. Padi produsen, tikus konsumen I, ular konsumen II, elang konsumen III."},{q:"Burung jalak memakan kutu di punggung kerbau. Apa jenis interaksinya?",a:"Mutualisme: jalak mendapat makanan dan kerbau terbebas dari kutu."}],
+ k:[{q:"Pada rantai makanan, organisme yang menghasilkan makanan sendiri adalah …",o:["produsen","konsumen","pengurai"],k:0,e:"Produsen (tumbuhan hijau) membuat makanan sendiri melalui fotosintesis."},{q:"Cacing tanah dan jamur yang menguraikan sampah daun termasuk …",o:["produsen","konsumen","pengurai"],k:2,e:"Pengurai menguraikan sisa makhluk hidup menjadi zat hara."}]},
+{t:"Bumi dan tata surya",s:"ipa",g:"7",
+ fig:[{cap:"Delapan planet mengelilingi Matahari (pusat): Me = Merkurius, V = Venus, B = Bumi, Ma = Mars, J = Jupiter, S = Saturnus, U = Uranus, N = Neptunus. Jarak orbit tidak sesuai skala.",o:{alt:"Orbit planet mengelilingi Matahari",bare:1,x:[-9.5,9.5],y:[-7.2,7.2],circles:[0.9,1.5,2.1,2.8,4,5,5.9,6.8].map(r=>({cx:0,cy:0,r,k:3})),dots:[{x:0,y:0,k:1,r:9}].concat([["Me",0.9],["V",1.5],["B",2.1],["Ma",2.8],["J",4],["S",5],["U",5.9],["N",6.8]].map(([n,r],i)=>({x:r*Math.cos((i*50+15)*Math.PI/180),y:r*Math.sin((i*50+15)*Math.PI/180),k:n==="B"?2:1,r:4}))),txt:[["Me",0.9],["V",1.5],["B",2.1],["Ma",2.8],["J",4],["S",5],["U",5.9],["N",6.8]].map(([n,r],i)=>({x:(r+0.35)*Math.cos((i*50+15)*Math.PI/180),y:(r+0.35)*Math.sin((i*50+15)*Math.PI/180),t:n,k:n==="B"?2:0}))}}],
+ i:"Tata surya terdiri dari Matahari sebagai pusat dan benda-benda langit yang mengelilinginya. Bumi mengalami rotasi dan revolusi yang menyebabkan siang dan malam serta pergantian musim.",
+ p:["Urutan planet dari Matahari: Merkurius, Venus, Bumi, Mars, Jupiter, Saturnus, Uranus, Neptunus.","Rotasi bumi (sekitar 24 jam) menyebabkan siang dan malam.","Revolusi bumi (sekitar 365 hari) bersama kemiringan sumbu bumi menyebabkan perubahan lama siang dan malam serta pergantian musim.","Bulan mengelilingi Bumi sekitar 29,5 hari dan menyebabkan fase bulan, pasang surut, dan gerhana."],
+ c:[{q:"Berapa lama Bumi melakukan satu kali rotasi?",a:"Sekitar 24 jam (satu hari)."},{q:"Apa penyebab terjadinya siang dan malam?",a:"Rotasi bumi: bagian bumi yang menghadap Matahari mengalami siang, bagian lainnya mengalami malam."}],
+ k:[{q:"Planet terdekat dari Matahari adalah …",o:["Venus","Merkurius","Mars"],k:1,e:"Merkurius adalah planet pertama dari Matahari."},{q:"Gerak Bumi mengelilingi Matahari disebut …",o:["rotasi","revolusi","gerhana"],k:1,e:"Mengelilingi Matahari adalah revolusi Bumi."}]}
+);
+const TOP=MAT.map(m=>m.t);
+const KEL=[["SMP",["7","8","9"]],["SMA",["10","11","12"]]];
+const tops=k=>MAT.map((_,i)=>i).filter(i=>MAT[i].g===k);
+const lvlOf=n=>prof(n,"siswa").lvl||"7";
+const MP=[["mat","Matematika"],["fis","Fisika"],["ipa","IPA"]];
+const MPname=x=>(MP.find(v=>v[0]===x)||MP[0])[1];
+const MPn=i=>MAT[i].s==="mat"?"":MPname(MAT[i].s)+": ";
+const topsS=(k,x)=>tops(k).filter(i=>MAT[i].s===x);
+let SISWA=[],PR={},UID=null,authMode="login",regRole="siswa";
+const SEED=()=>({vids:[],steps:{},qs:[],ans:{},qov:{},tasks:[],prog:{},subs:{},quiz:{res:[]}});
+let asErr="",DB=null,pv=null,sj="mat",tform=null,gk="7",Q=null,tick=null,ktopic=-1,gform=null,lastNonQ="",isQ=false,curK="",ktab="video",vmode="file",openK="",AS=null,delAsk=null,S=SEED(),me=null,role="siswa",page="home",cur=0,qa={},op={},ref=null,ready=false;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct=n=>{const t=tops(lvlOf(n)),d=S.prog[n]||[];return t.length?Math.round(t.filter(i=>d.includes(i)).length/t.length*100):0};
+const today=()=>new Date().toISOString().slice(0,10);
+const fmt=d=>new Date(d+"T00:00:00").toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"});
+function toast(m){const t=$("toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,2400)}
+async function save(){try{if(ref)await ref.set({json:JSON.stringify(S)})}catch(e){toast("Perubahan belum tersimpan di server.")}}
+async function initDb(){
+  try{
+    const db=await claude.use("db");if(!db)return;DB=db;
+    ref=db.doc("app/state");
+    ref.onSnapshot(s=>{
+      if(s.exists){try{const n=JSON.parse(s.data().json);n.vids=n.vids||[];n.qs=n.qs||[];n.users=n.users||{};if(JSON.stringify(n)!==JSON.stringify(S)){S=n;if(me&&!document.activeElement.matches("textarea,input,select"))render()}}catch(e){}}
+      else if(!ready){ref.set({json:JSON.stringify(S)}).catch(()=>{})}
+      ready=true;
+    },()=>{});
+  }catch(e){}
+}
+const bar=p=>`<div class="bar" role="progressbar" aria-valuenow="${p}" aria-valuemin="0" aria-valuemax="100"><span style="width:${p}%"></span></div>`;
+
+const lvlSel=(id,v)=>`<select id="${id}">${KEL.map(([j,ks])=>`<optgroup label="${j}">${ks.map(k=>`<option value="${k}"${v===k?" selected":""}>${j} · Kelas ${k}</option>`).join("")}</optgroup>`).join("")}</select>`;
+function loginView(err={}){
+  const reg=authMode==="daftar";
+  const hero=`<section class="hero"><div class="logo"><i>L</i> Laskar Matematika</div>
+  <div><h1>Belajar sendiri, tetap terarah.</h1><p>Siswa belajar dan mengumpulkan tugas. Guru memantau progres kelas dalam satu tempat.</p></div>
+  <div class="note">Tips: belajar 20 menit setiap hari lebih ampuh daripada 3 jam sekali seminggu.</div></section>`;
+  const theme=`<div style="margin-top:22px"><p class="muted" style="margin:0 0 8px;font-size:14px">Tema tampilan</p>${themePicker()}</div>`;
+  const form=reg?`<form class="card" id="reg" novalidate><h2>Daftar akun</h2><p>Buat akun baru untuk belajar atau mengajar.</p>
+  <div class="seg" role="group" aria-label="Daftar sebagai"><button type="button" data-act="regrole" data-v="siswa" aria-pressed="${regRole==="siswa"}">Siswa</button><button type="button" data-act="regrole" data-v="guru" aria-pressed="${regRole==="guru"}">Guru</button></div>
+  <label for="r-nama">Nama lengkap</label><input id="r-nama" type="text" autocomplete="name">
+  <label for="r-user">Nama pengguna (huruf kecil atau angka)</label><input id="r-user" type="text" autocomplete="username" autocapitalize="none">
+  <label for="r-pw">Kata sandi (minimal 6 karakter)</label><input id="r-pw" type="password" autocomplete="new-password">
+  ${regRole==="guru"?`<label for="r-kode">Kode guru dari sekolah</label><input id="r-kode" type="password" autocomplete="off">`:`<label for="r-lvl">Jenjang dan kelas</label>${lvlSel("r-lvl","7")}`}
+  <p class="err" id="regerr" role="alert"></p><button class="btn full" type="submit" style="margin-top:8px">Daftar</button>
+  <button type="button" class="out" data-act="amode" data-v="login" style="width:100%;margin-top:12px;padding:12px">Sudah punya akun? Masuk</button>${theme}</form>`
+  :`<form class="card" id="form" novalidate><h2>Masuk</h2><p>Masukkan nama pengguna dan kata sandi akunmu.</p>
+  <label for="nm">Nama pengguna</label><input id="nm" type="text" autocomplete="username" autocapitalize="none">
+  <label for="pw">Kata sandi</label><div class="field"><input id="pw" type="password" autocomplete="current-password"><button type="button" class="eye" id="eye">Lihat</button></div>
+  <p class="err" id="logerr" role="alert"></p><button class="btn full" type="submit" style="margin-top:8px">Masuk</button>
+  <button type="button" class="out" data-act="amode" data-v="daftar" style="width:100%;margin-top:12px;padding:12px">Belum punya akun? Daftar</button>${theme}</form>`;
+  return `<main class="login">${hero}<section class="panel">${form}</section></main>`;
+}
+const head=()=>`<header class="zh">${page==="lesson"?`<button class="ib" data-go="materi" aria-label="Kembali">←</button>`:`<span></span>`}<span class="zt">laskar matematika</span><button class="ib" data-go="akun" aria-label="Akun">⚙</button></header>`;
+
+const NAV={siswa:[["home","Beranda"],["materi","Belajar"],["kuis","Kuis"],["tugas","Tugas"],["akun","Akun"]],guru:[["progres","Progres"],["tugas","Tugas"],["materi","Materi"],["video","Konten"],["kuis","Kuis"]]};
+const IC={home:"⌂",materi:"▤",tugas:"✎",akun:"◉",progres:"◔",video:"▶",kuis:"★"};
+const nav=()=>`<nav class="nav" aria-label="Menu utama">${NAV[role].map(([k,l])=>`<button data-go="${k}"${page===k||(page==="lesson"&&k==="materi")?' aria-current="page"':""}><span class="ic">${IC[k]}</span>${l}</button>`).join("")}</nav>`;
+const sel=(id,v)=>`<select id="${id}">${KEL.flatMap(([j,ks])=>ks).map(k=>`<optgroup label="Kelas ${k}">${tops(k).map(i=>`<option value="${i}"${i===v?" selected":""}>${esc(MPn(i)+TOP[i])}</option>`).join("")}</optgroup>`).join("")}</select>`;
+const seg=(act,cur,items)=>`<div class="seg" role="group" style="margin-top:14px">${items.map(([v,l])=>`<button data-act="${act}" data-v="${v}" aria-pressed="${cur===v}">${l}</button>`).join("")}</div>`;
+const delBtn=(act,id)=>`<button class="out" data-act="${act}" data-id="${esc(id)}">${delAsk===id?"Yakin hapus?":"Hapus"}</button>`;
+const vForm=t=>seg("vmode",vmode,[["file","Unggah file"],["link","Tempel link"]])+`<label for="vt">Judul video</label><input id="vt" type="text" placeholder="Contoh: Penjumlahan pecahan"><label for="vm">Materi terkait</label>${sel("vm",t)}<label for="vd">Keterangan (opsional)</label><textarea id="vd"></textarea>`+(vmode==="file"
+  ?(AS?`<label for="vf">File video (maks. 50 MB)</label><input id="vf" type="file" accept="video/*"><p class="muted" style="font-size:13px;margin:6px 0 0">Video dari kamera HP sering lebih dari 50 MB. Kompres dulu atau pakai “Tempel link”.</p><p class="err" id="verr" role="alert"></p><button class="btn" data-act="vup" style="margin-top:14px;padding:12px 28px">Unggah video</button>`
+    :`<p class="muted">Unggah file hanya tersedia untuk akun guru. Atau pakai tab “Tempel link”. Status: ${esc(asErr||"belum dicek")}.</p><button type="button" class="out" data-act="ascheck">Cek ulang</button>`)
+  :`<label for="vl">Link video</label><input id="vl" type="text" placeholder="https://…"><p class="err" id="verr" role="alert"></p><button class="btn" data-act="vlink" style="margin-top:14px;padding:12px 28px">Tambah video</button>`);
+const qForm=(t,q,id)=>{const o=q?q.o:[];return `<label for="sq">Pertanyaan</label><textarea id="sq">${q?esc(q.q):""}</textarea>${[0,1,2,3].map(i=>`<label for="so${i}">Pilihan ${"ABCD"[i]}${i>1?" (opsional)":""}</label><input id="so${i}" type="text" value="${esc(o[i]||"")}">`).join("")}<label for="sk">Kunci jawaban</label><select id="sk">${[0,1,2,3].map(i=>`<option value="${i}"${q&&q.k===i?" selected":""}>${"ABCD"[i]}</option>`).join("")}</select><label for="se">Pembahasan</label><textarea id="se" placeholder="Jelaskan langkah dan alasan jawaban yang benar">${q?esc(q.e):""}</textarea><label for="sm">Materi</label>${sel("sm",t)}<p class="err" id="qerr" role="alert"></p><button class="btn" data-act="${id?"qsave":"qadd"}"${id?` data-id="${esc(id)}"`:""} style="margin-top:14px;padding:12px 28px">${id?"Simpan perubahan":"Simpan soal"}</button>`};
+function gPanel(){
+  const f=gform;let body="";
+  if(f&&f.t==="video")body=`<h3 style="margin-top:14px">Tambah video</h3>${vForm(cur)}<button class="out" data-act="gclose" style="margin-top:10px">Batal</button>`;
+  if(f&&f.t==="vedit"){const v=S.vids.find(x=>x.id===f.id);if(v)body=`<h3 style="margin-top:14px">Edit video</h3><label for="vt">Judul video</label><input id="vt" type="text" value="${esc(v.title)}"><label for="vm">Materi terkait</label>${sel("vm",v.topic)}<label for="vd">Keterangan</label><textarea id="vd">${esc(v.desc||"")}</textarea>${v.link?`<label for="vl">Link video</label><input id="vl" type="text" value="${esc(v.url)}">`:(AS?`<label for="vf">Ganti file video (opsional, maks. 50 MB)</label><input id="vf" type="file" accept="video/*">`:"")}<p class="err" id="verr" role="alert"></p><button class="btn" data-act="vsave" data-id="${esc(v.id)}" style="margin-top:14px;padding:12px 28px">Simpan perubahan</button><button class="out" data-act="gclose" style="margin-top:10px;margin-left:8px">Batal</button>`}
+  if(f&&f.t==="soal"){const q=f.id?qsOf(cur).find(x=>x.id===f.id):null;body=`<h3 style="margin-top:14px">${q?"Edit soal":"Tambah soal"}</h3>${qForm(cur,q,q?q.id:null)}<button class="out" data-act="gclose" style="margin-top:10px">Batal</button>`}
+  return `<section class="box" id="gp" style="margin-top:22px"><h3>Kelola materi ini</h3><div class="gbtns"><button class="btn sm" data-act="gopen" data-v="video">＋ Tambah video</button><button class="btn sm" data-act="gopen" data-v="soal">＋ Tambah soal</button></div><p class="muted" style="margin:6px 0 0;font-size:14px">Ketuk Edit atau Hapus di bawah tiap soal pada daftar langkah untuk mengubahnya.</p>${body}</section>`;
+}
+function videoV(){
+  const f=ktab==="video"?vForm(tops(gk)[0]):qForm(tops(gk)[0],null,null);
+  const list=ktab==="video"
+    ?(S.vids.length?S.vids.map(v=>`<div class="task"><div class="row"><h4>${esc(v.title)}</h4>${delBtn("vdel",v.id)}</div><small class="muted">${esc(TOP[v.topic]||"-")} · ${v.link?"Link":"File"} · ${esc(v.time)}</small></div>`).join(""):`<p class="muted">Belum ada video.</p>`)
+    :((S.qs||[]).length?S.qs.map(q=>`<div class="task"><div class="row"><h4>${esc(q.q)}</h4>${delBtn("qdel",q.id)}</div><small class="muted">${esc(TOP[q.topic]||"-")} · Kunci: ${"ABCD"[q.k]}</small></div>`).join(""):`<p class="muted">Belum ada soal buatan guru. Edit soal bawaan lewat menu Materi.</p>`);
+  return `<div class="hi"><h1>Kelola konten</h1><p>Ringkasan semua video dan soal. Untuk menambah atau mengedit per materi, buka menu Materi.</p></div>${seg("ktab",ktab,[["video","Video"],["soal","Soal"]])}
+  <section class="box" style="margin-top:16px"><h3>${ktab==="video"?"Tambah video":"Tambah soal pilihan ganda"}</h3>${f}</section>
+  <section class="box" style="margin-top:16px"><h3>${ktab==="video"?"Video yang sudah ditambahkan":"Soal yang sudah ditambahkan"}</h3>${list}</section>`;
+}
+const inK=(t,n)=>!t.k||t.k==="all"||t.k===lvlOf(n);
+const tasksFor=n=>S.tasks.filter(t=>inK(t,n));
+const siswaFor=t=>SISWA.filter(n=>inK(t,n));
+const lnk=(u,l)=>`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer" style="color:var(--brand);font-weight:700">${l}</a>`;
+function taskList(){
+  const list=tasksFor(me).sort((a,b)=>a.due<b.due?-1:1);
+  return list.map(t=>{
+    const s=S.subs[t.id+"|"+me],late=!s&&today()>t.due;
+    const st=s?(s.score!=null?`<span class="badge ok">Nilai ${s.score}</span>`:`<span class="badge ok">Terkumpul</span>`):late?`<span class="badge late">Terlambat</span>`:`<span class="badge">Belum dikumpulkan</span>`;
+    return `<div class="task"><div class="row"><h4>${esc(t.title)}</h4>${st}</div><small>Tenggat ${fmt(t.due)}</small>
+    ${t.desc?`<p style="margin:8px 0 0;white-space:pre-wrap">${esc(t.desc)}</p>`:""}
+    ${t.link?`<p style="margin:8px 0 0">${lnk(t.link,"Buka lampiran tugas ›")}</p>`:""}
+    ${s?`<p class="muted" style="margin:8px 0 0;font-size:14px">Jawabanmu (${esc(s.time)}): ${esc(s.text)}${s.link?" · "+lnk(s.link,"tautan"):""}</p>${s.photo?`<div class="ga"><button class="sm2" data-act="photo" data-id="${t.id}" data-n="${esc(me)}" data-np="${s.np||0}">Lihat foto pekerjaan${s.np>1?" ("+s.np+")":""}</button></div>`:""}${s.fb?`<div class="explain"><b>Komentar guru</b><br>${esc(s.fb)}</div>`:""}`
+       :`<textarea id="ans-${t.id}" placeholder="Tulis jawaban atau catatan pengerjaanmu" aria-label="Jawaban ${esc(t.title)}"></textarea><input id="ansl-${t.id}" type="text" placeholder="Tautan hasil kerja (opsional)" style="margin-bottom:8px"><label for="ansf-${t.id}" style="margin:2px 0 4px;font-size:14px">Foto pekerjaan (opsional, maksimal 5)</label><input id="ansf-${t.id}" type="file" accept="image/*" multiple style="margin-bottom:8px"><button class="btn sm" data-act="submit" data-id="${t.id}">Kumpulkan tugas</button>`}</div>`}).join("")||`<p class="muted">Belum ada tugas untuk kelasmu.</p>`;
+}
+function homeV(){
+  const done=S.prog[me]||[],p=pct(me),nx=tops(lvlOf(me)).find(i=>!done.includes(i))??-1,open=tasksFor(me).filter(t=>!S.subs[t.id+"|"+me]).length;
+  return `<div class="hi"><h1>Halo, ${esc(fname(me))}!</h1><p>Kelas ${lvlOf(me)} · ${tops(lvlOf(me)).filter(i=>done.includes(i)).length} dari ${tops(lvlOf(me)).length} materi selesai.</p></div>
+  <div class="grid"><section class="box"><h3>Progres belajar</h3>${bar(p)}<p class="muted" style="margin:8px 0 0">${p}% selesai</p></section>
+  <section class="box"><h3>Lanjutkan belajar</h3>${nx<0?`<p>Semua materi sudah selesai. Hebat!</p>`:`<p style="margin:0 0 12px"><b>${MPn(nx)}${MAT[nx].t}</b></p><button class="btn sm" data-go="lesson" data-i="${nx}">Buka materi</button>`}
+  <p class="muted" style="margin:16px 0 8px">${open?open+" tugas belum dikumpulkan.":"Semua tugas sudah dikumpulkan."}</p>${open?`<button class="btn sm" data-go="tugas">Lihat tugas</button>`:""}</section></div>`;
+}
+const THEMES=[["kuning","Kuning","#b97f00"],["oranye","Oranye","#e8590c"],["biru","Biru","#1f5fd6"],["hijau","Hijau","#178a4f"],["ungu","Ungu","#6d3ccf"],["gelap","Gelap","#2a2627"]];
+let theme="kuning";document.documentElement.dataset.t="kuning";
+function setTheme(t){theme=t;document.documentElement.dataset.t=t;try{localStorage.setItem("lm-theme",t)}catch(e){}}
+try{const t=localStorage.getItem("lm-theme");if(t&&THEMES.some(x=>x[0]===t))setTheme(t)}catch(e){}
+const themePicker=()=>`<div class="tp" role="group" aria-label="Pilih tema">${THEMES.map(([k,l,c])=>`<button type="button" class="sw" data-act="theme" data-v="${k}" aria-pressed="${theme===k}" aria-label="Tema ${l}"><i style="background:${c}"></i><span>${l}</span></button>`).join("")}</div>`;
+const ring=(p,g,z)=>`<span class="ring" style="--d:${Math.round(p*3.6)}deg${z?";width:"+z+"px;height:"+z+"px":""}"><i>${g}</i></span>`;
+const qsOf=i=>[...MAT[i].k.map((q,j)=>{const b={id:"b"+j,q:q.q,o:q.o,k:q.k,e:q.e||(EXP[i]||[])[j]};return Object.assign(b,(S.qov||{})[i+"|"+b.id]||{})}).filter(x=>!x.del),...(S.qs||[]).filter(x=>x.topic===i)];
+const ansOf=(i,id)=>role==="siswa"?((S.ans||{})[me]||{})[i+"|"+id]:qa[i+"|"+id];
+const stepsOf=i=>{const m=MAT[i];return [{k:"p",t:"Penjelasan materi",m:"Bacaan",y:0},...(m.fig?[{k:"g",t:"Grafik dan ilustrasi",m:"Ilustrasi",y:0}]:[]),...S.vids.filter(v=>v.topic===i).map(v=>({k:"v"+v.id,t:v.title,m:v.link?"Video tautan":"Video",y:0,v})),{k:"c",t:"Contoh soal",m:m.c.length+" contoh",y:1},...qsOf(i).map((q,j)=>({k:"q"+q.id,t:"Soal - "+(j+1),m:"Pilihan ganda",y:1,q}))]};
+const seen=(i,k)=>role==="siswa"&&((S.steps||{})[me]||[]).includes(i+"|"+k);
+const seenX=(i,x)=>role==="siswa"&&(x.q?ansOf(i,x.q.id)!=null:seen(i,x.k));
+const tpct=i=>{const st=stepsOf(i);return Math.round(st.filter(x=>seenX(i,x)).length/st.length*100)};
+const AVC=["#e8590c","#1f5fd6","#178a4f","#6d3ccf","#c2185b","#00838f"];
+const hash=async(p,u)=>{try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(u.toLowerCase()+"|"+p));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return "p:"+p}};
+const ukey=(n,r)=>(r||role)+":"+(n||me).toLowerCase();
+const prof=(n,r)=>PR[ukey(n,r)]||{};
+const fname=n=>(prof(n).nama||n).split(" ")[0];
+const fld=(id,l,v,ph,m)=>`<label for="${id}">${l}</label><input id="${id}" type="text"${m?` inputmode="${m}"`:""} value="${esc(v||"")}" placeholder="${esc(ph||"")}">`;
+const pwf=(id,l)=>`<label for="${id}">${l}</label><input id="${id}" type="password" autocomplete="off">`;
+function akunV(){
+  const pr=prof(me),k=pr.av||0,nm=pr.nama||me,sis=role==="siswa";
+  return `<div class="pg"><h1>Pengaturan</h1></div>
+  <div class="box" style="display:flex;gap:16px;align-items:center"><span class="av" style="background:${AVC[k]}">${esc((nm.trim()[0]||"?").toUpperCase())}</span><div><b style="font-size:20px">${esc(nm)}</b><p class="muted" style="margin:2px 0 0">${sis?"Siswa":"Guru"} · login sebagai ${esc(me)}</p></div></div>
+  <section class="box" style="margin-top:16px"><h3>Profil</h3>
+    <label>Warna avatar</label><div class="avs">${AVC.map((c,i)=>`<button type="button" data-act="av" data-v="${i}" aria-pressed="${k===i}" aria-label="Warna ${i+1}" style="background:${c}"></button>`).join("")}</div>
+    ${fld("pf-nama","Nama lengkap",pr.nama,me)}${sis?`<label for="pf-lvl">Jenjang dan kelas</label><select id="pf-lvl">${KEL.map(([j,ks])=>`<optgroup label="${j}">${ks.map(k=>`<option value="${k}"${(pr.lvl||"7")===k?" selected":""}>${j} · Kelas ${k}</option>`).join("")}</optgroup>`).join("")}</select>${fld("pf-kelas","Rombel (opsional)",pr.kelas,"Contoh: 8B")}`:""}${fld("pf-email","Email",pr.email,"nama@email.com","email")}${fld("pf-hp","No. HP",pr.hp,"08xxxxxxxxxx","tel")}
+    <p class="err" id="pferr" role="alert"></p><button class="btn" data-act="pfsave" style="padding:12px 28px;margin-top:10px">Simpan profil</button></section>
+  <section class="box" style="margin-top:16px"><h3>Ubah kata sandi</h3>${pwf("pw-old","Kata sandi lama")}${pwf("pw-new","Kata sandi baru (minimal 6 karakter)")}${pwf("pw-new2","Ulangi kata sandi baru")}
+    <p class="err" id="pwerr" role="alert"></p><button class="btn" data-act="pwsave" style="padding:12px 28px;margin-top:10px">Ubah kata sandi</button></section>
+  <section class="box" style="margin-top:16px"><h3>Tema tampilan</h3><p class="muted" style="margin:0 0 12px;font-size:14px">Pilihan tersimpan di perangkat ini.</p>${themePicker()}</section>
+  ${sis?`<section class="box" style="margin-top:16px"><h3>Progres belajar</h3>${bar(pct(me))}<p class="muted" style="margin:8px 0 12px">${pct(me)}% materi selesai</p><button class="out" data-act="rst">${delAsk==="rst"?"Yakin reset semua progres?":"Reset progres belajar"}</button></section>`:""}
+  <section class="box" style="margin-top:16px"><button class="btn" style="padding:12px 28px" data-act="out">Keluar</button></section>`;
+}
+function kelasBar(){
+  const grp=KEL.find(([j,ks])=>ks.includes(gk))||KEL[0];
+  return `<div class="chips">${KEL.map(([j,ks])=>`<button class="cp${ks.includes(gk)?" on":""}" data-act="gk" data-v="${ks[0]}">${j}</button>`).join("")}</div><div class="chips" style="border-top:0;padding-top:12px">${grp[1].map(k=>`<button class="cp${gk===k?" on":""}" data-act="gk" data-v="${k}">Kelas ${k}</button>`).join("")}</div><div class="chips" style="border-top:0;padding-top:12px">${MP.map(([v,l])=>`<button class="cp${sj===v?" on":""}" data-act="sj" data-v="${v}">${l}</button>`).join("")}</div>`;
+}
+function pilihV(){
+  return `<div class="pg" style="text-align:center;padding-top:30px"><h1>Pilih kelasmu</h1><p class="muted" style="margin:8px 0 0">Materi disesuaikan dengan jenjang dan kelas. Bisa diubah kapan saja di Pengaturan.</p></div>${KEL.map(([j,ks])=>`<section class="box" style="margin-top:16px"><h3>${j==="SMP"?"SMP (Sekolah Menengah Pertama)":"SMA (Sekolah Menengah Atas)"}</h3><div class="chips2">${ks.map(k=>`<button class="cp" data-act="setlvl" data-v="${k}" style="padding:12px 22px;font-size:17px">Kelas ${k}</button>`).join("")}</div></section>`).join("")}`;
+}
+function listV(){
+  const ids=topsS(gk,sj),L=ids.length||1,done=role==="siswa"?(S.prog[me]||[]):[],nx=role==="siswa"?ids.find(i=>!done.includes(i)):-1;
+  const p=role==="siswa"?Math.round(ids.filter(i=>done.includes(i)).length/L*100):Math.round(SISWA.length?SISWA.reduce((a,n)=>a+ids.filter(i=>(S.prog[n]||[]).includes(i)).length/L,0)/SISWA.length*100:0);
+  return `${kelasBar()}<div class="pg"><h1>${MPname(sj)} · Kelas ${gk}</h1><p class="muted" style="margin:4px 0 0">${role==="siswa"?"PROGRESS":"RATA-RATA SISWA"}: ${p}%</p>${bar(p)}</div>
+  ${ids.map(i=>{const m=MAT[i];return `<button class="prow${i===nx?" cur":""}" data-go="lesson" data-i="${i}">${ring(tpct(i),"▶")}<span><b>${m.t}</b><span class="s">Playlist • ${S.vids.filter(v=>v.topic===i).length} video • ${qsOf(i).length+m.c.length} soal</span></span></button>`}).join("")||`<p class="muted" style="margin:24px 0">Belum ada materi ${MPname(sj)} untuk kelas ${gk}. Pilih kelas atau mata pelajaran lain.</p>`}`;
+}
+let gfN=0;
+const gR=(a,b)=>{const r=[];for(let v=Math.ceil(a);v<=b;v++)r.push({v,l:v});return r};
+function gf(o){
+  const W=300,H=240,m=26,[x0,x1]=o.x,[y0,y1]=o.y,id="gc"+(++gfN);
+  const X=v=>m+(v-x0)/(x1-x0)*(W-2*m),Y=v=>H-m-(v-y0)/(y1-y0)*(H-2*m);
+  let g="",d="",t="";
+  if(!o.bare){
+    (o.xt||gR(x0,x1)).forEach(k=>{g+=`<line class="g" x1="${X(k.v)}" y1="${Y(y0)}" x2="${X(k.v)}" y2="${Y(y1)}"/>`+(k.v!==0?`<text x="${X(k.v)}" y="${Y(0)+11}" text-anchor="middle">${k.l}</text>`:"")});
+    (o.yt||gR(y0,y1)).forEach(k=>{g+=`<line class="g" x1="${X(x0)}" y1="${Y(k.v)}" x2="${X(x1)}" y2="${Y(k.v)}"/>`+(k.v!==0?`<text x="${X(0)-4}" y="${Y(k.v)+3}" text-anchor="end">${k.l}</text>`:"")});
+    g+=`<line class="ax" x1="${X(x0)}" y1="${Y(0)}" x2="${X(x1)}" y2="${Y(0)}"/><line class="ax" x1="${X(0)}" y1="${Y(y0)}" x2="${X(0)}" y2="${Y(y1)}"/><text class="al" x="${X(x1)-8}" y="${Y(0)-5}">x</text><text class="al" x="${X(0)+6}" y="${Y(y1)+10}">y</text>`;
+  }
+  let poly=o.poly;
+  if(o.shade){
+    const {a,b,c}=o.shade,P=[[x0,y0],[x1,y0],[x1,y1],[x0,y1]],f=p=>c-a*p[0]-b*p[1],R=[];
+    for(let i=0;i<P.length;i++){const p=P[i],q=P[(i+1)%P.length],fp=f(p),fq=f(q);if(fp>=0)R.push(p);if((fp>=0)!==(fq>=0)){const u=fp/(fp-fq);R.push([p[0]+u*(q[0]-p[0]),p[1]+u*(q[1]-p[1])])}}
+    poly=R;
+  }
+  if(poly)d+=`<polygon class="sh" points="${poly.map(p=>X(p[0])+","+Y(p[1])).join(" ")}"/>`;
+  (o.lines||[]).forEach(L=>{
+    const p=L.b!==0?[x0,(L.c-L.a*x0)/L.b]:[L.c/L.a,y0],q=L.b!==0?[x1,(L.c-L.a*x1)/L.b]:[L.c/L.a,y1];
+    d+=`<line class="l${L.k}" x1="${X(p[0])}" y1="${Y(p[1])}" x2="${X(q[0])}" y2="${Y(q[1])}"/>`;
+    if(L.l)t+=`<text class="lb${L.k}" x="${X(L.at[0])}" y="${Y(L.at[1])}">${L.l}</text>`;
+  });
+  (o.curves||[]).forEach(C=>{
+    let pth="";for(let i=0;i<=120;i++){const x=x0+(x1-x0)*i/120,y=C.f(x);if(!isFinite(y))continue;pth+=(pth?"L":"M")+X(x).toFixed(1)+" "+Y(y).toFixed(1)}
+    d+=`<path class="l${C.k}" fill="none" d="${pth}"/>`;
+    if(C.l)t+=`<text class="lb${C.k}" x="${X(C.at[0])}" y="${Y(C.at[1])}">${C.l}</text>`;
+  });
+  (o.rects||[]).forEach(R=>{d+=`<rect class="fl${R.k||1}" x="${X(R.x)}" y="${Y(R.y+R.h)}" width="${X(R.x+R.w)-X(R.x)}" height="${Y(R.y)-Y(R.y+R.h)}"/>`});
+  (o.ell||[]).forEach(E=>{d+=`<ellipse class="l${E.k}${E.dash?" dsh":""}" fill="none" cx="${X(E.cx)}" cy="${Y(E.cy)}" rx="${Math.abs(X(E.cx+E.rx)-X(E.cx))}" ry="${Math.abs(Y(E.cy+E.ry)-Y(E.cy))}"/>`});
+  (o.dots||[]).forEach(D=>{d+=`<circle class="dt${D.k||1}" cx="${X(D.x)}" cy="${Y(D.y)}" r="${D.r||5}"/>`});
+  (o.circles||[]).forEach(C=>{d+=`<ellipse class="l${C.k}" fill="none" cx="${X(C.cx)}" cy="${Y(C.cy)}" rx="${Math.abs(X(C.cx+C.r)-X(C.cx))}" ry="${Math.abs(Y(C.cy+C.r)-Y(C.cy))}"/>`});
+  (o.segs||[]).forEach(S=>{d+=`<line class="l${S.k}${S.dash?" dsh":""}" x1="${X(S.p[0])}" y1="${Y(S.p[1])}" x2="${X(S.q[0])}" y2="${Y(S.q[1])}"/>`});
+  (o.txt||[]).forEach(T=>{t+=`<text class="lb${T.k||0}" x="${X(T.x)}" y="${Y(T.y)}">${T.t}</text>`});
+  (o.pts||[]).forEach(P=>{t+=`<circle class="pt" cx="${X(P.x)}" cy="${Y(P.y)}" r="4"/><text class="pl" x="${X(P.x)+7}" y="${Y(P.y)-6}">${P.t}</text>`});
+  return `<svg class="gf" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(o.alt||"Grafik")}"><defs><clipPath id="${id}"><rect x="${X(x0)}" y="${Y(y1)}" width="${X(x1)-X(x0)}" height="${Y(y0)-Y(y1)}"/></clipPath></defs>${g}<g clip-path="url(#${id})">${d}</g>${t}</svg>`;
+}
+function stage(x){
+  const m=MAT[cur];
+  if(x.k==="g")return `<div class="stg"><h3>Grafik dan ilustrasi</h3>${(m.fig||[]).map(f=>`<figure class="gfig">${gf(f.o)}<figcaption>${esc(f.cap)}</figcaption></figure>`).join("")}</div>`;
+  if(x.k==="p")return `<div class="stg"><h3>Penjelasan</h3><p>${m.i}</p><ul>${m.p.map(t=>`<li>${t}</li>`).join("")}</ul></div>`;
+  if(x.v)return x.v.link?`<div class="stg c" style="text-align:center"><a class="btn" style="display:inline-block;text-decoration:none;padding:14px 26px" href="${esc(x.v.url)}" target="_blank" rel="noopener noreferrer">▶ BUKA VIDEO</a><p class="muted" style="margin:10px 0 0">Video terbuka di tab baru.</p></div>`:`<video class="stv" controls playsinline preload="metadata" src="${esc(x.v.src||"/_blob/"+x.v.id)}"></video>`;
+  if(x.k==="c")return `<div class="stg">${m.c.map((c,j)=>{const k=cur+"-"+j;return `<div class="task"><b>${c.q}</b>${op[k]?`<p class="sol">${c.a}</p>`:`<div style="margin-top:8px"><button class="btn sm" data-act="show" data-k="${k}">Lihat pembahasan</button></div>`}</div>`}).join("")}</div>`;
+  const q=x.q,a=ansOf(cur,q.id);
+  return `<div class="stg"><b>${esc(q.q)}</b><div class="opts" style="flex-direction:column;align-items:stretch">${q.o.map((o,y)=>`<button class="opt${a!=null&&y===q.k?" right":""}${a===y&&y!==q.k?" wrong":""}" style="text-align:left" data-act="ans" data-k="${esc(q.id)}" data-x="${y}"${a!=null?" disabled":""}>${"ABCD"[y]}. ${esc(o)}</button>`).join("")}</div>${a!=null?`<p class="${a===q.k?"okt":"errt"}">${a===q.k?"Benar!":"Belum tepat. Jawaban yang benar: "+"ABCD"[q.k]+"."}</p><div class="explain"><b>Pembahasan</b><br>${esc(q.e)}</div>`:""}</div>`;
+}
+function pbar(st,j){
+  const nx=st[j+1],pv=st[j-1],last=!nx;
+  return `<div class="pbar">${pv?`<button class="pv" data-act="prev">‹ Kembali<small>${esc(pv.t)}</small></button>`:`<span></span>`}<span class="ring" style="--d:${Math.round(tpct(cur)*3.6)}deg;width:62px;height:62px"><i style="background:var(--surface);font-size:14px;color:var(--ink)">${j+1}/${st.length}</i></span><button class="nx" data-act="next">${last?"Selesai":"Lanjut"} ›<small>${last?"Ke daftar materi":esc(nx.t)}</small></button></div>`;
+}
+function lessonV(){
+  const m=MAT[cur],st=stepsOf(cur);
+  const x=st.find(y=>y.k===openK)||st.find(y=>!seenX(cur,y))||st[0];curK=x.k;
+  if(!x.q)lastNonQ=x.k;
+  if(role==="siswa"&&!x.q&&!seen(cur,x.k)){S.steps=S.steps||{};(S.steps[me]=S.steps[me]||[]).push(cur+"|"+x.k);save()}
+  const j=st.indexOf(x);isQ=true;
+  if(x.q){
+    const q=x.q,a=ansOf(cur,q.id);
+    return `<div class="qstick" style="margin-top:-20px"><header class="zh"><button class="ib" data-act="qclose" aria-label="Tutup" style="color:var(--ink)">✕</button><span class="zt">laskar matematika</span><span></span></header>
+    <div class="qtitle"><h1>${esc(x.t)}</h1></div>
+    <div class="qq">${esc(q.q)}</div></div>
+    <p class="qhint" style="margin:18px 0 0">Kerjain soalnya ya, biar paham betul!</p>
+    <div>${q.o.map((o,y)=>`<button class="qopt${a!=null&&y===q.k?" right":""}${a===y&&y!==q.k?" wrong":""}" data-act="ans" data-k="${esc(q.id)}" data-x="${y}"${a!=null?" disabled":""}><span class="lt">${"ABCD"[y]}</span><span>${esc(o)}</span></button>`).join("")}</div>
+    ${a==null?`<p class="qnote">Jawaban langsung dikirim setelah dipilih.</p>`:`<p class="${a===q.k?"okt":"errt"}" style="font-size:18px;margin:22px 0 0">${a===q.k?"Benar!":"Belum tepat. Jawaban yang benar: "+"ABCD"[q.k]+"."}</p><div class="explain"><b>Pembahasan</b><br>${esc(q.e)}</div>`}
+    <div style="height:30px"></div>${pbar(st,j)}`;
+  }
+  const done=seenX(cur,x),g=role==="guru";
+  return `<div class="fxs"></div><div class="fx"><div class="fxi"><button class="bk" data-go="materi" aria-label="Kembali">←</button>${g?`<div class="vtools"><button data-act="gopen" data-v="video">＋ Unggah</button>${x.v?`<button data-act="vedit" data-id="${esc(x.v.id)}">✎ Edit</button><button data-act="vdel" data-id="${esc(x.v.id)}">${delAsk===x.v.id?"Yakin hapus?":"Hapus"}</button>`:""}</div>`:""}${stage(x)}</div></div>
+  <div class="ttl"><h1>${esc(x.t)}</h1><p class="muted">${MPname(m.s)} · Kelas ${m.g} › ${m.t}</p>${x.v&&x.v.desc?`<p class="muted">${esc(x.v.desc)}</p>`:""}${done?`<p class="okt">✓ Selesai</p>`:""}</div>
+  <div class="tl">${st.map((y,n)=>`<div class="step${y.k===x.k?" cur":""}"><span class="dot${seenX(cur,y)?" on":""}">${seenX(cur,y)?"✓":""}</span><div class="sc"><button class="item" data-act="item" data-k="${esc(y.k)}"><span class="tile"><i class="${y.y?"y":""}">${y.y?"✎":"▶"}</i></span><span class="it"><b>${n+1}. ${esc(y.t)}</b><small>${y.m}</small></span></button>${g&&(y.q||y.v)?`<div class="ga">${y.q?`<button class="sm2" data-act="qedit" data-id="${esc(y.q.id)}">Edit</button>`:""}<button class="sm2" data-act="${y.q?"qdel":"vdel"}" data-id="${esc(y.q?y.q.id:y.v.id)}">${delAsk===(y.q?y.q.id:y.v.id)?"Yakin hapus?":"Hapus"}</button></div>`:""}</div></div>`).join("")}</div>
+  ${g?gPanel():""}
+  ${pbar(st,j)}`;
+}
+const sc=n=>{let r=0,t=0;TOP.forEach((_,i)=>qsOf(i).forEach(q=>{const a=((S.ans||{})[n]||{})[i+"|"+q.id];if(a!=null){t++;if(a===q.k)r++}}));return [r,t]};
+function gProgres(){
+  const avg=Math.round(SISWA.reduce((a,n)=>a+pct(n),0)/SISWA.length),need=S.tasks.reduce((a,t)=>a+siswaFor(t).length,0),got=S.tasks.reduce((a,t)=>a+siswaFor(t).filter(n=>S.subs[t.id+"|"+n]).length,0),low=SISWA.filter(n=>pct(n)<40).length;
+  return `<div class="hi"><h1>Halo, ${esc(fname(me))}!</h1><p>Ringkasan belajar kelas hari ini.</p></div>
+  <div class="stats"><div class="box stat"><b>${avg}%</b>rata-rata progres materi</div><div class="box stat"><b>${got}/${need}</b>tugas terkumpul</div><div class="box stat"><b>${low}</b>siswa perlu bantuan</div></div>
+  <div class="box scroll" style="margin-top:20px"><table class="tbl"><thead><tr><th>Siswa</th><th>Progres materi</th><th>Tugas terkumpul</th><th>Latihan soal</th></tr></thead><tbody>${SISWA.map(n=>{
+    const c=tasksFor(n).filter(t=>S.subs[t.id+"|"+n]).length,p=pct(n);
+    return `<tr><td><b>${esc(prof(n,"siswa").nama||n)}</b><small class="muted">Kelas ${lvlOf(n)}${prof(n,"siswa").kelas?" · "+esc(prof(n,"siswa").kelas):""}</small>${p<40?` <span class="badge late">Perlu bantuan</span>`:""}</td><td>${bar(p)}<small class="muted">${p}% (${tops(lvlOf(n)).filter(i=>(S.prog[n]||[]).includes(i)).length}/${tops(lvlOf(n)).length} materi)</small></td><td>${c} dari ${tasksFor(n).length}</td><td>${sc(n)[0]} benar / ${sc(n)[1]} dijawab</td></tr>`}).join("")}</tbody></table></div>`;
+}
+const kSel=(id,v)=>`<select id="${id}"><option value="all"${v==="all"?" selected":""}>Semua kelas</option>${KEL.map(([j,ks])=>`<optgroup label="${j}">${ks.map(k=>`<option value="${k}"${v===k?" selected":""}>Kelas ${k}</option>`).join("")}</optgroup>`).join("")}</select>`;
+function tForm(){
+  const t=tform.id?S.tasks.find(x=>x.id===tform.id):null;
+  return `<section class="box" id="tf"><h3>${t?"Edit tugas":"Buat tugas baru"}</h3>
+  <label for="nt">Judul tugas</label><input id="nt" type="text" value="${esc(t?t.title:"")}" placeholder="Contoh: Latihan aljabar">
+  <label for="ndesc">Instruksi (opsional)</label><textarea id="ndesc" placeholder="Jelaskan apa yang harus dikerjakan siswa">${esc(t?t.desc||"":"")}</textarea>
+  <label for="nk">Untuk kelas</label>${kSel("nk",t?(t.k||"all"):"all")}
+  <label for="nd">Tenggat</label><input id="nd" type="date" value="${esc(t?t.due:"")}">
+  <label for="nl">Tautan lampiran (opsional)</label><input id="nl" type="text" value="${esc(t?t.link||"":"")}" placeholder="https://…">
+  <p class="err" id="terr" role="alert"></p>
+  <div style="display:flex;gap:10px;margin-top:10px"><button class="btn" data-act="tsave"${t?` data-id="${esc(t.id)}"`:""} style="padding:12px 28px">${t?"Simpan perubahan":"Berikan tugas"}</button><button class="out" data-act="tclose">Batal</button></div></section>`;
+}
+function gTugas(){
+  return `<div class="hi"><h1>Tugas &amp; penilaian</h1><p>Berikan tugas ke siswa, lalu periksa dan beri nilai.</p></div>
+  <div style="margin-top:16px">${tform?tForm():`<button class="btn" data-act="topen" style="padding:12px 24px">＋ Buat tugas baru</button>`}</div>
+  <div style="margin-top:20px">`+(S.tasks.slice().reverse().map(t=>{
+    const ss=siswaFor(t);
+    return `<div class="box" style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start"><h3 style="margin:0">${esc(t.title)}</h3><span class="badge">${!t.k||t.k==="all"?"Semua kelas":"Kelas "+esc(t.k)}</span></div>
+    <small class="muted">Tenggat ${fmt(t.due)} · ${ss.filter(n=>S.subs[t.id+"|"+n]).length}/${ss.length} terkumpul</small>
+    ${t.desc?`<p style="margin:8px 0 0;white-space:pre-wrap">${esc(t.desc)}</p>`:""}
+    ${t.link?`<p style="margin:8px 0 0">${lnk(t.link,"Buka lampiran ›")}</p>`:""}
+    <div class="ga" style="margin-top:10px"><button class="sm2" data-act="tedit" data-id="${esc(t.id)}">Edit</button><button class="sm2" data-act="tdel" data-id="${esc(t.id)}">${delAsk==="td"+t.id?"Yakin hapus?":"Hapus"}</button></div>
+    ${ss.length?ss.map(n=>{const s=S.subs[t.id+"|"+n];
+      return `<div class="sub"><div><b>${esc(prof(n,"siswa").nama||n)}</b> ${s?`<span class="badge ok">Terkumpul ${esc(s.time)}</span>`:`<span class="badge ${today()>t.due?"late":""}">${today()>t.due?"Terlambat":"Belum"}</span>`}${s?`<p>${esc(s.text)}${s.link?" · "+lnk(s.link,"tautan"):""}</p>${s.photo?`<button class="sm2" data-act="photo" data-id="${t.id}" data-n="${esc(n)}" data-np="${s.np||0}">Lihat foto${s.np>1?" ("+s.np+")":""}</button>`:""}`:""}</div>
+      ${s?`<div class="score" style="flex-wrap:wrap"><input type="number" min="0" max="100" id="sc-${t.id}-${n}" value="${s.score??""}" placeholder="Nilai" aria-label="Nilai ${esc(n)}"><input type="text" id="fb-${t.id}-${n}" value="${esc(s.fb||"")}" placeholder="Komentar (opsional)" aria-label="Komentar untuk ${esc(n)}" style="width:170px"><button class="btn sm" data-act="score" data-id="${t.id}" data-n="${esc(n)}">Simpan</button></div>`:""}</div>`}).join(""):`<p class="muted" style="margin:10px 0 0">Belum ada siswa di kelas ini.</p>`}</div>`}).join("")||`<p class="muted">Belum ada tugas.</p>`)+`</div>`;
+}const KT=20;
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const poolOf=t=>t<0?topsS(gk,sj).flatMap(i=>qsOf(i).map(q=>({q,t:i}))):qsOf(t).map(q=>({q,t}));
+const sname=n=>(prof(n,"siswa").nama||n).split(" ")[0];
+function startTick(){
+  clearInterval(tick);Q.qs=Date.now();Q.locked=false;
+  tick=setInterval(()=>{
+    if(!Q||page!=="kplay"||Q.locked)return;
+    const left=Math.max(0,KT-(Date.now()-Q.qs)/1000),b=$("tbar"),tx=$("ttxt");
+    if(b){b.style.width=(left/KT*100)+"%";b.classList.toggle("low",left<5)}
+    if(tx)tx.textContent=Math.ceil(left)+" dtk";
+    if(left<=0)kAnswer(-1);
+  },100);
+}
+function kStart(){
+  const pool=poolOf(ktopic);
+  if(!pool.length){toast("Belum ada soal untuk materi ini.");return}
+  Q={items:shuf(pool).slice(0,10).map(x=>({q:x.q,t:x.t,ord:shuf(x.q.o.map((_,i)=>i)),a:null,ok:false,pts:0,left:0})),i:0,score:0,streak:0,bestStreak:0,correct:0};
+  page="kplay";startTick();render();window.scrollTo(0,0);
+}
+function kAnswer(pos){
+  if(!Q||Q.locked)return;Q.locked=true;
+  const it=Q.items[Q.i],left=Math.max(0,KT-(Date.now()-Q.qs)/1000);
+  it.left=left;it.a=pos;it.ok=pos>=0&&it.ord[pos]===it.q.k;
+  if(it.ok){Q.streak++;Q.bestStreak=Math.max(Q.bestStreak,Q.streak);Q.correct++;it.pts=100+Math.round(left/KT*50)+10*Math.min(Q.streak-1,5);Q.score+=it.pts}
+  else{Q.streak=0;it.pts=0}
+  render();
+}
+function kNext(){
+  if(Q.i<Q.items.length-1){Q.i++;startTick();render();window.scrollTo(0,0)}
+  else{
+    clearInterval(tick);
+    S.quiz=S.quiz||{res:[]};S.quiz.res=[...(S.quiz.res||[]),{n:me,s:Q.score,c:Q.correct,t:Q.items.length,tp:ktopic,d:new Date().toISOString().slice(0,10)}].slice(-300);
+    save();page="khasil";render();window.scrollTo(0,0);
+  }
+}
+const lbV=()=>{
+  const best={};((S.quiz||{}).res||[]).forEach(r=>{if(!best[r.n]||r.s>best[r.n].s)best[r.n]=r});
+  const rows=Object.values(best).sort((a,b)=>b.s-a.s).slice(0,5);
+  return `<section class="box" style="margin-top:16px"><h3>Papan peringkat</h3>${rows.length?rows.map((r,i)=>`<div class="lbr${r.n===me?" me":""}"><b>${i+1}</b><span class="av sm" style="background:${AVC[prof(r.n,"siswa").av||0]}">${esc((sname(r.n)[0]||"?").toUpperCase())}</span><span class="nm">${esc(sname(r.n))}</span><b>${r.s}</b></div>`).join(""):`<p class="muted" style="margin:0">Belum ada yang mengerjakan kuis. Jadilah yang pertama!</p>`}</section>`;
+};
+function lobbyV(){
+  const res=((S.quiz||{}).res||[]).filter(r=>r.n===me),best=res.reduce((m,r)=>Math.max(m,r.s),0),n=poolOf(ktopic).length;
+  return `${kelasBar()}<div class="pg"><h1>Kuis interaktif</h1><p class="muted" style="margin:6px 0 0">${KT} detik per soal. Makin cepat dan makin beruntun benar, makin besar poinnya.</p></div>
+  <section class="box"><h3>Pilih materi</h3><div class="chips2">${[[-1,"Campuran"],...topsS(gk,sj).map(i=>[i,TOP[i]])].map(([v,l])=>`<button class="cp${ktopic===v?" on":""}" data-act="ktopic" data-v="${v}">${l}</button>`).join("")}</div>
+  <p class="muted" style="margin:0 0 14px">${n} soal tersedia · maksimal 10 soal per kuis</p><button class="btn big" data-act="kstart">▶ MULAI KUIS</button></section>
+  <div class="stats" style="margin-top:16px"><div class="box stat"><b>${best}</b>skor terbaik</div><div class="box stat"><b>${res.length}</b>kuis dikerjakan</div><div class="box stat"><b>${res.length?Math.round(res.reduce((a,r)=>a+r.c/r.t,0)/res.length*100):0}%</b>rata-rata benar</div></div>${lbV()}`;
+}
+function playV(){
+  isQ=true;
+  const it=Q.items[Q.i],n=Q.items.length,lk=Q.locked,w=lk?it.left/KT*100:100;
+  return `<div class="qstick" style="margin-top:-20px"><header class="zh" style="grid-template-columns:48px 1fr auto"><button class="ib" data-act="kquit" aria-label="Keluar dari kuis" style="color:var(--ink)">✕</button><span class="zt">Kuis</span><span class="spill">★ ${Q.score}</span></header>
+  <div class="kbar"><span id="tbar" class="${lk&&it.left<5?"low":""}" style="width:${w}%"></span></div>
+  <div class="qtitle" style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h1>Soal ${Q.i+1}/${n}</h1>${Q.streak>1?`<span class="streak">🔥 ${Q.streak} beruntun</span>`:""}<span class="muted" id="ttxt">${lk?Math.ceil(it.left):KT} dtk</span></div>
+  <div class="qq">${esc(it.q.q)}</div></div>
+  <div style="margin-top:6px">${it.ord.map((oi,y)=>{const c=oi===it.q.k,pk=it.a===y;return `<button class="qopt${lk&&c?" right":""}${lk&&pk&&!c?" wrong shake":""}" data-act="kans" data-x="${y}"${lk?" disabled":""}><span class="lt">${"ABCD"[y]}</span><span>${esc(it.q.o[oi])}</span></button>`}).join("")}</div>
+  ${lk?`<div class="kfb ${it.ok?"ok":"no"}"><b>${it.a===-1?"Waktu habis!":it.ok?"Benar!":"Belum tepat"}</b>${it.ok?`<span class="pts">+${it.pts}</span>`:""}<p>Jawaban benar: ${"ABCD"[it.ord.indexOf(it.q.k)]}. ${esc(it.q.o[it.q.k])}</p><div class="explain"><b>Pembahasan</b><br>${esc(it.q.e)}</div></div>`:`<p class="qnote">Pilih jawaban sebelum waktu habis.</p>`}
+  <div style="height:30px"></div><div class="pbar" style="grid-template-columns:1fr"><button class="btn big" data-act="knext"${lk?"":" disabled"} style="${lk?"":"opacity:.45"}">${Q.i===n-1?"Lihat hasil":"Lanjut"} ›</button></div>`;
+}
+function resultV(){
+  const n=Q.items.length,acc=Math.round(Q.correct/n*100),st=acc>=80?"★★★":acc>=50?"★★☆":"★☆☆",msg=acc>=80?"Luar biasa!":acc>=50?"Bagus, terus berlatih!":"Ayo coba lagi, pasti bisa!";
+  return `<div class="pg" style="text-align:center;padding-top:30px"><div class="stars">${st}</div><h1 style="font-size:42px;margin-top:8px">${Q.score} poin</h1><p class="muted" style="margin:6px 0 0">${msg}</p></div>
+  <div class="stats"><div class="box stat"><b>${Q.correct}/${n}</b>jawaban benar</div><div class="box stat"><b>${acc}%</b>akurasi</div><div class="box stat"><b>${Q.bestStreak}</b>beruntun terbaik</div></div>
+  <div style="display:grid;gap:10px;margin-top:20px"><button class="btn big" data-act="kstart">↻ ULANGI KUIS</button><button class="out" data-act="kreview" style="padding:12px">Lihat pembahasan</button><button class="out" data-act="kback" style="padding:12px">Kembali ke menu Kuis</button></div>${lbV()}`;
+}
+function reviewV(){
+  return `<div class="pg"><h1>Pembahasan kuis</h1><p class="muted" style="margin:6px 0 0">Skor ${Q.score} · ${Q.correct}/${Q.items.length} benar</p></div>`+Q.items.map((it,j)=>`<div class="box" style="margin-bottom:12px"><b>${j+1}. ${esc(it.q.q)}</b><p class="${it.ok?"okt":"errt"}" style="margin:8px 0 4px">${it.a===-1?"Waktu habis":it.ok?"Jawabanmu benar":"Jawabanmu: "+"ABCD"[it.a]+". "+esc(it.q.o[it.ord[it.a]])}</p><p style="margin:0 0 6px">Jawaban benar: ${"ABCD"[it.ord.indexOf(it.q.k)]}. ${esc(it.q.o[it.q.k])}</p><div class="explain"><b>Pembahasan</b><br>${esc(it.q.e)}</div></div>`).join("")+`<button class="btn big" data-act="kback">Kembali ke menu Kuis</button>`;
+}
+function kGuru(){
+  const res=(S.quiz||{}).res||[],avg=res.length?Math.round(res.reduce((a,r)=>a+r.s,0)/res.length):0,acc=res.length?Math.round(res.reduce((a,r)=>a+r.c/r.t,0)/res.length*100):0;
+  return `<div class="hi"><h1>Hasil kuis</h1><p>Ringkasan kuis interaktif yang dikerjakan siswa.</p></div>
+  <div class="stats"><div class="box stat"><b>${res.length}</b>kuis dikerjakan</div><div class="box stat"><b>${avg}</b>rata-rata skor</div><div class="box stat"><b>${acc}%</b>rata-rata benar</div></div>${lbV()}
+  <section class="box scroll" style="margin-top:16px"><h3>Riwayat terbaru</h3>${res.length?`<table class="tbl"><thead><tr><th>Siswa</th><th>Materi</th><th>Skor</th><th>Benar</th><th>Tanggal</th></tr></thead><tbody>${res.slice(-15).reverse().map(r=>`<tr><td><b>${esc(sname(r.n))}</b></td><td>${r.tp<0?"Campuran":esc(TOP[r.tp]||"-")}</td><td>${r.s}</td><td>${r.c}/${r.t}</td><td>${fmt(r.d)}</td></tr>`).join("")}</tbody></table>`:`<p class="muted" style="margin:0">Belum ada siswa yang mengerjakan kuis.</p>`}</section>`;
+}
+function render(err){
+  if(!me){$("root").innerHTML=loginView(err||{});return}
+  let v;isQ=false;
+  if(page==="lesson")v=lessonV();else if(page==="materi")v=listV();else if(page==="video"&&role==="guru")v=videoV();else if(page==="pilih"&&role==="siswa")v=pilihV();else if(page==="kuis")v=role==="siswa"?lobbyV():kGuru();else if(page==="kplay"&&Q)v=playV();else if(page==="khasil"&&Q)v=resultV();else if(page==="kreview"&&Q)v=reviewV();else if(page==="akun")v=akunV();
+  else if(role==="siswa")v=page==="tugas"?`<div class="hi"><h1>Tugas</h1><p>Kumpulkan sebelum tenggat.</p></div><section class="box" style="margin-top:20px">${taskList()}</section>`:homeV();
+  else v=page==="tugas"?gTugas():gProgres();
+  $("root").innerHTML=`<div class="app">${isQ?"":head()}${["lesson","kplay","khasil","kreview","pilih"].includes(page)?"":nav()}${v}</div>${pv?`<div class="lbx" data-act="pclose"><div class="ph">${pv.map((u,i)=>`<img src="${u}" alt="Foto ${i+1} dari ${pv.length}">`).join("")}</div><button class="btn sm" data-act="pclose">Tutup</button></div>`:""}`;
+}
+
+const vType=f=>f.type||({mp4:"video/mp4",webm:"video/webm",mov:"video/quicktime",m4v:"video/mp4","3gp":"video/3gpp"}[(f.name.split(".").pop()||"").toLowerCase()]||"");
+const asMsg=x=>{const c=x&&x.code;return c==="not_granted"?"Akun ini belum diizinkan mengunggah (perlu akses Editor atau Contributor).":c==="unsupported_type"?"Format video tidak didukung. Gunakan mp4.":c==="too_large"?"Ukuran video melebihi batas penyimpanan Supabase (cek pengaturan bucket).":c==="store_unavailable"?"Penyimpanan sedang sibuk, coba lagi sebentar lagi.":c==="quota_exceeded"?"Kuota penyimpanan halaman penuh. Hapus video lama.":"Gagal mengunggah"+(c?" (kode: "+c+")":x&&x.message?": "+x.message:"")+"."};
+const isVid=f=>/^video\//.test(f.type)||/\.(mp4|webm|mov|m4v|3gp|mkv)$/i.test(f.name);
+const shrink=f=>new Promise((res,rej)=>{
+  const r=new FileReader();r.onerror=()=>rej(new Error("baca"));
+  r.onload=()=>{const im=new Image();im.onerror=()=>rej(new Error("gambar"));
+    im.onload=()=>{let sc=Math.min(1,1000/Math.max(im.width,im.height)),q=0.7,out="";const c=document.createElement("canvas");
+      for(let i=0;i<7;i++){c.width=Math.max(1,Math.round(im.width*sc));c.height=Math.max(1,Math.round(im.height*sc));c.getContext("2d").drawImage(im,0,0,c.width,c.height);out=c.toDataURL("image/jpeg",q);if(out.length<170000)break;sc*=0.8;q=Math.max(0.45,q-0.06)}
+      out.length<200000?res(out):rej(new Error("besar"))};
+    im.src=r.result};
+  r.readAsDataURL(f);
+});
+const readQ=()=>{
+  const q=$("sq").value.trim(),e=$("se").value.trim(),o4=[0,1,2,3].map(i=>$("so"+i).value.trim()),kk=+$("sk").value;
+  const bad=!q?"Isi pertanyaan.":(!o4[0]||!o4[1])?"Isi minimal pilihan A dan B.":!o4[kk]?"Kunci jawaban menunjuk pilihan yang kosong.":!e?"Isi pembahasan.":"";
+  if(bad){$("qerr").textContent=bad;return null}
+  const o=[],idx=[];o4.forEach((t,i)=>{if(t){idx.push(i);o.push(t)}});return {q,o,k:idx.indexOf(kk),e};
+};
+const toGp=()=>{const g=$("gp");if(g)g.scrollIntoView({block:"start"})};
+document.addEventListener("click",async e=>{
+  const r=e.target.closest("[data-role]");if(r){role=r.dataset.role;render();return}
+  if(e.target.id==="eye"){const p=$("pw"),s=p.type==="password";p.type=s?"text":"password";e.target.textContent=s?"Sembunyikan":"Lihat";return}
+  const g=e.target.closest("[data-go]");if(g){page=g.dataset.go;gform=null;tform=null;clearInterval(tick);if(g.dataset.i!=null){cur=+g.dataset.i;openK=""}render();window.scrollTo(0,0);return}
+  const b=e.target.closest("[data-act]");if(!b)return;const a=b.dataset.act;
+  if(a==="theme"){setTheme(b.dataset.v);document.querySelectorAll(".sw").forEach(x=>x.setAttribute("aria-pressed",x.dataset.v===theme));return}
+  if(a==="out"){await sb.auth.signOut();location.reload()}
+  if(a==="amode"){authMode=b.dataset.v;render()}
+  if(a==="regrole"){regRole=b.dataset.v;render()}
+  if(a==="ktopic"){ktopic=+b.dataset.v;render()}
+  if(a==="gk"){gk=b.dataset.v;ktopic=-1;render()}
+  if(a==="sj"){sj=b.dataset.v;ktopic=-1;render()}
+  if(a==="setlvl"){if(await setProf({lvl:b.dataset.v})){gk=b.dataset.v;page="home";render();toast("Kelas "+gk+" dipilih.")}}
+  if(a==="kstart")kStart();
+  if(a==="kans")kAnswer(+b.dataset.x);
+  if(a==="knext")kNext();
+  if(a==="kquit"){clearInterval(tick);Q=null;page="kuis";render()}
+  if(a==="kreview"){page="kreview";render();window.scrollTo(0,0)}
+  if(a==="kback"){page="kuis";render();window.scrollTo(0,0)}
+  if(a==="show"){op[b.dataset.k]=1;render()}
+  if(a==="item"){openK=b.dataset.k;render();window.scrollTo(0,0)}
+  if(a==="vup"){
+    const t=$("vt").value.trim(),f=$("vf").files[0],er=$("verr");
+    const bad=!t?"Isi judul video.":!f?"Pilih file video.":!isVid(f)?"File harus berupa video (mp4, webm, mov, 3gp).":f.size>50*1048576?"Ukuran video melebihi 50 MB.":"";
+    if(bad){er.textContent=bad;return}
+    b.disabled=true;b.textContent="Mengunggah…";
+    try{const r=await AS.upload(f,{type:vType(f)});S.vids.unshift({id:r.id,src:r.url,title:t,topic:+$("vm").value,desc:$("vd").value.trim(),time:new Date().toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"})});await save();gform=null;render();toast("Video berhasil diunggah.")}
+    catch(x){b.disabled=false;b.textContent="Unggah video";er.textContent=asMsg(x)}
+  }
+  if(a==="vdel"){const id=b.dataset.id;if(delAsk!==id){delAsk=id;render();return}
+    delAsk=null;try{if(AS&&!id.startsWith("l"))await AS.delete(id)}catch(x){}
+    S.vids=S.vids.filter(v=>v.id!==id);save();render();toast("Video dihapus.")}
+  if(a==="ans"){const id=b.dataset.k,x=+b.dataset.x,key=cur+"|"+id;if(role==="siswa"){S.ans=S.ans||{};(S.ans[me]=S.ans[me]||{})[key]=x;save()}else qa[key]=x;render()}
+  if(a==="ktab"){ktab=b.dataset.v;render()}
+  if(a==="vmode"){vmode=b.dataset.v;render()}
+  if(a==="prev"){const st=stepsOf(cur),j=st.findIndex(x=>x.k===curK);if(j>0){openK=st[j-1].k;render();window.scrollTo(0,0)}}
+  if(a==="qclose"){openK=lastNonQ||"p";render();window.scrollTo(0,0)}
+  if(a==="next"){const st=stepsOf(cur),j=st.findIndex(x=>x.k===curK);
+    if(j<st.length-1){openK=st[j+1].k;render();window.scrollTo(0,0)}
+    else{if(role==="siswa"){const d=S.prog[me]=S.prog[me]||[];if(!d.includes(cur))d.push(cur);save()}toast("Materi selesai!");page="materi";render();window.scrollTo(0,0)}}
+  if(a==="vlink"){const t=$("vt").value.trim(),u=$("vl").value.trim(),er=$("verr");
+    const bad=!t?"Isi judul video.":!/^https?:\/\/\S+$/i.test(u)?"Tempel tautan yang diawali http:// atau https://.":"";
+    if(bad){er.textContent=bad;return}
+    S.vids.unshift({id:"l"+Date.now(),link:true,url:u,title:t,topic:+$("vm").value,desc:$("vd").value.trim(),time:new Date().toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"})});save();gform=null;render();toast("Video ditambahkan.")}
+  if(a==="qadd"){const r=readQ();if(!r)return;(S.qs=S.qs||[]).push(Object.assign({id:"q"+Date.now(),topic:+$("sm").value},r));save();gform=null;render();toast("Soal ditambahkan.")}
+  if(a==="qsave"){const r=readQ();if(!r)return;const id=b.dataset.id;
+    if(id.startsWith("b")){S.qov=S.qov||{};S.qov[cur+"|"+id]=r}else{const t=(S.qs||[]).find(x=>x.id===id);if(t)Object.assign(t,r,{topic:+$("sm").value})}
+    save();gform=null;render();toast("Soal diperbarui.")}
+  if(a==="qedit"){gform={t:"soal",id:b.dataset.id};render();toGp()}
+  if(a==="av"){if(await setProf({av:+b.dataset.v}))render()}
+  if(a==="pfsave"){
+    const v=id=>($(id)?$(id).value.trim():""),er=$("pferr"),em=v("pf-email"),hp=v("pf-hp");
+    const bad=em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)?"Format email belum benar.":hp&&!/^[0-9+\-\s]{8,16}$/.test(hp)?"No. HP hanya berisi angka, 8 sampai 16 digit.":"";
+    if(bad){er.textContent=bad;return}
+    const np={nama:v("pf-nama"),kelas:v("pf-kelas"),email:em,hp};if($("pf-lvl"))np.lvl=$("pf-lvl").value;
+    if(await setProf(np)){if(role==="siswa")gk=np.lvl||gk;render();toast("Profil disimpan.")}
+  }
+  if(a==="pwsave"){
+    const o=$("pw-old").value,n=$("pw-new").value,n2=$("pw-new2").value,er=$("pwerr");
+    const bad=!o?"Isi kata sandi lama.":n.length<6?"Kata sandi baru minimal 6 karakter.":n===o?"Kata sandi baru harus berbeda dari yang lama.":n!==n2?"Ulangi kata sandi baru dengan sama persis.":"";
+    if(bad){er.textContent=bad;return}
+    const chk=await sb.auth.signInWithPassword({email:uemail(me),password:o});
+    if(chk.error){er.textContent="Kata sandi lama tidak cocok.";return}
+    const up=await sb.auth.updateUser({password:n});
+    if(up.error){er.textContent="Gagal mengubah kata sandi: "+up.error.message;return}
+    render();toast("Kata sandi berhasil diubah.");
+  }
+  if(a==="rst"){if(delAsk!=="rst"){delAsk="rst";render();return}delAsk=null;[S.prog,S.steps,S.ans].forEach(o=>{if(o)delete o[me]});save();render();toast("Progres belajar direset.")}
+  
+  if(a==="ascheck"){try{AS=await claude.use("assets");asErr=AS?"":"tidak diberikan untuk akun ini"}catch(e){AS=null;asErr=(e&&(e.code||e.message))||"error"}render();toast(AS?"Unggah file siap dipakai.":"Unggah belum tersedia di akun ini.")}
+  if(a==="gopen"){gform={t:b.dataset.v};render();toGp()}
+  if(a==="vedit"){gform={t:"vedit",id:b.dataset.id};render();toGp()}
+  if(a==="vsave"){
+    const id=b.dataset.id,v=S.vids.find(x=>x.id===id),er=$("verr");if(!v)return;
+    const t=$("vt").value.trim();if(!t){er.textContent="Isi judul video.";return}
+    let u=null;if(v.link){u=$("vl").value.trim();if(!/^https?:\/\/\S+$/i.test(u)){er.textContent="Tempel tautan yang diawali http:// atau https://.";return}}
+    const f=!v.link&&$("vf")&&$("vf").files[0];
+    if(f&&(!isVid(f)||f.size>50*1048576)){er.textContent="File harus berupa video dengan ukuran maksimal 50 MB.";return}
+    b.disabled=true;b.textContent="Menyimpan…";
+    try{
+      if(f){const r=await AS.upload(f,{type:vType(f)}),old=v.id;v.id=r.id;v.src=r.url;if(openK==="v"+old)openK="v"+r.id;try{await AS.delete(old)}catch(x){}}
+      v.title=t;v.topic=+$("vm").value;v.desc=$("vd").value.trim();if(u)v.url=u;
+      await save();gform=null;render();toast("Video diperbarui.");
+    }catch(x){b.disabled=false;b.textContent="Simpan perubahan";er.textContent=x&&x.code?asMsg(x):"Gagal menyimpan. Coba lagi."}
+  }
+  if(a==="gclose"){gform=null;render()}
+  if(a==="qdel"){const id=b.dataset.id;if(delAsk!==id){delAsk=id;render();return}
+    delAsk=null;if(id.startsWith("b")){S.qov=S.qov||{};S.qov[cur+"|"+id]={del:true}}else S.qs=(S.qs||[]).filter(x=>x.id!==id);save();render();toast("Soal dihapus.")}
+  if(a==="mat"){const i=+b.dataset.i,d=S.prog[me]=S.prog[me]||[];const k=d.indexOf(i);k<0?d.push(i):d.splice(k,1);save();render()}
+  if(a==="submit"){
+    const id=b.dataset.id,v=$("ans-"+id).value.trim(),l=($("ansl-"+id)||{value:""}).value.trim(),fs=$("ansf-"+id)?Array.from($("ansf-"+id).files):[];
+    if(!v){toast("Tulis jawabanmu dulu sebelum mengumpulkan.");return}
+    if(l&&!/^https?:\/\/\S+$/i.test(l)){toast("Tautan harus diawali http:// atau https://.");return}
+    if(fs.length>5){toast("Maksimal 5 foto.");return}
+    if(fs.some(f=>!/^image\//.test(f.type))){toast("File harus berupa foto.");return}
+    if(fs.length&&!DB){toast("Foto belum bisa diunggah sekarang. Kumpulkan tanpa foto atau coba lagi nanti.");return}
+    b.disabled=true;b.textContent="Mengumpulkan…";
+    try{
+      
+      for(let i=0;i<fs.length;i++){b.textContent="Mengunggah foto "+(i+1)+"/"+fs.length+"…";const d=await shrink(fs[i]);await DB.doc("photos/"+id+"_"+me+"_"+i).set({d})}
+      S.subs[id+"|"+me]={text:v,link:l,photo:fs.length>0,np:fs.length,time:new Date().toLocaleDateString("id-ID",{day:"numeric",month:"short",year:"numeric"}),score:null};
+      await save();render();toast("Tugas terkumpul.");
+    }catch(x){b.disabled=false;b.textContent="Kumpulkan tugas";toast("Gagal mengunggah foto. Coba foto yang lebih kecil.")}
+  }
+  if(a==="photo"){
+    const id=b.dataset.id,n=b.dataset.n;if(!DB){toast("Foto belum bisa dimuat.");return}
+    b.disabled=true;let d=[];
+    const np=+b.dataset.np,keys=np?Array.from({length:np},(_,i)=>id+"_"+n+"_"+i):[id+"_"+n];
+    try{const r=await Promise.all(keys.map(k=>DB.doc("photos/"+k).get()));d=r.filter(x=>x.exists).map(x=>x.data().d)}catch(x){}
+    b.disabled=false;if(!d.length){toast("Foto tidak ditemukan.");return}
+    pv=d;render();
+  }
+  if(a==="pclose"){pv=null;render()}
+  if(a==="score"){const id=b.dataset.id,n=b.dataset.n,v=$("sc-"+id+"-"+n).value,s=S.subs[id+"|"+n];
+    if(!s)return;if(v===""||+v<0||+v>100){toast("Isi nilai antara 0 sampai 100.");return}
+    s.score=+v;s.fb=$("fb-"+id+"-"+n).value.trim();save();render();toast("Nilai tersimpan.")}
+  if(a==="topen"){tform={};render();const e=$("tf");if(e)e.scrollIntoView({block:"start"})}
+  if(a==="tedit"){tform={id:b.dataset.id};render();const e=$("tf");if(e)e.scrollIntoView({block:"start"})}
+  if(a==="tclose"){tform=null;render()}
+  if(a==="tsave"){
+    const ti=$("nt").value.trim(),d=$("nd").value,l=$("nl").value.trim(),er=$("terr");
+    const bad=!ti?"Isi judul tugas.":!d?"Pilih tenggat tugas.":l&&!/^https?:\/\/\S+$/i.test(l)?"Tautan harus diawali http:// atau https://.":"";
+    if(bad){er.textContent=bad;return}
+    const r={title:ti,desc:$("ndesc").value.trim(),k:$("nk").value,due:d,link:l},id=b.dataset.id;
+    if(id){const t=S.tasks.find(x=>x.id===id);if(t)Object.assign(t,r)}else S.tasks.push(Object.assign({id:"t"+Date.now()},r));
+    save();tform=null;render();toast(id?"Tugas diperbarui.":"Tugas diberikan ke siswa.");
+  }
+  if(a==="tdel"){const id=b.dataset.id,key="td"+id;if(delAsk!==key){delAsk=key;render();return}
+    delAsk=null;S.tasks=S.tasks.filter(x=>x.id!==id);Object.keys(S.subs).forEach(k=>{if(k.startsWith(id+"|")){if(S.subs[k].photo&&DB){const nm=k.split("|")[1],np=S.subs[k].np;(np?Array.from({length:np},(_,i)=>id+"_"+nm+"_"+i):[id+"_"+nm]).forEach(q=>DB.doc("photos/"+q).delete().catch(()=>{}))}delete S.subs[k]}});save();render();toast("Tugas dihapus.")}
+});
+document.addEventListener("submit",async e=>{
+  e.preventDefault();
+  const btn=e.target.querySelector("button[type=submit]");
+  if(e.target.id==="form"){
+    const u=$("nm").value.trim().toLowerCase(),pw=$("pw").value,er=$("logerr");
+    if(!u||!pw){er.textContent="Isi nama pengguna dan kata sandi.";return}
+    btn.disabled=true;
+    const {data,error}=await sb.auth.signInWithPassword({email:uemail(u),password:pw});
+    if(error||!data.user){er.textContent="Nama pengguna atau kata sandi tidak cocok.";btn.disabled=false;return}
+    if(!(await enter(data.user))){er.textContent="Profil akun tidak ditemukan. Hubungi admin sekolah.";btn.disabled=false;return}
+    render();window.scrollTo(0,0);
+  }
+  if(e.target.id==="reg"){
+    const nama=$("r-nama").value.trim(),u=$("r-user").value.trim().toLowerCase(),pw=$("r-pw").value,kode=regRole==="guru"?$("r-kode").value.trim():"",lvl=regRole==="siswa"?$("r-lvl").value:"7",er=$("regerr");
+    const bad=!nama?"Isi nama lengkap.":!/^[a-z0-9_]{3,20}$/.test(u)?"Nama pengguna 3 sampai 20 karakter: huruf kecil, angka, atau garis bawah.":pw.length<6?"Kata sandi minimal 6 karakter.":regRole==="guru"&&!kode?"Isi kode guru.":"";
+    if(bad){er.textContent=bad;return}
+    btn.disabled=true;
+    if(regRole==="guru"){const r=await sb.rpc("check_kode",{k:kode});if(r.error||!r.data){er.textContent="Kode guru salah.";btn.disabled=false;return}}
+    const {data,error}=await sb.auth.signUp({email:uemail(u),password:pw,options:{data:{username:u,nama,lvl,kode_guru:kode}}});
+    if(error){er.textContent=/registered|exists|already|Database error/i.test(error.message)?"Nama pengguna sudah dipakai. Coba nama lain.":"Gagal mendaftar: "+error.message;btn.disabled=false;return}
+    if(!data.session){er.textContent="Akun dibuat, tetapi konfirmasi email masih aktif di Supabase. Matikan Confirm email (lihat README), lalu masuk.";btn.disabled=false;return}
+    if(!(await enter(data.user))){er.textContent="Profil gagal dibuat. Periksa schema.sql sudah dijalankan.";btn.disabled=false;return}
+    render();window.scrollTo(0,0);
+  }
+});
+const uemail=u=>u+"@laskar-matematika.app";
+async function loadProfiles(){
+  const {data}=await sb.from("profiles").select("id,username,role,nama,lvl,rombel,av");
+  const keep=PR[role+":"+me]||{};PR={};SISWA=[];
+  (data||[]).forEach(p=>{PR[p.role+":"+p.username]={nama:p.nama,lvl:p.lvl,kelas:p.rombel,av:p.av||0};if(p.role==="siswa")SISWA.push(p.username)});
+  SISWA.sort((a,b)=>(PR["siswa:"+a].nama||a).localeCompare(PR["siswa:"+b].nama||b));
+  const c=await sb.from("contacts").select("email,hp").eq("id",UID).maybeSingle();
+  const k=role+":"+me;PR[k]=Object.assign({},PR[k],{email:keep.email,hp:keep.hp},c.data||{});
+}
+async function setProf(p){
+  const row={};if("nama"in p)row.nama=p.nama;if("lvl"in p)row.lvl=p.lvl;if("kelas"in p)row.rombel=p.kelas;if("av"in p)row.av=p.av;
+  if(Object.keys(row).length){const {error}=await sb.from("profiles").update(row).eq("id",UID);if(error){toast("Gagal menyimpan profil.");return false}}
+  if("email"in p||"hp"in p){const {error}=await sb.from("contacts").upsert({id:UID,email:p.email||"",hp:p.hp||""});if(error){toast("Gagal menyimpan kontak.");return false}}
+  PR[ukey()]=Object.assign({},PR[ukey()],p);return true;
+}
+let _profTimer=null;
+async function enter(user){
+  const {data:p}=await sb.from("profiles").select("*").eq("id",user.id).maybeSingle();
+  if(!p){await sb.auth.signOut();return false}
+  UID=user.id;role=p.role;me=p.username;
+  await loadProfiles();
+  gk=role==="siswa"?(p.lvl||"7"):"7";page=role==="guru"?"progres":"home";
+  await initDb();
+  try{AS=await claude.use("assets");asErr=AS?"":"hanya untuk akun guru"}catch(e){AS=null;asErr=(e&&(e.code||e.message))||"error"}
+  if(!_profTimer)_profTimer=setInterval(()=>{if(me)loadProfiles()},30000);
+  return true;
+}
+async function boot(){
+  if(/^ISI_/.test(SUPABASE_URL)){$("root").innerHTML='<div class="app"><div class="box" style="margin-top:20px"><h1>Belum dikonfigurasi</h1><p>Isi SUPABASE_URL dan SUPABASE_ANON_KEY di bagian atas file index.html, lalu muat ulang halaman. Langkah lengkap ada di README.md.</p></div></div>';return}
+  try{const {data}=await sb.auth.getSession();if(data.session)await enter(data.session.user)}catch(e){}
+  render();
+}
+boot();
+</script>
+</body>
+</html>
